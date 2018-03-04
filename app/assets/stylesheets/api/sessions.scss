@@ -1,0 +1,89 @@
+// Place all the styles related to the api/sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.session-form-container {
+  background-color: #f3f3f3;
+  height: 684px;
+}
+
+.session-form-box {
+  width: 650px;
+  height: 384px;
+  margin: auto;
+  background-color: #f3f3f3;
+  display: flex;
+  justify-content: center;
+}
+
+.session-form-box h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+
+.session-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 650px;
+}
+
+.login-input {
+  border: 1px solid #ccc;
+  width: 300px;
+  height: 35px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  background-color: #fff;
+  // border-radius: 10px;
+}
+
+.session-form-input {
+  display: inline-block;
+  margin-top: 25px;
+  font-size: 16px;
+}
+
+.session-form-input label {
+  display: inline-block;
+  width: 158px;
+  text-align: right;
+  margin-right: 16px;
+}
+
+.session-submit {
+  display: inline-block;
+  width: 300px;
+  height: 36px;
+  background-color: #63a989;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 25px;
+  // border-radius: 10px;
+}
+
+.session-submit:hover {
+  background-color: #47875b;
+}
+
+.divider {
+  border: 1px dotted #ccc;
+  height: 0;
+  margin: 36px 0 28px 0;
+}
+
+.session-errors {
+  color: #c43329;
+  font-size: 16px;
+  text-align: center;
+}
+
+.session-errors li {
+  margin-top: 5px;
+}
