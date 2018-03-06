@@ -1,6 +1,6 @@
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
-section, img, div, h2, p, form,
+section, img, div, h2, h3, h4, p, form,
 fieldset, label, input, textarea,
 span, article, footer, time, small {
   margin: 0;
@@ -42,6 +42,7 @@ button {
 }
 
 button,
-input[type="submit"] {
+input[type="submit"],
+i {
   cursor: pointer;
 }

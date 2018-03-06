@@ -27,12 +27,12 @@ class SessionForm extends React.Component {
 
   emailInput() {
     return (
-      <div className='session-form-input'>
+      <div className='session-modal-form-input-box'>
         <label>Email</label>
           <input
             onChange={ this.updateField('email')}
             value={ this.state.email }
-            className='login-input'
+            className='session-input'
           />
       </div>
     );
@@ -43,30 +43,28 @@ class SessionForm extends React.Component {
       this.emailInput() : '';
 
     return (
-      <div className='session-form-container'>
-        <form onSubmit={ this.handleSubmit } className='session-form-box'>
-          <div className='session-form'>
-            <h2>{this.props.formType}</h2>
-            <div className='divider'></div>
+      <div className='session-modal-form-container'>
+        <form onSubmit={ this.handleSubmit } className='session-modal-form-box'>
+          <div className='session-modal-form'>
 
             { emailInput }
 
-            <div className='session-form-input'>
+            <div className='session-modal-form-input-box'>
               <label>Username</label>
                 <input
                   onChange={ this.updateField('username')}
                   value={ this.state.username }
-                  className='login-input'
+                  className='session-input'
                 />
             </div>
 
-            <div className='session-form-input'>
+            <div className='session-modal-form-input-box'>
               <label>Password</label>
                 <input
                   onChange={ this.updateField('password')}
                   value={ this.state.password }
                   type='password'
-                  className='login-input'
+                  className='session-input'
                 />
             </div>
 
@@ -80,7 +78,7 @@ class SessionForm extends React.Component {
               </ul>
             </div>
 
-            <input className="session-submit"
+            <input className="session-modal-submit"
               type="submit"
               value={this.props.formType}
             />

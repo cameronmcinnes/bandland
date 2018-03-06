@@ -30,3 +30,6 @@ darkgrey
 
 near black
 #232323
+
+text grey 
+#2e3332

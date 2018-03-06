@@ -10,9 +10,12 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
+
+@import "font-awesome";
 
 html {
   height: 100%;
@@ -34,6 +37,12 @@ header {
 img {
   width: 43px;
   height: 43px;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: normal;
+  color: #2e3332
 }
 
 a {
@@ -59,4 +68,51 @@ a:hover {
 .main-footer {
   background-color: #63a989;
   min-height: 320px;
+}
+
+.modal-screen {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.modal {
+  display: none;
+}
+
+.modal.is-open {
+  display: block;
+}
+
+.modal-box {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  margin-left: -220px;
+  width: 500px;
+  padding-bottom: 20px;
+  background: #fff;
+  z-index: 3;
+  border-radius: 5px;
+}
+
+.modal-box {
+}
+
+.modal-title-bar {
+  background-color: #f3f3f3;
+  text-align: center;
+  border-radius: 5px 5px 0 0;
+  padding: 15px 10px 0;
+  border-bottom: solid 1px #eee;
+}
+
+.modal-title-bar i {
+  position: relative;
+  left: 210px;
+  bottom: 18px;
 }

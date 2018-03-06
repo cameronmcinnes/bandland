@@ -65,7 +65,6 @@
   text-align: center;
   margin: 0 auto;
   margin-top: 25px;
-  // border-radius: 10px;
 }
 
 .session-submit:hover {
@@ -86,4 +85,50 @@
 
 .session-errors li {
   margin-top: 5px;
+}
+
+// modals session forms
+
+.session-modal-form-box {
+  width: 100%;
+}
+
+.session-modal-form {
+  margin: auto;
+  margin-top: 35px;
+  width: 340px;
+}
+
+.session-modal-form-input-box label {
+  display: block;
+  text-align: left;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 3px;
+  color: #333333;
+}
+
+.session-input {
+  border: 1px solid #ccc;
+  width: 340px;
+  height: 35px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.session-modal-submit {
+  width: 340px;
+  height: 36px;
+  background-color: #63a989;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  margin: 25px auto;
+  border-radius: 5px;
+}
+
+.session-modal-submit:hover {
+  text-decoration: underline;
 }

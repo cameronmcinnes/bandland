@@ -7,16 +7,16 @@ const personalGreeting = (currentUser, logout) => (
 	</nav>
 );
 
-const sessionLinks = () => (
+const sessionLinks = (toggleModal) => (
   <nav className="login-signup">
     <Link to="/login">Login</Link>
     &nbsp;or&nbsp;
-    <Link to="/signup">Sign up!</Link>
+    <a className="header-button" onClick={ toggleModal }>Sign up!</a>
   </nav>
 );
 
-const SessionNav = ({ currentUser, logout }) => (
-  currentUser ? personalGreeting(currentUser, logout) : sessionLinks()
+const SessionNav = ({ currentUser, logout, toggleModal }) => (
+  currentUser ? personalGreeting(currentUser, logout) : sessionLinks(toggleModal)
 );
 
 export default SessionNav;
