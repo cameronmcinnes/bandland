@@ -6,7 +6,6 @@ class SessionForm extends React.Component {
     this.state = {
       username: '',
       password: '',
-      // do i need to change backend to accept email??
       email: ''
     };
 
@@ -42,6 +41,9 @@ class SessionForm extends React.Component {
     const emailInput = ( this.props.formType === 'Signup') ?
       this.emailInput() : '';
 
+    const userLabel = ( this.props.formType === 'Signup') ?
+      'Username' : 'Username / email';
+
     return (
       <div className='session-form-container'>
         <form onSubmit={ this.handleSubmit } className='session-form-box'>
@@ -52,7 +54,7 @@ class SessionForm extends React.Component {
             { emailInput }
 
             <div className='session-form-input'>
-              <label>Username</label>
+              <label>{ userLabel }</label>
                 <input
                   onChange={ this.updateField('username')}
                   value={ this.state.username }

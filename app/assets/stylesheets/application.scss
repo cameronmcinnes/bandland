@@ -15,8 +15,6 @@
  *= require_self
  */
 
-@import "font-awesome";
-
 html {
   height: 100%;
 }
@@ -113,6 +111,15 @@ a:hover {
 
 .modal-title-bar i {
   position: relative;
-  left: 210px;
-  bottom: 18px;
+  left: 225px;
+  bottom: 23px;
+  font-size: 20px;
+}
+
+input, textarea {
+  transition: border 0.4s ease-in-out;
+}
+
+input:focus, textarea:focus {
+  border: 1px solid #63a989;
 }
