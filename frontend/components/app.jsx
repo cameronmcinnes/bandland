@@ -10,7 +10,7 @@ import ModalContainer from './modal_container';
 const App = () => (
   <div>
     <header className='main-header'>
-      <a href='#'><img className='main-logo' src="https://i.imgur.com/dM90tWy.png" /></a>
+      <a href='#'><img className='main-logo' src={ window.mainLogo } /></a>
       <SessionNavContainer/>
     </header>
 
