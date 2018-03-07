@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import SessionNavContainer from './session/session_nav_container';
@@ -10,19 +10,23 @@ const App = () => (
   <div>
     <header className='main-header'>
       <a href='#'><img className='main-logo' src={ window.mainLogo } /></a>
-      <SessionNavContainer/>
+      <Switch>
+        <Route path='/signup' />
+        <Route path='/login' />
+        <Route path='/' component={ SessionNavContainer } />
+      </Switch>
     </header>
 
-    <AuthRoute
-      path='/signup'
-      component={ SignupFormContainer }
-    />
-    <AuthRoute
-      path='/login'
-      component={ LoginFormContainer }
-    />
+      <AuthRoute
+        path='/signup'
+        component={ SignupFormContainer }
+      />
+      <AuthRoute
+        path='/login'
+        component={ LoginFormContainer }
+      />
 
-  <ModalContainer />
+    <ModalContainer />
 
     <footer className='main-footer'>
       <ul>
