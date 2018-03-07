@@ -27,8 +27,8 @@ class SessionForm extends React.Component {
 
   updateField(field) {
     return (e) => {
-      // clear errors on form change
       this.props.clearSessionErrors();
+      this.setState({ disabled: false });
       this.setState({ [field]: e.target.value });
     };
   }

@@ -54,13 +54,22 @@ a:hover {
 .main-header {
 }
 
-.main-header-div {
+.landing-header-div {
   margin: auto;
   max-width: 994px;
   min-height: 100px;
-  padding-top: 20px;
   font-size: 14px;
   box-sizing: border-box;
+  padding-top: 20px;
+}
+
+.session-header-div {
+  margin: auto;
+  max-width: 994px;
+  min-height: 100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .header-nav {

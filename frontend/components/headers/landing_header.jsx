@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// QUESTION is this the best way to do this logic?
-
+// TODO dry up code
 
 const personalGreeting = (currentUser, logout) => (
 	<nav className="header-nav">
@@ -31,8 +30,15 @@ const sessionLinks = (toggleModal, loginGuest) => (
   </nav>
 );
 
-const SessionNav = ({ currentUser, logout, toggleModal, loginGuest }) => (
-  currentUser ? personalGreeting(currentUser, logout) : sessionLinks(toggleModal, loginGuest)
-);
+const LandingHeader = ({ currentUser, logout, toggleModal, loginGuest }) => {
+	const nav = currentUser ?
+		personalGreeting(currentUser, logout) : sessionLinks(toggleModal, loginGuest)
+	return (
+		<div className='landing-header-div'>
+			<a href='#'><img className='main-logo' src={ window.mainLogo } /></a>
+			{ nav }
+		</div>
+	);
+}
 
-export default SessionNav;
+export default LandingHeader;

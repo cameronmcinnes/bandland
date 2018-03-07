@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import { logout, login } from '../actions/session_actions';
-import { toggleModal } from '../actions/ui_actions';
-import LandingNav from './landing_nav';
+import { logout, login } from '../../actions/session_actions';
+import { toggleModal } from '../../actions/ui_actions';
+import LandingHeader from './landing_header';
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser
@@ -24,4 +24,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(LandingNav);
+)(LandingHeader);

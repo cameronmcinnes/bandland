@@ -1,22 +1,21 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
-import LandingNavContainer from './landing_nav_container';
+import LandingHeaderContainer from './headers/landing_header_container';
+import SessionHeader from './headers/session_header';
 import { AuthRoute } from '../util/route_util';
 import ModalContainer from './modals/modal_container';
 
 const App = () => (
   <div>
     <header className='main-header'>
-      <div className='main-header-div'>
-        <a href='#'><img className='main-logo' src={ window.mainLogo } /></a>
-        <Switch>
-          <Route path='/signup' />
-          <Route path='/login' />
-          <Route path='/' component={ LandingNavContainer } />
-        </Switch>
-      </div>
+      <Switch>
+        <Route path='/signup' component={ SessionHeader } />
+        <Route path='/login' component={ SessionHeader } />
+        <Route path='/' component={ LandingHeaderContainer } />
+      </Switch>
     </header>
 
       <AuthRoute
@@ -38,3 +37,15 @@ const App = () => (
 );
 
 export default App;
+
+// <header className='main-header'>
+//   <div className='main-header-div'>
+//     <a href='#'><img className='main-logo' src={ window.mainLogo } /></a>
+//     <Switch>
+//       <Route path='/signup' />
+//       <Route path='/login' />
+//       <Route path='/' component={ LandingHeaderContainer } />
+//     </Switch>
+//   </div>
+// </header>
+//
