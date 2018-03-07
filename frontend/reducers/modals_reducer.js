@@ -11,7 +11,7 @@ const modalsReducer = (state = defaultState, action) => {
   switch(action.type){
     case TOGGLE_MODAL:
       const newState = { [action.modalName]: !state[action.modalName] }
-      return merge({}, state, newState);
+      return merge({}, defaultState, newState);
     default:
       return state;
   }

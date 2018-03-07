@@ -61,6 +61,26 @@ class SessionForm extends React.Component {
     );
   }
 
+  footer() {
+    if (this.props.formType === 'Login') {
+      return (
+        <span>Don't have an account?&nbsp;
+          <a onClick={ () => this.props.toggleModal(this.props.otherModal) }>
+            Sign up
+          </a>
+        </span>
+      );
+    } else {
+      return (
+        <span>Already have an account?&nbsp;
+        <a onClick={ () => this.props.toggleModal(this.props.otherModal) }>
+            Log in
+          </a>
+        </span>
+      )
+    }
+  }
+
   render() {
     const emailInput = ( this.props.formType === 'Signup') ?
       this.emailInput() : '';
@@ -101,6 +121,10 @@ class SessionForm extends React.Component {
               value={this.props.formType}
             />
           </div>
+
+          <footer className="session-form-footer">
+            { this.footer() }
+          </footer>
         </form>
       </div>
     );
