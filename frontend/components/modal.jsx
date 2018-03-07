@@ -13,7 +13,7 @@ class Modal extends React.Component {
 
   resetModal() {
     this.props.toggleModal();
-    this.props.clearSessionErrors();
+    // this.props.clearSessionErrors();
   }
 
   render() {

@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   toggleModal: () => dispatch(toggleModal()),
-  clearSessionErrors: () => dispatch(clearSessionErrors())
+  // clearSessionErrors: () => dispatch(clearSessionErrors())
 });
 
 export default connect(

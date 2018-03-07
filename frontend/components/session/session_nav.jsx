@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// QUESTION is this the best way to do this logic? 
+// QUESTION is this the best way to do this logic?
+
 
 const personalGreeting = (currentUser, logout) => (
 	<nav className="header-nav">
