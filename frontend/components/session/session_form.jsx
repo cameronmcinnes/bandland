@@ -7,7 +7,8 @@ class SessionForm extends React.Component {
     this.state = {
       username: '',
       password: '',
-      email: ''
+      email: '',
+      disabled: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,11 +21,14 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
+    this.setState({ disabled: true });
     this.props.processForm({user});
   }
 
   updateField(field) {
     return (e) => {
+      // clear errors on form change
+      this.props.clearSessionErrors();
       this.setState({ [field]: e.target.value });
     };
   }
@@ -54,7 +58,7 @@ class SessionForm extends React.Component {
 
   fieldErrors(field) {
     return (
-      <div className='session-errors'>
+      <div className={ `${this.props.modal}session-errors` }>
         <ul>
           {
             this.props.errors[field].map((error, idx) => {
@@ -64,6 +68,16 @@ class SessionForm extends React.Component {
         </ul>
       </div>
     );
+  }
+
+  errorsPresent() {
+    const errorFields = Object.values(this.props.errors);
+    for (let i = 0; i < errorFields.length; i++) {
+      if (errorFields[i].length > 0) {
+        return true;
+      }
+    }
+    return false;
   }
 
   footer() {
@@ -93,9 +107,11 @@ class SessionForm extends React.Component {
   }
 
   nonModalHeader() {
+    const formTitle = (this.props.formType === 'Login') ?
+      'Log in' : 'Sign up';
     return (
       <div>
-        <h2>{this.props.formType}</h2>
+        <h2>{ formTitle }</h2>
         <div className='divider'></div>
       </div>
     );
@@ -113,6 +129,7 @@ class SessionForm extends React.Component {
     const emailInput = ( this.props.formType === 'Signup') ?
       this.emailInput() : '';
 
+    const buttonDisabled = ( this.errorsPresent() || this.state.disabled )
 
     return (
       <div className={`${modal}session-form-container`}>
@@ -149,7 +166,8 @@ class SessionForm extends React.Component {
           <input className={`${modal}session-submit`}
             type="submit"
             value={this.props.formType}
-          />
+            disabled={ buttonDisabled }
+            />
 
         <footer className="session-form-footer">
           { this.footer() }

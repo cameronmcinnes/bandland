@@ -43,6 +43,11 @@ button {
 
 button,
 input[type="submit"],
-i {
+i,
+a {
   cursor: pointer;
+}
+
+button:disabled, input[type="submit"]:disabled {
+  cursor: default;
 }

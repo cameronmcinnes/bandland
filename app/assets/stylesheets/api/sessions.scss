@@ -45,6 +45,7 @@
   width: 159px;
   text-align: right;
   margin-right: 16px;
+  color: #333;
 }
 
 .session-submit {
@@ -64,6 +65,12 @@
   background-color: #47875b;
 }
 
+.session-submit:disabled  {
+  background-color: #555;
+  color: #ccc;
+  opacity: 0.3;
+}
+
 .divider {
   border: 1px dotted #ccc;
   height: 0px;
@@ -73,7 +80,19 @@
 .session-errors {
   color: #c43329;
   font-size: 16px;
-  text-align: center;
+  text-align: left;
+  height: 16px;
+  display: block;
+}
+
+.session-errors ul {
+  margin-left: 175px;
+}
+
+.modal-session-errors {
+  color: #c43329;
+  font-size: 16px;
+  text-align: left;
   height: 16px;
   display: block;
 }
@@ -142,10 +161,16 @@
   border-radius: 5px;
 }
 
+.modal-session-submit:disabled  {
+  background-color: #555;
+  color: #ccc;
+  opacity: 0.3;
+}
+
 .modal-session-submit:hover {
   text-decoration: underline;
 }
 
-.login-signup {
+.btn-disabled {
 
 }

@@ -52,8 +52,6 @@ a:hover {
 }
 
 .main-header {
-  // display: flex;
-  // justify-content: space-between;
 }
 
 .main-header-div {
@@ -70,6 +68,11 @@ a:hover {
   justify-content: space-between;
   width: 100%;
   padding: 20px 0;
+  font-size: 16px;
+}
+
+.loggedin-header-nav-ul {
+  font-size: 14px;
 }
 
 .header-nav ul {
@@ -90,7 +93,6 @@ a:hover {
 }
 
 .signed-out-msg {
-  font-size: 16px;
   font-weight: 500;
   color: #63a989;
 }
