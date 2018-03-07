@@ -3,15 +3,14 @@ import { Link } from 'react-router-dom';
 
 const personalGreeting = (currentUser, logout) => (
 	<nav className="header-group">
-    <a className="header-button" onClick={logout}>Log Out</a>
+    <a className="header-button" onClick={logout}>log out</a>
 	</nav>
 );
 
 const sessionLinks = (toggleModal) => (
   <nav className="login-signup">
-    <Link to="/login">Login</Link>
-    &nbsp;or&nbsp;
-    <a className="header-button" onClick={ toggleModal }>Sign up!</a>
+    <a className="header-button" onClick={ toggleModal }>sign up</a>
+    <Link to="/login">log in</Link>
   </nav>
 );
 

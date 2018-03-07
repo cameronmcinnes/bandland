@@ -44,6 +44,16 @@ class SessionForm extends React.Component {
     const userLabel = ( this.props.formType === 'Signup') ?
       'Username' : 'Username / email';
 
+    let userFieldClass = 'login-input';
+    let passwordFieldClass = 'login-input';
+    if (this.props.errors[0]) {
+      if (this.props.errors[0][0] === 'P') {
+        passwordFieldClass += ' error-input';
+      } else if (this.props.errors[0][0] === 'U') {
+        userFieldClass += ' error-input';
+      }
+    }
+
     return (
       <div className='session-form-container'>
         <form onSubmit={ this.handleSubmit } className='session-form-box'>
@@ -58,7 +68,7 @@ class SessionForm extends React.Component {
                 <input
                   onChange={ this.updateField('username')}
                   value={ this.state.username }
-                  className='login-input'
+                  className={ userFieldClass }
                 />
             </div>
 
@@ -68,7 +78,7 @@ class SessionForm extends React.Component {
                   onChange={ this.updateField('password')}
                   value={ this.state.password }
                   type='password'
-                  className='login-input'
+                  className={ passwordFieldClass }
                 />
             </div>
 

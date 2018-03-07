@@ -7,7 +7,7 @@ class Api::SessionsController < ApplicationController
       login(@user)
       render 'api/users/show'
     elsif @user
-      render json: ['Incorrect password, please try again'], status: 401
+      render json: ['Password incorrect, please try again'], status: 401
     else
       render json: ['User not found, please try again'], status: 401
     end

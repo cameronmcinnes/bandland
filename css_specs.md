@@ -31,5 +31,8 @@ darkgrey
 near black
 #232323
 
-text grey 
+text grey
 #2e3332
+
+error red
+#c43329
