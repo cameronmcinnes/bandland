@@ -4,7 +4,8 @@ import { signup, clearSessionErrors } from '../../actions/session_actions';
 
 const mapStateToProps = state => ({
   errors: state.errors.session,
-  formType: 'Signup'
+  formType: 'Signup',
+  modal: ''
 });
 
 const mapDispatchToProps = dispatch => ({

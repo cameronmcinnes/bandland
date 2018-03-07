@@ -2,9 +2,9 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
-import SessionNavContainer from './session/session_nav_container';
+import LandingNavContainer from './landing_nav_container';
 import { AuthRoute } from '../util/route_util';
-import ModalContainer from './modal_container';
+import ModalContainer from './modals/modal_container';
 
 const App = () => (
   <div>
@@ -14,7 +14,7 @@ const App = () => (
         <Switch>
           <Route path='/signup' />
           <Route path='/login' />
-          <Route path='/' component={ SessionNavContainer } />
+          <Route path='/' component={ LandingNavContainer } />
         </Switch>
       </div>
     </header>

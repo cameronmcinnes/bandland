@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 
 import Modal from './modal';
-import { toggleModal } from '../actions/ui_actions';
-import { clearSessionErrors } from '../actions/session_actions';
-import { selectOpenModal, selectTitle } from '../reducers/selectors';
+import { toggleModal } from '../../actions/ui_actions';
+import { clearSessionErrors } from '../../actions/session_actions';
+import { selectOpenModal, selectTitle } from '../../reducers/selectors';
 
 // selectOpenModal will return nil if no modal open
 const mapStateToProps = (state) => ({

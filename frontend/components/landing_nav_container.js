@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
-import SessionNav from './session_nav';
-import { toggleModal } from '../../actions/ui_actions';
+
+import { logout } from '../actions/session_actions';
+import { toggleModal } from '../actions/ui_actions';
+import LandingNav from './landing_nav';
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser
@@ -15,4 +16,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SessionNav);
+)(LandingNav);

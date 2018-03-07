@@ -1,8 +1,8 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 
-import SignupModalFormContainer from './session/modals/signup_modal_form_container';
-import LoginModalFormContainer from './session/modals/login_modal_form_container';
+import SignupModalFormContainer from '../session/signup_modal_form_container';
+import LoginModalFormContainer from '../session/login_modal_form_container';
 
 class Modal extends React.Component {
   constructor(props) {

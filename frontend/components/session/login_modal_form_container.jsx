@@ -1,15 +1,21 @@
 import { connect } from 'react-redux';
+
 import SessionForm from './session_form';
 import { login, clearSessionErrors } from '../../actions/session_actions';
+import { toggleModal } from '../../actions/ui_actions';
 
 const mapStateToProps = state => ({
   errors: state.errors.session,
   formType: 'Login',
-  modal: ''
+  otherModal: 'signup',
+  modal: 'modal-'
 });
 
 const mapDispatchToProps = dispatch => ({
-  processForm: (user) => dispatch(login(user)),
+  processForm: (user) => dispatch(login(user)).then(
+    () => dispatch(toggleModal('login'))
+  ),
+  toggleModal: (modalName) => dispatch(toggleModal(modalName)),
   clearSessionErrors: () => dispatch(clearSessionErrors())
 });
 

@@ -24,7 +24,7 @@
   width: 650px;
 }
 
-.login-input {
+.session-input {
   border: 1px solid #ccc;
   width: 300px;
   height: 35px;
@@ -42,7 +42,7 @@
 
 .session-form-input label {
   display: inline-block;
-  width: 158px;
+  width: 159px;
   text-align: right;
   margin-right: 16px;
 }
@@ -83,7 +83,8 @@
 }
 
 .session-form-footer {
-  margin-top: 50px;
+  margin-top: 35px;
+  margin-bottom: 20px;
   text-align: center;
   color: #666666;
 }
@@ -100,17 +101,18 @@
 
 // modals session forms
 
-.session-modal-form-box {
-  width: 100%;
-}
 
-.session-modal-form {
+.modal-session-form {
   margin: auto;
   margin-top: 35px;
   width: 340px;
 }
 
-.session-modal-form-input-box label {
+.modal-session-form-input {
+  width: 300px;
+}
+
+.modal-session-form-input label {
   display: block;
   text-align: left;
   font-size: 16px;
@@ -119,7 +121,7 @@
   // color: #333333;
 }
 
-.session-input {
+.modal-session-input {
   border: 1px solid #ccc;
   width: 340px;
   height: 35px;
@@ -128,7 +130,7 @@
   background-color: #fff;
 }
 
-.session-modal-submit {
+.modal-session-submit {
   width: 340px;
   height: 36px;
   background-color: #63a989;
@@ -140,7 +142,7 @@
   border-radius: 5px;
 }
 
-.session-modal-submit:hover {
+.modal-session-submit:hover {
   text-decoration: underline;
 }
 

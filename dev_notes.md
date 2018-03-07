@@ -4,7 +4,6 @@
   * (necessary?) add loading class on asynch button press and
   then remove on promise fulfillment
   * refactor session_form_modal and session_form into one dumb form
-  * split one dumb form into subcomponents
   * restructure component files
   * make header a component, multiple headers to render
 

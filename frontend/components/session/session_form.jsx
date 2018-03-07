@@ -31,16 +31,25 @@ class SessionForm extends React.Component {
 
   emailInput() {
     return (
-      <div className='session-form-input'>
+      <div className={`${this.props.modal}session-form-input`}>
         <label>Email</label>
           <input
             onChange={ this.updateField('email')}
             value={ this.state.email }
+            type='text'
             className={ this.fieldClassName('email') }
           />
         { this.fieldErrors('email') }
       </div>
     );
+  }
+
+  fieldClassName(field) {
+    if (this.props.errors[field].length > 0) {
+      return `${this.props.modal}session-input error-input`;
+    } else {
+      return `${this.props.modal}session-input`;
+    }
   }
 
   fieldErrors(field) {
@@ -57,59 +66,75 @@ class SessionForm extends React.Component {
     );
   }
 
-  fieldClassName(field) {
-    if (this.props.errors[field].length > 0) {
-      return 'login-input error-input';
-    } else {
-      return 'login-input';
-    }
-  }
-
   footer() {
     if (this.props.formType === 'Login') {
       return (
         <span>Don't have an account?&nbsp;
-          <Link to="/signup">Sign up</Link>
+          { this.otherFormLink('Sign up', 'signup') }
         </span>
       );
     } else {
       return (
         <span>Already have an account?&nbsp;
-          <Link to="/login">Log in</Link>
+          { this.otherFormLink('Log in', 'login') }
         </span>
       )
     }
   }
 
+  otherFormLink(linkText, formType) {
+    if (this.props.modal === '') {
+      return <Link to={`/${formType}`}>{ linkText }</Link>
+    } else {
+      return <a onClick={ () => this.props.toggleModal(this.props.otherModal) }>
+        { linkText }
+      </a>
+    }
+  }
+
+  nonModalHeader() {
+    return (
+      <div>
+        <h2>{this.props.formType}</h2>
+        <div className='divider'></div>
+      </div>
+    );
+  }
+
   render() {
+    const modal = this.props.modal;
+
+    const nonModalHeader = ( modal === '' ) ?
+      this.nonModalHeader() : '';
+
     const userLabel = ( this.props.formType === 'Signup') ?
       'Username' : 'Username / email';
 
     const emailInput = ( this.props.formType === 'Signup') ?
       this.emailInput() : '';
 
-    return (
-      <div className='session-form-container'>
-        <form onSubmit={ this.handleSubmit } className='session-form'>
-          <h2>{this.props.formType}</h2>
 
-          <div className='divider'></div>
+    return (
+      <div className={`${modal}session-form-container`}>
+        <form onSubmit={ this.handleSubmit } className={`${modal}session-form`}>
+
+          { nonModalHeader }
 
           { emailInput }
 
-          <div className='session-form-input'>
+          <div className={`${modal}session-form-input`}>
             <label>{ userLabel }</label>
               <input
-                type="text"
                 onChange={ this.updateField('username')}
                 value={ this.state.username }
+                type="text"
                 className={ this.fieldClassName('username') }
               />
           </div>
 
           { this.fieldErrors('username') }
 
-          <div className='session-form-input'>
+          <div className={`${modal}session-form-input`}>
             <label>Password</label>
               <input
                 onChange={ this.updateField('password')}
@@ -121,7 +146,7 @@ class SessionForm extends React.Component {
 
           { this.fieldErrors('password') }
 
-          <input className="session-submit"
+          <input className={`${modal}session-submit`}
             type="submit"
             value={this.props.formType}
           />
