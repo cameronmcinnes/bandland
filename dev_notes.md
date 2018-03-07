@@ -1,6 +1,5 @@
 ## TODO
 * ### auth
-  * On the log in form (not the modal), the logo is positioned differently than on bandcamp
 
 * ### style
   * make header a component, multiple headers to render
@@ -18,6 +17,7 @@
   * restructure component files
   * add guest login
   * disabled button during asynch signin/up request
+  * change header
 
 ## QUESTIONS
 * when to use selectors

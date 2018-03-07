@@ -37,15 +37,3 @@ const App = () => (
 );
 
 export default App;
-
-// <header className='main-header'>
-//   <div className='main-header-div'>
-//     <a href='#'><img className='main-logo' src={ window.mainLogo } /></a>
-//     <Switch>
-//       <Route path='/signup' />
-//       <Route path='/login' />
-//       <Route path='/' component={ LandingHeaderContainer } />
-//     </Switch>
-//   </div>
-// </header>
-//
