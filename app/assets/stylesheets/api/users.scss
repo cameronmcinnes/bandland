@@ -1,3 +1,85 @@
 // Place all the styles related to the api/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-banner-container {
+  width: 100%;
+  height: 100px;
+  background-image: url("https://images.unsplash.com/photo-1425913397330-cf8af2ff40a1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=39f97e57883191fcc60db11e46e6eb9c&auto=format&fit=crop&w=1334&q=80");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.user-profile-img-container {
+  width: 210px;
+  height: 210px;
+  background-image: url("https://images.unsplash.com/photo-1443610662308-74e383d24fbe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9b8e223f54aeb017443ea5b1c99597fb&auto=format&fit=crop&w=1650&q=80");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  margin: -30px 38px 0px 0px;
+}
+
+.user-bio-container {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  padding-bottom: 16px;
+}
+
+.user-name {
+  font-size: 30px;
+  color: #333333;
+  font-weight: bold;
+}
+.bio-header{
+  margin-top: 18px;
+  margin-bottom: 10px;
+}
+
+.bio-info-list {
+  font-size: 13px;
+  color: #828282;
+}
+
+.bio-info {
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.bio-info p {
+  font-size: 15px;
+  line-height: 22px;
+  color: #333333;
+}
+
+.bio-info a {
+  color: #63a989;
+  font-weight: normal;
+}
+
+.user-tabs {
+  display: flex;
+  width: 95%;
+  margin: 0 auto;
+  border-bottom: 1px solid #ddd;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.user-tabs a {
+  color: #63a989;
+  padding: 10px 20px;
+  display: block;
+}
+
+.user-tabs a:hover {
+  text-decoration: none;
+  border-bottom: 2px solid #63a989;
+}
+.user-tabs .active {
+  border-bottom: 2px solid #333333;
+  color: #333333;
+  cursor: default;
+}
