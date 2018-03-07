@@ -5,7 +5,6 @@ import SignupFormContainer from './session/signup_form_container';
 import SessionNavContainer from './session/session_nav_container';
 import { AuthRoute } from '../util/route_util';
 import ModalContainer from './modal_container';
-// import SignupModal from './signup_modal';
 
 const App = () => (
   <div>

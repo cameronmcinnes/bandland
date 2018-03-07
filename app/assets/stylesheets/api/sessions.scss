@@ -64,7 +64,7 @@
   font-weight: bold;
   text-align: center;
   margin: 0 auto;
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 .session-submit:hover {
@@ -81,6 +81,8 @@
   color: #c43329;
   font-size: 16px;
   text-align: center;
+  height: 16px;
+  display: block;
 }
 
 .session-errors li {
@@ -103,9 +105,9 @@
   display: block;
   text-align: left;
   font-size: 16px;
-  margin-top: 20px;
+  margin-top: 5px;
   margin-bottom: 3px;
-  color: #333333;
+  // color: #333333;
 }
 
 .session-input {

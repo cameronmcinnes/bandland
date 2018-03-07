@@ -3,7 +3,7 @@ import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 
 const defaultSession = {
   currentUser: null
-}
+};
 
 const sessionReducer = (state = defaultSession, action) => {
   Object.freeze(state);
@@ -14,6 +14,6 @@ const sessionReducer = (state = defaultSession, action) => {
     default:
       return state;
   }
-}
+};
 
 export default sessionReducer;

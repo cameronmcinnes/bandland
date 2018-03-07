@@ -6,7 +6,6 @@ class SessionForm extends React.Component {
     this.state = {
       username: '',
       password: '',
-      // do i need to change backend to accept email??
       email: ''
     };
 
@@ -28,12 +27,36 @@ class SessionForm extends React.Component {
   emailInput() {
     return (
       <div className='session-modal-form-input-box'>
-        <label>Email</label>
+        <label>Email address</label>
           <input
             onChange={ this.updateField('email')}
             value={ this.state.email }
-            className='session-input'
+            type='text'
+            className={ this.fieldClassName('email') }
           />
+        { this.fieldErrors('email') }
+      </div>
+    );
+  }
+
+  fieldClassName(field) {
+    if (this.props.errors[field].length > 0) {
+      return 'session-input error-input';
+    } else {
+      return 'session-input';
+    }
+  }
+
+  fieldErrors(field) {
+    return (
+      <div className='session-errors'>
+        <ul>
+          {
+            this.props.errors[field].map((error, idx) => {
+              return <li key={ idx }>{error}</li>;
+            })
+          }
+        </ul>
       </div>
     );
   }
@@ -54,9 +77,12 @@ class SessionForm extends React.Component {
                 <input
                   onChange={ this.updateField('username')}
                   value={ this.state.username }
-                  className='session-input'
+                  type='text'
+                  className={ this.fieldClassName('username') }
                 />
             </div>
+
+            { this.fieldErrors('username') }
 
             <div className='session-modal-form-input-box'>
               <label>Password</label>
@@ -64,19 +90,11 @@ class SessionForm extends React.Component {
                   onChange={ this.updateField('password')}
                   value={ this.state.password }
                   type='password'
-                  className='session-input'
+                  className={ this.fieldClassName('password') }
                 />
             </div>
 
-            <div className='session-errors'>
-              <ul>
-                {
-                  this.props.errors.map((error, idx) => {
-                    return <li key={ idx }>{error}</li>;
-                  })
-                }
-              </ul>
-            </div>
+            { this.fieldErrors('password') }
 
             <input className="session-modal-submit"
               type="submit"

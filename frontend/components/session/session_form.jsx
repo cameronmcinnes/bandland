@@ -31,28 +31,41 @@ class SessionForm extends React.Component {
           <input
             onChange={ this.updateField('email')}
             value={ this.state.email }
-            className='login-input'
+            className={ this.fieldClassName('email') }
           />
+        { this.fieldErrors('email') }
       </div>
     );
   }
 
-  render() {
-    const emailInput = ( this.props.formType === 'Signup') ?
-      this.emailInput() : '';
+  fieldErrors(field) {
+    return (
+      <div className='session-errors'>
+        <ul>
+          {
+            this.props.errors[field].map((error, idx) => {
+              return <li key={ idx }>{error}</li>;
+            })
+          }
+        </ul>
+      </div>
+    );
+  }
 
+  fieldClassName(field) {
+    if (this.props.errors[field].length > 0) {
+      return 'login-input error-input';
+    } else {
+      return 'login-input';
+    }
+  }
+
+  render() {
     const userLabel = ( this.props.formType === 'Signup') ?
       'Username' : 'Username / email';
 
-    let userFieldClass = 'login-input';
-    let passwordFieldClass = 'login-input';
-    if (this.props.errors[0]) {
-      if (this.props.errors[0][0] === 'P') {
-        passwordFieldClass += ' error-input';
-      } else if (this.props.errors[0][0] === 'U') {
-        userFieldClass += ' error-input';
-      }
-    }
+    const emailInput = ( this.props.formType === 'Signup') ?
+      this.emailInput() : '';
 
     return (
       <div className='session-form-container'>
@@ -66,11 +79,14 @@ class SessionForm extends React.Component {
             <div className='session-form-input'>
               <label>{ userLabel }</label>
                 <input
+                  type="text"
                   onChange={ this.updateField('username')}
                   value={ this.state.username }
-                  className={ userFieldClass }
+                  className={ this.fieldClassName('username') }
                 />
             </div>
+
+            { this.fieldErrors('username') }
 
             <div className='session-form-input'>
               <label>Password</label>
@@ -78,19 +94,11 @@ class SessionForm extends React.Component {
                   onChange={ this.updateField('password')}
                   value={ this.state.password }
                   type='password'
-                  className={ passwordFieldClass }
+                  className={ this.fieldClassName('password') }
                 />
             </div>
 
-            <div className='session-errors'>
-              <ul>
-                {
-                  this.props.errors.map((error, idx) => {
-                    return <li key={ idx }>{error}</li>;
-                  })
-                }
-              </ul>
-            </div>
+            { this.fieldErrors('password') }
 
             <input className="session-submit"
               type="submit"

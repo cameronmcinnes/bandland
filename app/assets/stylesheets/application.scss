@@ -40,7 +40,6 @@ img {
 h4 {
   font-size: 18px;
   font-weight: normal;
-  color: #2e3332
 }
 
 a {
@@ -56,6 +55,22 @@ a:hover {
 .main-header {
   display: flex;
   justify-content: space-around;
+}
+
+.header-nav ul {
+  display: flex;
+}
+
+.header-nav ul li {
+  border-right: solid 1px #DDDDDD;
+}
+
+.header-nav ul li:last-child {
+  border-right: none;
+}
+
+.header-nav ul li a {
+  padding: 0 10px;
 }
 
 .main-logo {
@@ -80,6 +95,7 @@ a:hover {
 
 .modal {
   display: none;
+  color: #2e3332;
 }
 
 .modal.is-open {
@@ -114,13 +130,18 @@ a:hover {
   left: 225px;
   bottom: 23px;
   font-size: 20px;
+  color: #848484;
 }
 
-input, textarea {
+.modal-title-bar i:hover {
+  color: #666666;
+}
+
+input[type=text], input[type=password], textarea {
   transition: border 0.4s ease-in-out;
 }
 
-input:focus, textarea:focus {
+input[type=text]:hover, input[type=password]:hover, textarea:focus {
   border: 1px solid #63a989;
 }
 
