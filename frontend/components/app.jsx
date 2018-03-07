@@ -7,6 +7,7 @@ import LandingHeaderContainer from './headers/landing_header_container';
 import SessionHeader from './headers/session_header';
 import { AuthRoute } from '../util/route_util';
 import ModalContainer from './modals/modal_container';
+import UserShowContainer from './user_show/user_show_container';
 
 const App = () => (
   <div>
@@ -18,14 +19,16 @@ const App = () => (
       </Switch>
     </header>
 
-      <AuthRoute
-        path='/signup'
-        component={ SignupFormContainer }
+    <AuthRoute
+      path='/signup'
+      component={ SignupFormContainer }
       />
-      <AuthRoute
-        path='/login'
-        component={ LoginFormContainer }
+    <AuthRoute
+      path='/login'
+      component={ LoginFormContainer }
       />
+
+    <Route path='/users/:userId' component={ UserShowContainer }/>
 
     <ModalContainer />
 

@@ -13,3 +13,12 @@ User.create!(
   email: 'guest@example.com',
   password: 'demo_user'
 )
+
+User.create!(
+  username: 'guy',
+  email: 'guy@guy.com',
+  password: 'guysguy',
+  location: 'cool place',
+  description: 'a very cool description',
+  own_site_url: 'google.com'
+)
