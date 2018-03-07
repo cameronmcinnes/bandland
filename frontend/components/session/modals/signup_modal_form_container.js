@@ -9,7 +9,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  processForm: (user) => dispatch(signup(user)).then(() => dispatch(toggleModal()))
+  processForm: (user) => dispatch(signup(user)).then(
+    () => dispatch(toggleModal('signup'))
+  )
 });
 
 export default connect(

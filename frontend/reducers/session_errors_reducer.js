@@ -23,6 +23,7 @@ const sessionErrorsReducer = (state = defaultState, action) => {
     // because thats a ui action ???
     // case RECEIVE_CURRENT_USER:
     //   return defaultState;
+    case CLEAR_SESSION_ERRORS:
     case TOGGLE_MODAL:
       return defaultState;
     default:

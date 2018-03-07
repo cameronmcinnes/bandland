@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
-  toggleModal: (modelOpen) => dispatch(toggleModal(modelOpen))
+  toggleModal: (modalName) => dispatch(toggleModal(modalName))
 });
 
 export default connect(

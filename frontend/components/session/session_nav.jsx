@@ -13,7 +13,7 @@ const personalGreeting = (currentUser, logout) => (
 const sessionLinks = (toggleModal) => (
   <nav className="header-nav">
     <ul>
-      <li><a className="header-button" onClick={ toggleModal }>sign up</a></li>
+      <li><a className="header-button" onClick={ () => toggleModal('signup') }>sign up</a></li>
       <li><Link to="/login">log in</Link></li>
     </ul>
   </nav>

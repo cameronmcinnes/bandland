@@ -12,12 +12,11 @@ class Modal extends React.Component {
   }
 
   resetModal() {
-    this.props.toggleModal();
-    // this.props.clearSessionErrors();
+    this.props.toggleModal(this.props.modalName);
   }
 
   render() {
-    const openClass = ( this.props.modalOpen ) ? 'is-open' : '';
+    const openClass = ( this.props.modalName ) ? 'is-open' : '';
 
     return (
       <div className={`modal ${openClass}`}>

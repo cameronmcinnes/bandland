@@ -3,14 +3,15 @@ import { connect } from 'react-redux';
 import Modal from './modal';
 import { toggleModal } from '../actions/ui_actions';
 import { clearSessionErrors } from '../actions/session_actions';
+import { selectOpenModal } from '../reducers/selectors';
 
+// selectOpenModal will return nil if no modal open
 const mapStateToProps = (state) => ({
-  modalOpen: state.ui.modalOpen
+  modalName: selectOpenModal(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  toggleModal: () => dispatch(toggleModal()),
-  // clearSessionErrors: () => dispatch(clearSessionErrors())
+  toggleModal: (modalName) => dispatch(toggleModal(modalName)),
 });
 
 export default connect(
