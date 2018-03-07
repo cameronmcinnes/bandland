@@ -9,12 +9,14 @@ import ModalContainer from './modal_container';
 const App = () => (
   <div>
     <header className='main-header'>
-      <a href='#'><img className='main-logo' src={ window.mainLogo } /></a>
-      <Switch>
-        <Route path='/signup' />
-        <Route path='/login' />
-        <Route path='/' component={ SessionNavContainer } />
-      </Switch>
+      <div className='main-header-div'>
+        <a href='#'><img className='main-logo' src={ window.mainLogo } /></a>
+        <Switch>
+          <Route path='/signup' />
+          <Route path='/login' />
+          <Route path='/' component={ SessionNavContainer } />
+        </Switch>
+      </div>
     </header>
 
       <AuthRoute

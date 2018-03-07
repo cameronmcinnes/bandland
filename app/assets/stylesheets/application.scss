@@ -27,9 +27,9 @@ body {
 }
 
 header {
-  display: flex;
-  justify-content: center;
-  padding: 50px;
+  // display: flex;
+  // justify-content: center;
+  // padding: 20px;
 }
 
 img {
@@ -45,7 +45,6 @@ h4 {
 a {
   color: #161113;
   font-weight: 700;
-  font-size: 14px;
 }
 
 a:hover {
@@ -53,8 +52,22 @@ a:hover {
 }
 
 .main-header {
+  // display: flex;
+  // justify-content: space-between;
+}
+
+.main-header-div {
+  margin: auto;
+  max-width: 994px;
+  padding-top: 20px;
+  font-size: 14px;
+}
+
+.header-nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 0;
 }
 
 .header-nav ul {
@@ -63,14 +76,21 @@ a:hover {
 
 .header-nav ul li {
   border-right: solid 1px #DDDDDD;
+  padding: 0 10px;
+}
+
+.header-nav ul li:first-child {
+  padding-left: 0;
 }
 
 .header-nav ul li:last-child {
   border-right: none;
 }
 
-.header-nav ul li a {
-  padding: 0 10px;
+.signed-out-msg {
+  font-size: 16px;
+  font-weight: 500;
+  color: #63a989;
 }
 
 .main-logo {
