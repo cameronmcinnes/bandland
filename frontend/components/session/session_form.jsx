@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -60,6 +61,22 @@ class SessionForm extends React.Component {
     }
   }
 
+  footer() {
+    if (this.props.formType === 'Login') {
+      return (
+        <span>Don't have an account?&nbsp;
+          <Link to="/signup">Sign up</Link>
+        </span>
+      );
+    } else {
+      return (
+        <span>Already have an account?&nbsp;
+          <Link to="/login">Log in</Link>
+        </span>
+      )
+    }
+  }
+
   render() {
     const userLabel = ( this.props.formType === 'Signup') ?
       'Username' : 'Username / email';
@@ -69,42 +86,45 @@ class SessionForm extends React.Component {
 
     return (
       <div className='session-form-container'>
-        <form onSubmit={ this.handleSubmit } className='session-form-box'>
-          <div className='session-form'>
-            <h2>{this.props.formType}</h2>
-            <div className='divider'></div>
+        <form onSubmit={ this.handleSubmit } className='session-form'>
+          <h2>{this.props.formType}</h2>
 
-            { emailInput }
+          <div className='divider'></div>
 
-            <div className='session-form-input'>
-              <label>{ userLabel }</label>
-                <input
-                  type="text"
-                  onChange={ this.updateField('username')}
-                  value={ this.state.username }
-                  className={ this.fieldClassName('username') }
-                />
-            </div>
+          { emailInput }
 
-            { this.fieldErrors('username') }
-
-            <div className='session-form-input'>
-              <label>Password</label>
-                <input
-                  onChange={ this.updateField('password')}
-                  value={ this.state.password }
-                  type='password'
-                  className={ this.fieldClassName('password') }
-                />
-            </div>
-
-            { this.fieldErrors('password') }
-
-            <input className="session-submit"
-              type="submit"
-              value={this.props.formType}
-            />
+          <div className='session-form-input'>
+            <label>{ userLabel }</label>
+              <input
+                type="text"
+                onChange={ this.updateField('username')}
+                value={ this.state.username }
+                className={ this.fieldClassName('username') }
+              />
           </div>
+
+          { this.fieldErrors('username') }
+
+          <div className='session-form-input'>
+            <label>Password</label>
+              <input
+                onChange={ this.updateField('password')}
+                value={ this.state.password }
+                type='password'
+                className={ this.fieldClassName('password') }
+              />
+          </div>
+
+          { this.fieldErrors('password') }
+
+          <input className="session-submit"
+            type="submit"
+            value={this.props.formType}
+          />
+
+        <footer className="session-form-footer">
+          { this.footer() }
+        </footer>
         </form>
       </div>
     );

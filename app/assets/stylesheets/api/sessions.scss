@@ -5,18 +5,11 @@
 .session-form-container {
   background-color: #f3f3f3;
   height: 684px;
-}
-
-.session-form-box {
-  width: 650px;
-  height: 384px;
-  margin: auto;
-  background-color: #f3f3f3;
   display: flex;
   justify-content: center;
 }
 
-.session-form-box h2 {
+.session-form-container h2 {
   text-align: center;
   margin-bottom: 10px;
   font-size: 18px;
@@ -27,7 +20,7 @@
 .session-form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin: 60px;
   width: 650px;
 }
 
@@ -73,7 +66,7 @@
 
 .divider {
   border: 1px dotted #ccc;
-  height: 0;
+  height: 0px;
   margin: 36px 0 28px 0;
 }
 
@@ -87,6 +80,22 @@
 
 .session-errors li {
   margin-top: 5px;
+}
+
+.session-form-footer {
+  margin-top: 50px;
+  text-align: center;
+  color: #666666;
+}
+
+.session-form-footer a {
+  color: #63a989;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.session-form-footer a:hover {
+  text-decoration: underline;
 }
 
 // modals session forms
