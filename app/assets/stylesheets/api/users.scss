@@ -61,8 +61,6 @@
 
 .user-tabs {
   display: flex;
-  width: 95%;
-  margin: 0 auto;
   border-bottom: 1px solid #ddd;
   font-weight: 600;
   font-size: 15px;
@@ -82,4 +80,9 @@
   border-bottom: 2px solid #333333;
   color: #333333;
   cursor: default;
+}
+
+.user-show-grid-container {
+  width: 95%;
+  margin: 0 auto;
 }

@@ -1,7 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Route } from 'react-router-dom';
 
 import UserBio from './user_bio';
+import UserCollection from './user_collection';
 
 class UserShow extends React.Component {
   componentDidMount() {
@@ -27,11 +28,20 @@ class UserShow extends React.Component {
         <div className='user-banner-container'></div>
         <UserBio user={ this.props.user }/>
 
-        <ul className='user-tabs'>
-          <li><NavLink to={ baseUrl } exact >collection</NavLink></li>
-          <li><NavLink to={ baseUrl + '/followers' } >followers</NavLink></li>
-          <li><NavLink to={ baseUrl + '/following' } >following</NavLink></li>
-        </ul>
+        <div className='user-show-grid-container'>
+          <ul className='user-tabs'>
+            <li><NavLink to={ baseUrl } exact >collection</NavLink></li>
+            <li><NavLink to={ baseUrl + '/albums' } exact >albums</NavLink></li>
+            <li><NavLink to={ baseUrl + '/followers' } >followers</NavLink></li>
+            <li><NavLink to={ baseUrl + '/following' } >following</NavLink></li>
+          </ul>
+
+          <div className='user-show-grid'>
+            <Route path={ baseUrl } component={ UserCollection } />
+            <Route path={ baseUrl + '/followers' } />
+            <Route path={ baseUrl + '/following' } />
+          </div>
+        </div>
       </div>
     )
   }
