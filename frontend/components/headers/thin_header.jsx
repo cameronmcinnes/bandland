@@ -19,8 +19,11 @@ const ThinHeader = ({ currentUser, logout, toggleModal, loginGuest, toggleMenu, 
           { Boolean(currentUser) &&
             <ul className='thin-header-nav-ul'>
               <li><Link to={`/users/${currentUser.id}`}>collection</Link></li>
-              <li onClick={ () => toggleMenu('gearDropdown') } >
+              <li id='gear-dropdown-li' onClick={ () => toggleMenu('gearDropdown') } >
                 <i><FontAwesome name='cog' /><FontAwesome name='caret-down' /></i>
+                { currentUser &&
+                  <GearDropdown toggleMenu={ toggleMenu } logout={ logout } open={gearDropdownState}/>
+                }
               </li>
             </ul>
           }
@@ -33,9 +36,6 @@ const ThinHeader = ({ currentUser, logout, toggleModal, loginGuest, toggleMenu, 
           }
 
     	</nav>
-      { currentUser &&
-        <GearDropdown toggleMenu={ toggleMenu } logout={ logout } open={gearDropdownState}/>
-      }
 		</header>
 	);
 }

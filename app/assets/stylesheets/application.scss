@@ -240,9 +240,12 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus {
 // TODO more general dropdown class?
 #gear-dropdown {
   position: absolute;
-  left: 1190px;
-  top: 49px;
+  top: 40px;
   width: 100px;
   background-color: #ececec;
   z-index: 3;
+}
+
+#gear-dropdown-li {
+  position: relative;
 }
