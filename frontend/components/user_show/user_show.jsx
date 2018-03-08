@@ -38,7 +38,10 @@ class UserShow extends React.Component {
 
     return (
       <div className='user-show-container'>
-        <div className='user-banner-container'></div>
+        <div className='user-banner-container'>
+          <img className='user-banner-img'
+            src={this.props.user.banner_img_url}></img>
+        </div>
 
         { boxShown }
 

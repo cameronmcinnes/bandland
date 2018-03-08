@@ -31,7 +31,8 @@ class Api::UsersController < ApplicationController
       :location,
       :description,
       :own_site_url,
-      :profile_img
+      :profile_img,
+      :banner_img
     )
   end
 end

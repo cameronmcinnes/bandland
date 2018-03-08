@@ -11,23 +11,27 @@ class UserEditForm extends React.Component {
       own_site_url: this.props.user.own_site_url,
       description: this.props.user.description,
       profile_img_file: null,
-      profile_img_url: this.props.user.profile_img_url
+      profile_img_url: this.props.user.profile_img_url,
+      banner_img_file: null,
+      banner_img_url: this.props.user.banner_img_url
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.updateFile = this.updateFile.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
 
-    const file = this.state.profile_img_file;
+    const propicFile = this.state.profile_img_file;
+    const bannerFile = this.state.banner_img_file;
+
     const formData = new FormData();
 
     Object.keys(this.state).forEach(key => {
       formData.append(`user[${key}]`, this.state[key]);
     });
-    if (file) formData.append('user[profile_img]', file);
+    if (propicFile) formData.append('user[profile_img]', propicFile);
+    if (bannerFile) formData.append('user[banner_img]', bannerFile);
 
     this.props.updateUser(this.props.userId, formData).then(
       this.props.toggleEditForm
@@ -40,18 +44,20 @@ class UserEditForm extends React.Component {
     };
   }
 
-  updateFile(e) {
-    const file = e.currentTarget.files[0];
-    const fileReader = new FileReader();
-    fileReader.onloadend = () => (
-      this.setState({ profile_img_file: file, profile_img_url: fileReader.result })
-    );
+  updateFileField(field) {
+    return (e) => {
+      const file = e.currentTarget.files[0];
+      const fileReader = new FileReader();
+      fileReader.onloadend = () => (
+        this.setState({ [`${field}_file`]: file, [`${field}_url`]: fileReader.result })
+      );
 
-    if (file) {
-      fileReader.readAsDataURL(file);
-    } else {
-      this.setState({ profile_img_url: "", profile_img_file: null });
-    }
+      if (file) {
+        fileReader.readAsDataURL(file);
+      } else {
+        this.setState({ profile_img_url: "", profile_img_file: null });
+      }
+    };
   }
 
   render() {
@@ -98,7 +104,12 @@ class UserEditForm extends React.Component {
 
             <div className='user-edit-field-container'>
               <label>profile image</label>
-              <input type="file" onChange={ this.updateFile }/>
+              <input type="file" onChange={ this.updateFileField('profile_img') }/>
+            </div>
+
+            <div className='user-edit-field-container'>
+              <label>banner image</label>
+              <input type="file" onChange={ this.updateFileField('banner_img') }/>
             </div>
 
           <div className='user-edit-submit-box'>
