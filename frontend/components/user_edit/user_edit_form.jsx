@@ -7,12 +7,12 @@ class UserEditForm extends React.Component {
     super(props);
     this.state = {
       location: this.props.user.location || '',
-      own_site_url: this.props.user.own_site_url || '',
+      own_site_url: this.props.user.ownSiteUrl || '',
       description: this.props.user.description || '',
       profile_img_file: '',
-      profile_img_url: this.props.user.profile_img_url || '',
+      profile_img_url: this.props.user.profileImgUrl || '',
       banner_img_file: '',
-      banner_img_url: this.props.user.banner_img_url || ''
+      banner_img_url: this.props.user.bannerImgUrl || ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);

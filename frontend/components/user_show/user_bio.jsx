@@ -16,7 +16,7 @@ const UserBio = ({user, currentUser, toggleEditForm}) => {
   return(
     <div className='user-bio-container'>
       <div className='user-profile-img-container'>
-        <img className='user-profile-img' src={ user.profile_img_url } />
+        <img className='user-profile-img' src={ user.profileImgUrl } />
       </div>
 
       <div className='bio-info'>
@@ -32,7 +32,7 @@ const UserBio = ({user, currentUser, toggleEditForm}) => {
         </ul>
 
         <p className='bio-description'>{ user.description }</p>
-        <div><a href={ user.own_site_url }>{ user.own_site_url }</a></div>
+        <div><a href={ user.ownSiteUrl }>{ user.ownSiteUrl }</a></div>
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ const ThinHeader = ({ currentUser, logout, toggleModal, loginGuest, toggleMenu, 
 
           { Boolean(currentUser) &&
             <ul className='thin-header-nav-ul'>
-              <li><a href='#'>collection</a></li>
+              <li><Link to={`/users/${currentUser.id}`}>collection</Link></li>
               <li onClick={ () => toggleMenu('gearDropdown') } >
                 <i><FontAwesome name='cog' /><FontAwesome name='caret-down' /></i>
               </li>
