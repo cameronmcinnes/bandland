@@ -34,10 +34,12 @@ const LandingHeader = ({ currentUser, logout, toggleModal, loginGuest }) => {
 	const nav = currentUser ?
 		personalGreeting(currentUser, logout) : sessionLinks(toggleModal, loginGuest)
 	return (
-		<div className='landing-header-div'>
-			<a href='#'><img className='main-logo' src={ window.mainLogo } /></a>
-			{ nav }
-		</div>
+		<header className='main-header'>
+			<div className='landing-header-div'>
+				<a href='#'><img className='main-logo' src={ window.mainLogo } /></a>
+				{ nav }
+			</div>
+		</header>
 	);
 }
 

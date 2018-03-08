@@ -31,6 +31,7 @@
 
 ## TO RESEARCH
 * using locales in rails to get readable error msgs: [SO post] (https://stackoverflow.com/questions/808547/fully-custom-validation-error-message-with-rails)
+* parallax scroll https://www.w3schools.com/cssref/pr_background-attachment.asp
 
 ## Tables
 * Users

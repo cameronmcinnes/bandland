@@ -105,13 +105,63 @@ a:hover {
   border-right: none;
 }
 
+.thin-header {
+  border-top: solid 5px #848484;
+  background-color: #ececec;
+  border-bottom: dotted #afafaf 1px
+}
+
+.thin-header a, i {
+  color: #63a989;
+  font-weight: 500;
+  padding: 10px;
+  display: block;
+}
+
+.fa-cog {
+  font-size: 15px;
+  padding-right: 10px;
+}
+
+.thin-header a:hover {
+  text-decoration: none;
+  color: #666666;
+  background-color: rgba(0,0,0,0.06);
+  // need to make border on top of all the elements
+  // border-top: solid 5px #666666;
+}
+
+.thin-header ul:first-child li:first-child a {
+  padding-left: 0;
+  padding-right: 14px;
+}
+
+.thin-header-nav {
+  margin: auto;
+  max-width: 1214px;
+  height: 43px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.thin-header-nav-ul {
+  display: flex;
+}
+
+.thin-header-logo {
+  width: auto;
+  height: 12px;
+  padding-top: 1px;
+}
+
 .signed-out-msg {
   font-weight: 500;
   color: #63a989;
 }
 
 .main-logo {
-  width: 150px;
+  width: auto;
   height: 21px;
 }
 
@@ -184,4 +234,11 @@ input[type=text]:hover, input[type=password]:hover, textarea:focus {
 
 .error-input {
   border: 1px solid #c43329;
+}
+
+.gear-dropdown {
+  background-color: purple;
+  height: 50px;
+  width: 50px;
+  z-index: 3;
 }
