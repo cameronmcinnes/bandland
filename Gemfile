@@ -30,9 +30,13 @@ gem 'bcrypt'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
 gem 'font-awesome-rails'
 gem 'jquery-rails'
+
 gem 'aws-sdk', '< 3.0'
+gem 'paperclip', '~> 5.0.0'
+gem 'figaro'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

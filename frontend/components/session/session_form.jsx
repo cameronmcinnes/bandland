@@ -92,17 +92,17 @@ class SessionForm extends React.Component {
         <span>Already have an account?&nbsp;
           { this.otherFormLink('Log in', 'login') }
         </span>
-      )
+      );
     }
   }
 
   otherFormLink(linkText, formType) {
     if (this.props.modal === '') {
-      return <Link to={`/${formType}`}>{ linkText }</Link>
+      return <Link to={`/${formType}`}>{ linkText }</Link>;
     } else {
       return <a onClick={ () => this.props.toggleModal(this.props.otherModal) }>
         { linkText }
-      </a>
+      </a>;
     }
   }
 
@@ -129,7 +129,7 @@ class SessionForm extends React.Component {
     const emailInput = ( this.props.formType === 'Signup') ?
       this.emailInput() : '';
 
-    const buttonDisabled = ( this.errorsPresent() || this.state.disabled )
+    const buttonDisabled = ( this.errorsPresent() || this.state.disabled );
 
     return (
       <div className={`${modal}session-form-container`}>

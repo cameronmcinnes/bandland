@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.user-show-container {
+  background-color: #fbfbfb;
+}
+
 .user-banner-container {
   width: 100%;
   height: 100px;
@@ -14,11 +18,14 @@
 .user-profile-img-container {
   width: 210px;
   height: 210px;
-  background-image: url("https://images.unsplash.com/photo-1443610662308-74e383d24fbe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9b8e223f54aeb017443ea5b1c99597fb&auto=format&fit=crop&w=1650&q=80");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
   margin: -30px 38px 0px 0px;
+}
+
+.user-profile-img {
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  overflow: hidden;
 }
 
 .user-bio-container {
@@ -32,10 +39,29 @@
   font-size: 30px;
   color: #333333;
   font-weight: bold;
+  margin-right: 20px;
 }
+
 .bio-header{
   margin-top: 18px;
   margin-bottom: 10px;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+}
+
+.bio-header fa {
+  margin-right: 3px;
+  margin-bottom: 1px;
+}
+
+.hollow-btn {
+  border: 1px solid #939497;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 5px;
+  padding: 3px 9px;
+  color: #939497;
+  margin: auto 0;
 }
 
 .bio-info-list {
@@ -64,6 +90,7 @@
   border-bottom: 1px solid #ddd;
   font-weight: 600;
   font-size: 15px;
+  margin-top: 20px;
 }
 
 .user-tabs a {
@@ -85,4 +112,87 @@
 .user-show-grid-container {
   width: 95%;
   margin: 0 auto;
+}
+
+// EDIT
+
+.user-edit-form {
+  max-width: 698px;
+}
+
+.user-edit-form:focus {
+  box-shadow: 0 0 5px #b4d7f9;
+}
+
+.user-edit-field-container {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+.user-edit-field-container label {
+  color: #929292;
+  margin-bottom: 6px;
+  margin-top: 30px;
+}
+
+.user-edit-input-box {
+  display: flex;
+}
+
+.user-edit-textarea-box textarea {
+  width: 100%;
+  max-width: 630px;
+  min-height: 115px;
+  border: 1px solid #a7a7a7;
+  padding: 8px;
+  font-size: 13px;
+  line-height: 19px;
+}
+
+.user-edit-input-field {
+  width: 304px;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid #a7a7a7;
+}
+
+.user-edit-submit-box a {
+  text-transform: uppercase;
+  color: #63a989;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.user-edit-submit {
+  padding: 8px 20px;
+  background-color: #63a989;
+  border-radius: 5px;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  margin-right: 10px;
+  margin-top: 30px;
+}
+
+.user-edit-submit:hover {
+  text-decoration: underline;
+}
+
+.edit-prof-img {
+
+}
+
+.img-edit-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 25px;
+  background-color: rgba(0,0,0,0.3);
+  position: relative;
+  top: -210px;
+  width: 100%;
+  height: 100%;
 }

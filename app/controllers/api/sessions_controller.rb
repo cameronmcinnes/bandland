@@ -5,7 +5,7 @@ class Api::SessionsController < ApplicationController
 
     if @user && @user.is_password?(session_params[:password])
       login(@user)
-      render 'api/users/show'
+      render :show
     elsif @user
       render json: { password: ['Password incorrect, please try again'] }, status: 401
     else

@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, Route } from 'react-router-dom';
 
 import UserBio from './user_bio';
+import UserEditFormContainer from '../user_edit/user_edit_container';
 import UserCollection from './user_collection';
 
 class UserShow extends React.Component {
@@ -16,17 +17,30 @@ class UserShow extends React.Component {
   }
 
   render() {
-    const { user, loading } = this.props;
+    const { user, loading, showEditForm } = this.props;
 
     if (!user) return null;
 
     if (loading) return <h1>LOADING</h1>;
     const baseUrl = `/users/${this.props.match.params.userId}`;
 
+    let boxShown = <UserBio
+      user={ this.props.user }
+      toggleEditForm={ this.props.toggleEditForm }
+      />;
+
+    if (showEditForm) {
+      boxShown = <UserEditFormContainer
+        user={ this.props.user}
+        toggleEditForm={ this.props.toggleEditForm }
+        />;
+    }
+
     return (
       <div className='user-show-container'>
         <div className='user-banner-container'></div>
-        <UserBio user={ this.props.user }/>
+
+        { boxShown }
 
         <div className='user-show-grid-container'>
           <ul className='user-tabs'>
@@ -43,7 +57,7 @@ class UserShow extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

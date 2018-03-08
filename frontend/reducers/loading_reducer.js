@@ -2,11 +2,13 @@ import { merge } from 'lodash';
 
 import {
   START_LOADING_USER,
-  RECEIVE_USER
+  RECEIVE_USER,
+  START_UPDATING_USER
 } from '../actions/user_actions';
 
 const initialState = {
-  showLoading: false
+  showLoading: false,
+  updateLoading: false
 };
 
 const loadingReducer = (state = initialState, action) => {
@@ -14,28 +16,13 @@ const loadingReducer = (state = initialState, action) => {
   switch (action.type) {
     case START_LOADING_USER:
       return merge({}, state, { showLoading: true });
+    case START_UPDATING_USER:
+      return merge({}, state, { updateLoading: true });
     case RECEIVE_USER:
-      return merge({}, state, { showLoading: false });
+      return merge({}, state, { showLoading: false, updateLoading: false });
     default:
       return state;
   }
 };
 
 export default loadingReducer;
-
-// Object.freeze(state);
-// switch (action.type) {
-//   case RECEIVE_ALL_POKEMON:
-//     return Object.assign({}, state, { indexLoading: false });
-//   case RECEIVE_NEW_POKEMON:
-//   case RECEIVE_SINGLE_POKEMON:
-//   case RECEIVE_POKEMON_ERRORS:
-//     return Object.assign({}, state, { detailLoading: false });
-//   case START_LOADING_ALL_POKEMON:
-//     return Object.assign({}, state, { indexLoading: true });
-//   case CREATE_POKEMON:
-//   case START_LOADING_SINGLE_POKEMON:
-//     return Object.assign({}, state, { detailLoading: true });
-//   default:
-//     return state;
-// }

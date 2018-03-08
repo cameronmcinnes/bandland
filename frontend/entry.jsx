@@ -16,14 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   }
-  
+
   // TEST start
   window.getState = store.getState;
   window.dispatch = store.dispatch;
 
-  window.login = SessionActions.login
-  window.logout = SessionActions.logout
-  window.signup = SessionActions.signup
+  window.login = SessionActions.login;
+  window.logout = SessionActions.logout;
+  window.signup = SessionActions.signup;
   // TEST end
 
   const root = document.getElementById('root');

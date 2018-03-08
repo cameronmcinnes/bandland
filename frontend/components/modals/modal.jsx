@@ -25,8 +25,6 @@ class Modal extends React.Component {
       case "login":
         modalShown = <LoginModalFormContainer />;
         break;
-      default:
-        modalShown = <h1>WTF</h1>
     }
     return (
       <div className={`modal ${openClass}`}>

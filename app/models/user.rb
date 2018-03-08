@@ -2,16 +2,24 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  username        :string           not null
-#  password_digest :string           not null
-#  session_token   :string           not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  email           :string           not null
-#  location        :string
-#  own_site_url    :string
-#  description     :text
+#  id                       :integer          not null, primary key
+#  username                 :string           not null
+#  password_digest          :string           not null
+#  session_token            :string           not null
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
+#  email                    :string           not null
+#  location                 :string
+#  own_site_url             :string
+#  description              :text
+#  profile_img_file_name    :string
+#  profile_img_content_type :string
+#  profile_img_file_size    :integer
+#  profile_img_updated_at   :datetime
+#  banner_img_file_name     :string
+#  banner_img_content_type  :string
+#  banner_img_file_size     :integer
+#  banner_img_updated_at    :datetime
 #
 
 class User < ApplicationRecord
@@ -19,9 +27,15 @@ class User < ApplicationRecord
   validates :username, :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  has_attached_file :profile_img, default_url: "missing.png"
+  has_attached_file :banner_img, default_url: "missing.png"
+  validates_attachment_content_type :profile_img, :banner_img, content_type: /\Aimage\/.*\Z/
+
   after_initialize :ensure_session_token
 
   attr_reader :password
+
+  has_many :albums
 
   def password=(password)
     @password = password

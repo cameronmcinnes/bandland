@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180308012716) do
+ActiveRecord::Schema.define(version: 20180308151659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20180308012716) do
     t.index ["title"], name: "index_albums_on_title"
   end
 
+  create_table "collectings", force: :cascade do |t|
+    t.integer "collector_id"
+    t.integer "collected_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collected_id"], name: "index_collectings_on_collected_id"
+    t.index ["collector_id", "collected_id"], name: "index_collectings_on_collector_id_and_collected_id", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "password_digest", null: false
@@ -37,6 +46,14 @@ ActiveRecord::Schema.define(version: 20180308012716) do
     t.string "location"
     t.string "own_site_url"
     t.text "description"
+    t.string "profile_img_file_name"
+    t.string "profile_img_content_type"
+    t.integer "profile_img_file_size"
+    t.datetime "profile_img_updated_at"
+    t.string "banner_img_file_name"
+    t.string "banner_img_content_type"
+    t.integer "banner_img_file_size"
+    t.datetime "banner_img_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["location"], name: "index_users_on_location"
     t.index ["session_token"], name: "index_users_on_session_token", unique: true

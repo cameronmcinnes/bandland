@@ -1,5 +1,6 @@
 ## TODO
 * ### auth :fire:
+  * separate receive user and receive current user json views
 
 * ### style
   * style gear dropdown menu
@@ -7,9 +8,11 @@
   * fix janky dropdown blur solution (autofocus hidden input?)
 
 * ### user show
-  * add migration w regular name and genre
+  * on login redirect to own show page w/ profile edit form
+  * add migration w regular name and genre, allow edit of name in edit form
   * album seeds and has many assoc
   * collection components
+  * crop user profile img so dont load and then apply css style
 
 
 ## DONE

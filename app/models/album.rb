@@ -13,4 +13,9 @@
 #
 
 class Album < ApplicationRecord
+  validates :title, presence: true
+  validates :title, uniqueness: { scope: :artist_id,
+    message: "Can't have two albums by the same title" }
+
+  belongs_to :artist, class_name: :User
 end

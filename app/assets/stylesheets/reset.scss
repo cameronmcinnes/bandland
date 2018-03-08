@@ -17,6 +17,10 @@ span, article, footer, time, small {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
 ul {
   list-style: none;
 }
