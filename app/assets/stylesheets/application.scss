@@ -108,7 +108,7 @@ a:hover {
 .thin-header {
   border-top: solid 5px #848484;
   background-color: #ececec;
-  border-bottom: dotted #afafaf 1px
+  border-bottom: dotted #afafaf 1px;
 }
 
 .thin-header a, i {
@@ -236,9 +236,13 @@ input[type=text]:hover, input[type=password]:hover, textarea:focus {
   border: 1px solid #c43329;
 }
 
-.gear-dropdown {
-  background-color: purple;
+// TODO more general dropdown class?
+#gear-dropdown {
+  position: absolute;
+  left: 1190px;
+  top: 49px;
   height: 50px;
   width: 50px;
+  background-color: #fff;
   z-index: 3;
 }

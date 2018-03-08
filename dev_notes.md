@@ -2,10 +2,15 @@
 * ### auth :fire:
 
 * ### style
-  * feed collection artist nav, w dropdown
+  * style gear dropdown menu
+  * clean up header code NOT DRY (dumb header component? yeesh)
+  * fix janky dropdown blur solution (autofocus hidden input?)
 
 * ### user show
   * add migration w regular name and genre
+  * album seeds and has many assoc
+  * collection components
+
 
 ## DONE
 * ### auth
@@ -23,6 +28,7 @@
 
 # ### style
   * make header a component, multiple headers to render
+  * feed collection artist header, w dropdown
 
 ## QUESTIONS
 * when to use selectors

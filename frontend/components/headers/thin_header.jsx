@@ -18,10 +18,8 @@ const loggedInLinks = (currentUser, logout, toggleMenu, gearDropdownState) => (
       <li><a href='#'>collection</a></li>
 			<li
 				onClick={ () => toggleMenu('gearDropdown') }
-				onBlur={ () => toggleMenu('gearDropdown') }
 				>
 				<i><FontAwesome name='cog' /><FontAwesome name='caret-down' /></i>
-				<GearDropdown logout={ logout } open={gearDropdownState}/>
 			</li>
     </ul>
 
@@ -49,12 +47,9 @@ const ThinHeader = ({ currentUser, logout, toggleModal, loginGuest, toggleMenu, 
 	return (
 		<header className='thin-header'>
 			{ nav }
+			<GearDropdown toggleMenu={ toggleMenu } logout={ logout } open={gearDropdownState}/>
 		</header>
 	);
 }
 
 export default ThinHeader;
-
-// <div className='dropdown-container'>
-// 	<GearDropdown logout={ logout } open={gearDropdownState}/>
-// </div>
