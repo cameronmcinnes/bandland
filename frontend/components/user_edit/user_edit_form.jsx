@@ -5,15 +5,14 @@ import FontAwesome from 'react-fontawesome';
 class UserEditForm extends React.Component {
   constructor(props) {
     super(props);
-    // QUESTION snake case or camelCase?
     this.state = {
-      location: this.props.user.location,
-      own_site_url: this.props.user.own_site_url,
-      description: this.props.user.description,
-      profile_img_file: null,
-      profile_img_url: this.props.user.profile_img_url,
-      banner_img_file: null,
-      banner_img_url: this.props.user.banner_img_url
+      location: this.props.user.location || '',
+      own_site_url: this.props.user.own_site_url || '',
+      description: this.props.user.description || '',
+      profile_img_file: '',
+      profile_img_url: this.props.user.profile_img_url || '',
+      banner_img_file: '',
+      banner_img_url: this.props.user.banner_img_url || ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -49,7 +48,10 @@ class UserEditForm extends React.Component {
       const file = e.currentTarget.files[0];
       const fileReader = new FileReader();
       fileReader.onloadend = () => (
-        this.setState({ [`${field}_file`]: file, [`${field}_url`]: fileReader.result })
+        this.setState({
+          [`${field}_file`]: file,
+          [`${field}_url`]: fileReader.result
+        })
       );
 
       if (file) {
@@ -97,7 +99,7 @@ class UserEditForm extends React.Component {
               <label>about you</label>
                 <textarea
                   onChange={ this.updateField('description')}
-                  value={this.state.description}
+                  value={this.state.description }
                 />
             </div>
           </div>

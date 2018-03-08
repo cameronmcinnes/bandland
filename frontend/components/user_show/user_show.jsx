@@ -27,6 +27,7 @@ class UserShow extends React.Component {
     let boxShown = <UserBio
       user={ this.props.user }
       toggleEditForm={ this.props.toggleEditForm }
+      currentUser={ this.props.currentUser }
       />;
 
     if (showEditForm) {

@@ -9,7 +9,8 @@ const mapStateToProps = (state, { match }) => {
   return {
     user,
     loading: state.ui.loading.showLoading,
-    showEditForm: state.ui.menus.userEdit
+    showEditForm: state.ui.menus.userEdit,
+    currentUser: state.session.currentUser
   };
 };
 
