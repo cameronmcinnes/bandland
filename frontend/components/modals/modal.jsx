@@ -3,6 +3,7 @@ import FontAwesome from 'react-fontawesome';
 
 import SignupModalFormContainer from '../session/signup_modal_form_container';
 import LoginModalFormContainer from '../session/login_modal_form_container';
+import ProfileImageModalContainer from '../user_edit/profile_image_modal_container';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -24,6 +25,9 @@ class Modal extends React.Component {
         break;
       case "login":
         modalShown = <LoginModalFormContainer />;
+        break;
+      case "profileImage":
+        modalShown = <ProfileImageModalContainer />;
         break;
     }
     return (

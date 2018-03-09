@@ -14,28 +14,27 @@ const UserBio = ({user, currentUser, toggleEditForm}) => {
   }
 
   return(
-    <div className='user-bio-container'>
-      <div className='user-profile-img-container'>
-        <img className='user-profile-img' src={ user.profileImgUrl } />
+    <div className='bio-info'>
+
+      <div className='bio-header'>
+        <span className='user-name'>{ user.username }</span>
+        { editButton }
       </div>
 
-      <div className='bio-info'>
+      <ul className='bio-info-list'>
+        <li>{ user.location }</li>
+        <li>this is where the genre will bel </li>
+      </ul>
 
-        <div className='bio-header'>
-          <span className='user-name'>{ user.username }</span>
-          { editButton }
-        </div>
-
-        <ul className='bio-info-list'>
-          <li>{ user.location }</li>
-          <li>this is where the genre will bel </li>
-        </ul>
-
-        <p className='bio-description'>{ user.description }</p>
-        <div><a href={ user.ownSiteUrl }>{ user.ownSiteUrl }</a></div>
-      </div>
+      <p className='bio-description'>{ user.description }</p>
+      <div><a href={ user.ownSiteUrl }>{ user.ownSiteUrl }</a></div>
     </div>
   );
 }
 
 export default UserBio;
+
+  //
+  // <div className='user-profile-img-container'>
+  //   <img className='user-profile-img' src={ user.profileImgUrl } />
+  // </div>

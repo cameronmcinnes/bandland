@@ -4,8 +4,14 @@
 }
 
 .album-index-grid {
-  display: flex;
-  flex-wrap: wrap;
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: center;
+  margin: 0 auto;
+}
+
+.album-index-grid li {
+  display: inline-block;
 }
 
 .album-info-container {

@@ -62,67 +62,59 @@ class UserEditForm extends React.Component {
     };
   }
 
+  modalClick(e) {
+    debugger;
+    this.props.toggleModal('profileImage')
+  }
+
   render() {
     return (
-      <div className='user-bio-container'>
-        <div className='user-profile-img-container'>
-          <img className='user-profile-img' src={ this.state.profile_img_url } />
-          <div className='img-edit-overlay'><FontAwesome name='camera' /></div>
+      <form onSubmit={ this.handleSubmit } className='user-edit-form'>
+        <div className='user-edit-input-box'>
+          <div className='user-edit-field-container'>
+            <label>location</label>
+              <input
+                onChange={ this.updateField('location')}
+                value={ this.state.location }
+                type="text"
+                className='user-edit-input-field'
+              />
+          </div>
+
+          <div className='user-edit-field-container'>
+            <label>link to your website or blog</label>
+              <input
+                onChange={ this.updateField('own_site_url')}
+                value={ this.state.own_site_url }
+                type="text"
+                className='user-edit-input-field'
+              />
+          </div>
         </div>
 
-        <form onSubmit={ this.handleSubmit } className='user-edit-form'>
+        <div className='user-edit-textarea-box'>
+          <div className='user-edit-field-container'>
+            <label>about you</label>
+              <textarea
+                onChange={ this.updateField('description')}
+                value={this.state.description }
+              />
+          </div>
+        </div>
 
-          <div className='user-edit-input-box'>
-            <div className='user-edit-field-container'>
-              <label>location</label>
-                <input
-                  onChange={ this.updateField('location')}
-                  value={ this.state.location }
-                  type="text"
-                  className='user-edit-input-field'
-                />
-            </div>
-
-            <div className='user-edit-field-container'>
-              <label>link to your website or blog</label>
-                <input
-                  onChange={ this.updateField('own_site_url')}
-                  value={ this.state.own_site_url }
-                  type="text"
-                  className='user-edit-input-field'
-                />
-            </div>
+          <div className='user-edit-field-container'>
+            <label>banner image</label>
+            <input type="file" onChange={ this.updateFileField('banner_img') }/>
           </div>
 
-          <div className='user-edit-textarea-box'>
-            <div className='user-edit-field-container'>
-              <label>about you</label>
-                <textarea
-                  onChange={ this.updateField('description')}
-                  value={this.state.description }
-                />
-            </div>
-          </div>
+        <div className='user-edit-submit-box'>
+          <button className='user-edit-submit'
+            type="submit"
+            >SAVE CHANGES</button>
 
-            <div className='user-edit-field-container'>
-              <label>profile image</label>
-              <input type="file" onChange={ this.updateFileField('profile_img') }/>
-            </div>
-
-            <div className='user-edit-field-container'>
-              <label>banner image</label>
-              <input type="file" onChange={ this.updateFileField('banner_img') }/>
-            </div>
-
-          <div className='user-edit-submit-box'>
-            <button className='user-edit-submit'
-              type="submit"
-              >SAVE CHANGES</button>
-
-            <a onClick={ this.props.toggleEditForm }>cancel</a>
-          </div>
-        </form>
-      </div>
+          <a onClick={ this.props.toggleEditForm }>cancel</a>
+        </div>
+      </form>
     );
   }
 }
@@ -130,3 +122,21 @@ class UserEditForm extends React.Component {
 export default UserEditForm;
 
 // TODO replace file input with modal popup to set form state
+// <div className='user-profile-img-container'>
+//   <img className='user-profile-img' src={ this.state.profile_img_url } />
+//   <div className='img-edit-overlay'><FontAwesome name='camera' /></div>
+// </div>
+
+// <div id='user-edit-profile-img'>
+//   <input type="file" onChange={ this.updateFileField('profile_img') }/>
+// </div>
+//
+
+// <div className='img-edit-overlay-trigger'
+//   onClick={ this.modalClick.bind(this) }>
+//   <FontAwesome name='camera' />
+// </div>
+
+// <div className='banner-img-edit-trigger'>
+//   <FontAwesome name='camera' /><span> chage banner image</span>
+// </div>

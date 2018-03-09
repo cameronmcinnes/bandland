@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@media screen and (max-width: 980px) { .user-show-box { width: 756px; } }
+@media screen and (min-width: 980px) { .user-show-box { width: 1008px; } }
+@media screen and (min-width: 1300px) { .user-show-box { width: 1260px;  } }
+
 .user-show-container {
   background-color: #fbfbfb;
 }
@@ -18,22 +22,33 @@
   overflow: hidden;
 }
 
+.user-show-box {
+  margin: 0 auto;
+}
+
 .user-profile-img-container {
   width: 210px;
   height: 210px;
   margin: -30px 38px 0px 0px;
+  background-size: cover;
 }
 
-.user-profile-img {
-  width:100%;
-  height:100%;
-  object-fit: cover;
-  overflow: hidden;
+@media (max-width: 980px) {
+  .user-profile-img-container {
+    width: 160px;
+    height: 160px;
+  }
 }
+
+// .user-profile-img {
+//   width:100%;
+//   height:100%;
+//   object-fit: cover;
+//   overflow: hidden;
+// }
 
 .user-bio-container {
-  width: 95%;
-  margin: 0 auto;
+  margin: 0 11px;
   display: flex;
   padding-bottom: 16px;
 }
@@ -94,6 +109,7 @@
   font-weight: 600;
   font-size: 15px;
   margin-top: 20px;
+  margin: 0 11px;
 }
 
 .user-tabs a {
@@ -113,7 +129,7 @@
 }
 
 .user-show-grid-container {
-  width: 95%;
+  justify-content: center;
   margin: 0 auto;
 }
 
@@ -183,19 +199,48 @@
   text-decoration: underline;
 }
 
-.edit-prof-img {
-
-}
-
-.img-edit-overlay {
+.image-edit-overlay {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
   font-size: 25px;
   background-color: rgba(0,0,0,0.3);
-  position: relative;
-  top: -210px;
-  width: 100%;
-  height: 100%;
+  cursor: pointer;
+}
+
+.image-edit-overlay:hover {
+  background-color: rgba(0,0,0,0.6);
+}
+
+//
+// .img-edit-overlay-trigger {
+//   width: 210px;
+//   height: 210px;
+//   position: absolute;
+//   right: 1096px;
+//   bottom: 145px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   color: #fff;
+//   font-size: 25px;
+//   background-color: rgba(0,0,0,0.3);
+// }
+
+.banner-img-edit-trigger {
+  width: 173px;
+  height: 30px;
+  position: absolute;
+  right: 106px;
+  bottom: 333px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #fff;
+  font-size: 15px;
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 5px;
 }

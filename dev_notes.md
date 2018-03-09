@@ -15,6 +15,7 @@
 
 * ### albums
   * add null false to albums artist_id
+  * https://stackoverflow.com/questions/32802202/how-to-center-a-flex-container-but-left-align-flex-items
 
 ## DONE
 * ### auth
