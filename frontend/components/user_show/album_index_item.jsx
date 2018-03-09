@@ -4,8 +4,13 @@ const AlbumIndexItem = ({album}) => {
   return (
     <li>
       <div className='album-info-container'>
-        <img className='album-cover' src={ album.coverImgUrl } />
-        <h4>{ album.title }</h4>
+        <div className='album-info-main'>
+          <img className='album-cover' src={ album.coverImgUrl } />
+          <span className='album-title'>{ album.title }</span>
+        </div>
+        <div className='album-info-detail'>
+
+        </div>
       </div>
     </li>
   );

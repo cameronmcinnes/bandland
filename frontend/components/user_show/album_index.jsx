@@ -3,10 +3,10 @@ import React from 'react';
 import AlbumIndexItem from './album_index_item';
 
 const AlbumIndex = ({collectedAlbums}) => {
-  
+
   return (
    <div className='album-index-container'>
-     <ul>
+     <ul className='album-index-grid'>
        {
          collectedAlbums.map((alb, idx) => {
            return <AlbumIndexItem album={ alb } key={ idx } />

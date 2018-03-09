@@ -1,0 +1,33 @@
+
+.album-index-container {
+  margin: 0 auto;
+}
+
+.album-index-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.album-info-container {
+  border: solid 1px #b2b2b2;
+  margin: 15px 11px;
+}
+
+.album-info-main {
+  margin: 9px;
+}
+
+.album-cover {
+  width: 210px;
+  height: 210px;
+}
+
+.album-title {
+  color: #505958;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.album-info-detail {
+
+}

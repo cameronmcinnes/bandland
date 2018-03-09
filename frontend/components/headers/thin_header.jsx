@@ -6,10 +6,12 @@ import GearDropdown from '../menus/gear_dropdown';
 
 const ThinHeader = ({ currentUser, logout, toggleModal, loginGuest, toggleMenu, gearDropdownState }) => {
 	return (
+    <div>
+    <div className='border'></div>
 		<header className='thin-header'>
       <nav className="thin-header-nav">
         <ul className='thin-header-nav-ul'>
-          <li><a href='#'><img className='thin-header-logo' src={ window.mainLogo } /></a></li>
+          <li id='logo-li'><a href='#'><img className='thin-header-logo' src={ window.mainLogo } /></a></li>
           <li><a href='#'>discover</a></li>
           { Boolean(currentUser) &&
             <li><a href='#'>feed</a></li>
@@ -37,6 +39,7 @@ const ThinHeader = ({ currentUser, logout, toggleModal, loginGuest, toggleMenu, 
 
     	</nav>
 		</header>
+    </div>
 	);
 }
 

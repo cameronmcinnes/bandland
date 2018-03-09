@@ -106,9 +106,17 @@ a:hover {
 }
 
 .thin-header {
-  border-top: solid 5px #848484;
+  // border-top: solid 5px #848484;
   background-color: #ececec;
   border-bottom: dotted #afafaf 1px;
+  box-sizing: border-box;
+  height: 44px;
+}
+
+.border {
+  border-top: solid 5px #848484;
+  position: absolute;
+  width: 100%;
 }
 
 .thin-header a, i {
@@ -127,22 +135,32 @@ a:hover {
   text-decoration: none;
 }
 
-.thin-header li:hover {
-  color: #666666;
-  background-color: rgba(0,0,0,0.06);
-  // need to make border on top of all the elements
-  // border-top: solid 5px #666666;
+.thin-header ul {
+  height: 100%;
 }
 
-.thin-header ul:first-child li:first-child a {
+.thin-header li {
+  margin-top: -1px;
+  padding: 5px 0px 3px 0px;
+}
+
+.thin-header li:not(#logo-li):hover {
+  color: #666;
+  background-color: rgba(0,0,0,0.06);
+  border-top: solid 5px #666;
+  padding-top: 0px;
+  z-index: 100;
+}
+
+#logo-li a {
   padding-left: 0;
   padding-right: 14px;
+  padding-top: 11px;
 }
 
 .thin-header-nav {
   margin: auto;
   width: 95%;
-  height: 43px;
   display: flex;
   justify-content: space-between;
   align-items: center;
