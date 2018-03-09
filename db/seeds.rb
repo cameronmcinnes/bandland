@@ -15,7 +15,7 @@ User.create!(
 )
 
 User.create!(
-  username: 'guy',
+  username: 'willie',
   email: 'guy@guy.com',
   password: 'guysguy',
   location: 'cool place',
@@ -23,11 +23,32 @@ User.create!(
   own_site_url: 'google.com'
 )
 
-5.times do User.create!(
-  username: Faker::Music.chord,
-  email: Faker::Music.chord,
-  password: 'verymodern',
-  location: Faker::Music.chord,
-  description: 'a very cool description',
-  own_site_url: 'google.com')
+Album.destroy_all
+
+5.times do
+  Album.create!(
+    artist_id: User.find_by(username: 'willie').id,
+    title: Faker::BossaNova.song,
+    price: rand(10),
+    description: 'howdy. what a nuanced album'
+  )
 end
+
+Collecting.destroy_all
+
+Album.all.each do |alb|
+  Collecting.create!(
+    collector_id: User.find_by(username: 'beloved_guest').id,
+    collected_id: alb.id
+  )
+end
+
+#
+# 5.times do User.create!(
+#   username: Faker::Music.chord,
+#   email: Faker::Music.chord,
+#   password: 'verymodern',
+#   location: Faker::Music.chord,
+#   description: 'a very cool description',
+#   own_site_url: 'google.com')
+# end

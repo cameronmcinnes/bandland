@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180308151659) do
+ActiveRecord::Schema.define(version: 20180309141632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,10 @@ ActiveRecord::Schema.define(version: 20180308151659) do
     t.integer "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "cover_img_file_name"
+    t.string "cover_img_content_type"
+    t.integer "cover_img_file_size"
+    t.datetime "cover_img_updated_at"
     t.index ["artist_id"], name: "index_albums_on_artist_id"
     t.index ["title"], name: "index_albums_on_title"
   end

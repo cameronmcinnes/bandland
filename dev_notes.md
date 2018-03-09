@@ -13,6 +13,7 @@
   * collection components
   * crop user profile img so dont load and then apply css style
   * disable button
+  * keep image width on user edit form
 
 * ### albums
   * add null false to albums artist_id

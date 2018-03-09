@@ -28,14 +28,16 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6, allow_nil: true }
 
   has_attached_file :profile_img, default_url: "missing.png"
-  has_attached_file :banner_img, default_url: "missing.png"
+  has_attached_file :banner_img, default_url: "missing_banner.png"
   validates_attachment_content_type :profile_img, :banner_img, content_type: /\Aimage\/.*\Z/
 
   after_initialize :ensure_session_token
 
   attr_reader :password
 
-  has_many :albums
+  has_many :albums, foreign_key: :artist_id
+  has_many :collectings, foreign_key: :collector_id
+  has_many :collected_albums, through: :collectings, source: :collected
 
   def password=(password)
     @password = password

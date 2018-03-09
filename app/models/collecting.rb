@@ -10,4 +10,6 @@
 #
 
 class Collecting < ApplicationRecord
+  belongs_to :collector, class_name: :User
+  belongs_to :collected, class_name: :Album
 end
