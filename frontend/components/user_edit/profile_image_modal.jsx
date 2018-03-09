@@ -3,7 +3,9 @@ import React from 'react';
 const ProfileImageModal = (props) => {
   return (
     <div id='user-edit-profile-img'>
-      <input type="file"/>
+      <form>
+        <input type="file"/>
+      </form>
     </div>
   );
 };
