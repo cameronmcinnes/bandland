@@ -7,9 +7,8 @@ export const START_UPDATING_USER = 'START_UPDATING_USER';
 export const fetchUser = (id) => dispatch => {
   dispatch(startLoadingUser());
   return UserAPIUtil.fetchUser(id).then(
-    (user) => dispatch(receiveUser(user))
-  );
-};
+    (payload) =>  dispatch(receiveUser(payload))
+)};
 
 export const updateUser = (id, data) => dispatch => {
   dispatch(startUpdatingUser);
@@ -18,9 +17,10 @@ export const updateUser = (id, data) => dispatch => {
   );
 };
 
-export const receiveUser = user => ({
+export const receiveUser = ({user, collectedAlbums}) => ({
   type: RECEIVE_USER,
-  user
+  user,
+  collectedAlbums
 });
 
 export const startLoadingUser = () => ({

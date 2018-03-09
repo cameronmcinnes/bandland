@@ -3,7 +3,7 @@ import { NavLink, Route } from 'react-router-dom';
 
 import UserBio from './user_bio';
 import UserEditFormContainer from '../user_edit/user_edit_container';
-import UserCollection from './user_collection';
+import UserCollectionContainer from './user_collection_container';
 
 class UserShow extends React.Component {
   componentDidMount() {
@@ -55,7 +55,7 @@ class UserShow extends React.Component {
           </ul>
 
           <div className='user-show-grid'>
-            <Route path={ baseUrl } component={ UserCollection } />
+            <Route path={ baseUrl } component={ UserCollectionContainer } />
             <Route path={ baseUrl + '/followers' } />
             <Route path={ baseUrl + '/following' } />
           </div>
