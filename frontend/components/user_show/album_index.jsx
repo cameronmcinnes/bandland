@@ -2,13 +2,13 @@ import React from 'react';
 
 import AlbumIndexItem from './album_index_item';
 
-const AlbumIndex = ({collectedAlbums}) => {
+const AlbumIndex = ({albums}) => {
 
   return (
    <div className='album-index-container'>
      <ul className='album-index-grid'>
        {
-         collectedAlbums.map((alb, idx) => {
+         albums.map((alb, idx) => {
            return <AlbumIndexItem album={ alb } key={ idx } />
          })
        }

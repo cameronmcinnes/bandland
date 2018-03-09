@@ -2,18 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, withRouter, Redirect } from 'react-router-dom';
 
-const Auth = ({component: Component, path, loggedIn, exact}) => (
+const Auth = ({component: Component, path, currentUser, exact}) => (
   <Route path={path} exact={exact} render={(props) => (
-    !loggedIn ? (
+    !currentUser ? (
       <Component {...props} />
     ) : (
-      <Redirect to="/" />
+      <Redirect to={ `/users/${currentUser.id}` } />
     )
   )}/>
 );
 
-const mapStateToProps = state => {
-  return {loggedIn: Boolean(state.session.currentUser)};
-};
+const mapStateToProps = state => ({
+  currentUser: state.session.currentUser
+});
 
 export const AuthRoute = withRouter(connect(mapStateToProps, null)(Auth));

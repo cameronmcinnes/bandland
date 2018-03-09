@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 
 import AlbumIndex from './album_index';
+import { selectCollectedAlbums } from '../../reducers/selectors';
 
-const mapStateToProps = state => ({
-  collectedAlbums: Object.values(state.entities.collectedAlbums),
+const mapStateToProps = (state, ownProps) => ({
+  albums: selectCollectedAlbums(state, ownProps)
 });
 
 const mapDispatchToProps = dispatch => ({

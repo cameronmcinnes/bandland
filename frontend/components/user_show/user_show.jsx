@@ -55,9 +55,9 @@ class UserShow extends React.Component {
           </ul>
 
           <div className='user-show-grid'>
-            <Route path={ baseUrl } component={ UserCollectionContainer } />
-            <Route path={ baseUrl + '/followers' } />
-            <Route path={ baseUrl + '/following' } />
+            <Route path='/users/:userId' component={ UserCollectionContainer } />
+            <Route path='/users/:userId/followers' />
+            <Route path='/users/:userId/following' />
           </div>
         </div>
       </div>

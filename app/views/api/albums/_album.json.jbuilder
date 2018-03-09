@@ -5,5 +5,7 @@ json.extract! album,
   :title,
   :price,
   :description,
-  :genre
+  :genre,
+  :artist_id
 json.cover_img_url asset_path(album.cover_img.url)
+json.artist_name album.artist.username

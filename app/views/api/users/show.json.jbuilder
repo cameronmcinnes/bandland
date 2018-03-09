@@ -6,8 +6,13 @@ json.user do
   end
 end
 
-json.collected_albums do
+json.albums do
   @user.collected_albums.each do |album|
+    json.set! album.id do
+      json.partial! 'api/albums/album', album: album
+    end
+  end
+  @user.albums.each do |album|
     json.set! album.id do
       json.partial! 'api/albums/album', album: album
     end

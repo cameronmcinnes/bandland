@@ -1,5 +1,6 @@
 ## TODO
 * ### auth :fire:
+  * guest login => redirect to login page, do auto type cool ting
 
 * ### style
   * style gear dropdown menu
@@ -7,10 +8,7 @@
   * fix janky dropdown blur solution (autofocus hidden input?)
 
 * ### user show
-  * on login redirect to own show page w/ profile edit form
   * add migration w regular name and genre, allow edit of name in edit form
-  * album seeds and has many assoc
-  * collection components
   * crop user profile img so dont load and then apply css style
   * disable button
   * keep image width on user edit form
@@ -32,9 +30,14 @@
   * disabled button during asynch signin/up request
   * change header
 
-# ### style
+* ### style
   * make header a component, multiple headers to render
   * feed collection artist header, w dropdown
+
+* ### user show
+  * on login redirect to own show page w/ profile edit form
+  * album seeds and has many assoc
+  * collection components
 
 ## QUESTIONS
 * when to use selectors

@@ -17,10 +17,10 @@ export const updateUser = (id, data) => dispatch => {
   );
 };
 
-export const receiveUser = ({user, collectedAlbums}) => ({
+export const receiveUser = ({user, albums}) => ({
   type: RECEIVE_USER,
   user,
-  collectedAlbums
+  albums
 });
 
 export const startLoadingUser = () => ({

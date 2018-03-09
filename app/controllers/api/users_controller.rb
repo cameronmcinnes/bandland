@@ -10,7 +10,8 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:collected_albums).find_by(id: params[:id])
+    # is this right
+    @user = User.includes(collected_albums: {artist: :collected_albums}).find_by(id: params[:id])
   end
 
   def update
