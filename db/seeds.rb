@@ -28,12 +28,14 @@ User.create!(
 
 Album.destroy_all
 
-5.times do
+Dir.foreach('app/assets/images/seed_covers') do |file_name|
+  next if file_name == '.' or file_name == '..'
   Album.create!(
     artist_id: User.find_by(username: 'willie').id,
     title: Faker::BossaNova.artist,
     price: rand(10),
-    description: 'howdy. what a nuanced album'
+    description: 'howdy. what a nuanced album',
+    cover_img: File.open("app/assets/images/seed_covers/#{file_name}")
   )
 end
 
