@@ -22,3 +22,12 @@ User.create!(
   description: 'a very cool description',
   own_site_url: 'google.com'
 )
+
+5.times do User.create!(
+  username: Faker::Music.chord,
+  email: Faker::Music.chord,
+  password: 'verymodern',
+  location: Faker::Music.chord,
+  description: 'a very cool description',
+  own_site_url: 'google.com')
+end

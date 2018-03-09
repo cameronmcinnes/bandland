@@ -12,8 +12,3 @@ const GearDropdown = (props) => {
 };
 
 export default GearDropdown;
-
-
-// onBlur={ () => props.toggleMenu('gearDropdown') }
-// tabIndex='0'
-// autoFocus

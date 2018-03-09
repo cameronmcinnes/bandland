@@ -1,6 +1,5 @@
 ## TODO
 * ### auth :fire:
-  * separate receive user and receive current user json views
 
 * ### style
   * style gear dropdown menu
@@ -13,7 +12,10 @@
   * album seeds and has many assoc
   * collection components
   * crop user profile img so dont load and then apply css style
+  * disable button
 
+* ### albums
+  * add null false to albums artist_id
 
 ## DONE
 * ### auth
@@ -36,7 +38,7 @@
 ## QUESTIONS
 * when to use selectors
 * where to store website text, class variables in class components?
-* is togglemodal clear errors redundant?
+* how to redirect on login
 
 ## TO RESEARCH
 * using locales in rails to get readable error msgs: [SO post] (https://stackoverflow.com/questions/808547/fully-custom-validation-error-message-with-rails)

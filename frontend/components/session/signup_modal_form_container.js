@@ -8,7 +8,8 @@ const mapStateToProps = state => ({
   errors: state.errors.session,
   formType: 'Signup',
   otherModal: 'login',
-  modal: 'modal-'
+  modal: 'modal-',
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({
