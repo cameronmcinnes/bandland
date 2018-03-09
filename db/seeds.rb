@@ -11,7 +11,10 @@ User.destroy_all
 User.create!(
   username: 'beloved_guest',
   email: 'guest@example.com',
-  password: 'demo_user'
+  password: 'demo_user',
+  description: 'i am a good guest',
+  profile_img: File.open('app/assets/images/sphinx.jpg'),
+  banner_img: File.open('app/assets/images/sand_banner.jpeg')
 )
 
 User.create!(
@@ -28,7 +31,7 @@ Album.destroy_all
 5.times do
   Album.create!(
     artist_id: User.find_by(username: 'willie').id,
-    title: Faker::BossaNova.song,
+    title: Faker::BossaNova.artist,
     price: rand(10),
     description: 'howdy. what a nuanced album'
   )
