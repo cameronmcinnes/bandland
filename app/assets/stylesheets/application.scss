@@ -270,3 +270,39 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus {
 #gear-dropdown-li {
   position: relative;
 }
+
+// image upload modal
+
+.file-input-container {
+  overflow: hidden;
+  position: relative;
+  background-color: #63a989;
+  color: #fff;
+  border-radius: 5px;
+  margin: auto;
+  padding: 10px 20px;
+  left: 178px;
+  // font-size: 1.25em;
+  // font-weight: 700;
+  // color: white;
+  // background-color: #63a989;
+  // display: inline-block;
+}
+
+.file-input-container [type=file] {
+  // cursor: pointer;
+  // display: block;
+  // min-height: 100%;
+  // min-width: 100%;
+  // opacity: 0;
+  // position: absolute;
+  // right: 0;
+  // text-align: right;
+  // top: 0;
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}

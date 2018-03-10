@@ -5,13 +5,12 @@
 * ### style
   * style gear dropdown menu
   * clean up header code NOT DRY (dumb header component? yeesh)
-  * fix janky dropdown blur solution (autofocus hidden input?)
+  * enable click away closure of gear dropdown (dropdown screen)
 
 * ### user show
   * add migration w regular name and genre, allow edit of name in edit form
   * disable button
-  * keep image width on user edit form
-  * stlye banner button
+  * style image upload button and modal
 
 * ### albums
   * add null false to albums artist_id
@@ -38,6 +37,8 @@
   * on login redirect to own show page w/ profile edit form
   * album seeds and has many assoc
   * collection components
+  * stlye banner button
+  * keep image width on user edit form
 
 ## QUESTIONS
 * when to use selectors

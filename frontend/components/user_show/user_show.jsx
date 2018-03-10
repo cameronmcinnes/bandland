@@ -79,7 +79,7 @@ class UserShow extends React.Component {
 
           <div className='user-show-grid-container'>
             <div className='user-show-grid'>
-              <Route path='/users/:userId' component={ UserCollectionContainer } />
+              <Route path='/users/:userId' exact component={ UserCollectionContainer } />
               <Route path='/users/:userId/albums' component={ UserOwnAlbumContainer } />
               <Route path='/users/:userId/followers' />
               <Route path='/users/:userId/following' />
@@ -92,5 +92,3 @@ class UserShow extends React.Component {
 }
 
 export default UserShow;
-// <img className='user-banner-img'
-//   src={this.props.bannerImgUrl}></img>
