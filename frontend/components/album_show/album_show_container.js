@@ -11,7 +11,8 @@ const mapStateToProps = (state, { match }) => {
   if (album) artist = state.entities.users[album.artistId];
   return {
     album,
-    artist
+    artist,
+    currentUser: state.session.currentUser,
   };
 };
 

@@ -110,7 +110,7 @@ a:hover {
   background-color: #ececec;
   border-bottom: dotted #afafaf 1px;
   box-sizing: border-box;
-  height: 44px;
+  height: 49px;
 }
 
 .border {
@@ -123,7 +123,9 @@ a:hover {
   color: #63a989;
   font-weight: 500;
   padding: 10px;
+  padding-bottom: 11px;
   display: block;
+  margin-top: 4px;
 }
 
 .fa-cog {
@@ -149,6 +151,7 @@ a:hover {
   background-color: rgba(0,0,0,0.06);
   border-top: solid 5px #666;
   padding-top: 0px;
+  box-sizing: border-box;
   z-index: 100;
 }
 
@@ -261,7 +264,8 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus {
 // TODO more general dropdown class?
 #gear-dropdown {
   position: absolute;
-  top: 40px;
+  top: 45px;
+  right: 0px;
   width: 100px;
   background-color: #ececec;
   z-index: 3;

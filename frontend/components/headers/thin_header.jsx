@@ -4,6 +4,7 @@ import FontAwesome from 'react-fontawesome';
 
 import GearDropdown from '../menus/gear_dropdown';
 
+// TODO make this class component so it can have state to add classname on gear
 const ThinHeader = ({ currentUser, logout, toggleModal, loginGuest, toggleMenu, gearDropdownState }) => {
 	return (
     <div>
