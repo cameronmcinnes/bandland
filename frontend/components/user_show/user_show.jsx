@@ -71,8 +71,8 @@ class UserShow extends React.Component {
 
 
           <ul className='user-tabs'>
-            <li><NavLink to={ baseUrl } exact >collection</NavLink></li>
-            <li><NavLink to={ baseUrl + '/albums' } >albums</NavLink></li>
+            <li><NavLink to={ baseUrl } exact >collection <span className='count'>{user.collectedAlbumIds.length}</span></NavLink></li>
+            <li><NavLink to={ baseUrl + '/albums' } >albums <span className='count'>{user.ownAlbumIds.length}</span></NavLink></li>
             <li><NavLink to={ baseUrl + '/followers' } >followers</NavLink></li>
             <li><NavLink to={ baseUrl + '/following' } >following</NavLink></li>
           </ul>
