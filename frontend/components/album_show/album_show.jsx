@@ -10,20 +10,34 @@ class AlbumShow extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.userId !== nextProps.match.params.userId) {
-      this.props.fetchAlbum(nextProps.match.params.userId);
+    if (this.props.match.params.albumId !== nextProps.match.params.albumId) {
+      this.props.fetchAlbum(nextProps.match.params.albumId);
     }
   }
 
   render() {
-    const { album } = this.props;
+    const { album, artist } = this.props;
 
     if (!album) return null;
 
     return (
       <div className="album-show-container">
-        <h1>{album.title}</h1>
-        <img src={album.coverImgUrl}></img>
+        <div className='artist-banner-container'>
+
+        </div>
+
+        <div className='album-detail-container'>
+          <div className='album-info-container'>
+            <h1>{album.title}</h1>
+
+          </div>
+          <img src={album.coverImgUrl}></img>
+        </div>
+
+        <div className='artist-detail-container'>
+          <h1>{artist.username}</h1>
+        </div>
+
       </div>
     );
   }
