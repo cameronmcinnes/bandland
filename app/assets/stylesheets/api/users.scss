@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$green: #63a989;
+
 @media screen and (max-width: 980px) { .user-show-box { width: 756px; } }
 @media screen and (min-width: 980px) { .user-show-box { width: 1008px; } }
 @media screen and (min-width: 1300px) { .user-show-box { width: 1260px;  } }
@@ -111,7 +113,7 @@
 }
 
 .bio-info a {
-  color: #63a989;
+  color: $green;
   font-weight: normal;
 }
 
@@ -125,14 +127,14 @@
 }
 
 .user-tabs a {
-  color: #63a989;
+  color: $green;
   padding: 10px 20px;
   display: block;
 }
 
 .user-tabs a:hover {
   text-decoration: none;
-  border-bottom: 2px solid #63a989;
+  border-bottom: 2px solid $green;
 }
 .user-tabs .active {
   border-bottom: 2px solid #333333;
@@ -196,14 +198,14 @@
 
 .user-edit-submit-box a {
   text-transform: uppercase;
-  color: #63a989;
+  color: $green;
   font-size: 13px;
   font-weight: 700;
 }
 
 .user-edit-submit {
   padding: 8px 20px;
-  background-color: #63a989;
+  background-color: $green;
   border-radius: 5px;
   -webkit-font-smoothing: antialiased;
   color: #fff;

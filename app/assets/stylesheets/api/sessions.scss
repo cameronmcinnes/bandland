@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$green: #63a989;
+
 .session-form-container {
   background-color: #f3f3f3;
   height: 684px;
@@ -52,7 +54,7 @@
   display: inline-block;
   width: 300px;
   height: 36px;
-  background-color: #63a989;
+  background-color: $green;
   color: #fff;
   font-size: 16px;
   font-weight: bold;
@@ -109,7 +111,7 @@
 }
 
 .session-form-footer a {
-  color: #63a989;
+  color: $green;
   font-weight: normal;
   font-size: 12px;
 }
@@ -152,7 +154,7 @@
 .modal-session-submit {
   width: 340px;
   height: 36px;
-  background-color: #63a989;
+  background-color: $green;
   color: #fff;
   font-size: 16px;
   font-weight: 400;

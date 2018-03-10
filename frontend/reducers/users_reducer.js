@@ -6,9 +6,10 @@ import { RECEIVE_ALBUM } from '../actions/album_actions';
 const sessionReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
-    case RECEIVE_ALBUM:
     case RECEIVE_USER:
       return merge({}, state, { [action.user.id]: action.user});
+    case RECEIVE_ALBUM:
+      return merge({}, state, action.users);
     default:
       return state;
   }

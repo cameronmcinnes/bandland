@@ -1,3 +1,78 @@
 // Place all the styles related to the Albums controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$green: #63a989;
+
+.album-show-container {
+  margin: auto;
+  min-height: 616px;
+}
+
+.artist-banner-container img {
+  height: 180px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.album-show-body-container {
+  display: flex;
+  padding: 35px 30px;
+}
+
+.album-detail-container {
+  display: flex;
+}
+
+
+.album-show-info-container {
+  width: 376px;
+  font-size: 14px;
+}
+
+.album-show-info-container h2 {
+  font-size: 28px;
+}
+
+.artist-detail-container {
+  width: 120px;
+}
+
+.album-show-cover-container {
+  margin: 0px 35px;
+}
+
+.album-show-cover-container h5 {
+  margin: 20px 0px;
+  font-size: 14px;
+}
+
+.album-show-cover {
+  width: 350px;
+  height: 350px;
+}
+
+.album-artist-profile-img {
+  width: 120px;
+  height: auto;
+}
+
+.play-box {
+  height: 52px;
+  margin: 24px 0px;
+  background-color: #ccc;
+}
+
+.collector-index {
+  display: flex;
+}
+
+.collector-index li {
+  margin: 9px;
+  margin-left: 0px;
+}
+
+.collector-index img {
+  width: 28px;
+  height: 28px;
+}

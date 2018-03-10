@@ -15,6 +15,8 @@
  *= require_self
  */
 
+$green: #63a989;
+
 html {
   height: 100%;
 }
@@ -120,7 +122,7 @@ a:hover {
 }
 
 .thin-header a, i {
-  color: #63a989;
+  color: $green;
   font-weight: 500;
   padding: 10px;
   padding-bottom: 11px;
@@ -181,7 +183,7 @@ a:hover {
 
 .signed-out-msg {
   font-weight: 500;
-  color: #63a989;
+  color: $green;
 }
 
 .main-logo {
@@ -190,7 +192,7 @@ a:hover {
 }
 
 .main-footer {
-  background-color: #63a989;
+  background-color: $green;
   min-height: 320px;
 }
 
@@ -253,7 +255,7 @@ input[type=text], input[type=password], textarea {
 }
 
 input[type=text]:focus, input[type=password]:focus, textarea:focus {
-  border: 1px solid #63a989;
+  border: 1px solid $green;
   box-shadow: 0 0 5px #b4d7f9;
 }
 
@@ -280,7 +282,7 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus {
 .file-input-container {
   overflow: hidden;
   position: relative;
-  background-color: #63a989;
+  background-color: $green;
   color: #fff;
   border-radius: 5px;
   margin: auto;
@@ -289,7 +291,7 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus {
   // font-size: 1.25em;
   // font-weight: 700;
   // color: white;
-  // background-color: #63a989;
+  // background-color: $green;
   // display: inline-block;
 }
 

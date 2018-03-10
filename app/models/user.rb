@@ -27,7 +27,10 @@ class User < ApplicationRecord
   validates :username, :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
-  has_attached_file :profile_img, default_url: "missing.png"
+  # generate thumb size
+  has_attached_file :profile_img, default_url: "missing.png", styles: {
+    thumb: '48x48'
+  }
   has_attached_file :banner_img, default_url: "missing_banner.png"
   validates_attachment_content_type :profile_img, :banner_img, content_type: /\Aimage\/.*\Z/
 

@@ -13,6 +13,10 @@
 
 class Track < ApplicationRecord
   validates :title, :album_id, :ord, presence: true
+  validates :title, uniqueness: { scope: :album_id }
+  validates :ord, uniqueness: { scope: :album_id }
+
+  
 
   belongs_to :album
 end

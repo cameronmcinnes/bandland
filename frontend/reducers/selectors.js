@@ -30,3 +30,10 @@ export const selectOwnAlbums = (state, ownProps) => {
     state.entities.users[userId].ownAlbumIds.includes(album.id)
   ));
 };
+
+export const selectAlbumCollectors = (state, match) => {
+    const albumId = match.params.albumId;
+    return Object.values(state.entities.users).filter( user => (
+    state.entities.albums[albumId].collectorIds.includes(user.id)
+  ));
+};
