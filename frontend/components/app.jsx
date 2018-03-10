@@ -9,6 +9,7 @@ import ThinHeaderContainer from './headers/thin_header_container';
 import { AuthRoute } from '../util/route_util';
 import ModalContainer from './modals/modal_container';
 import UserShowContainer from './user_show/user_show_container';
+import AlbumShowContainer from './album_show/album_show_container';
 
 const App = () => (
   <div>
@@ -29,6 +30,7 @@ const App = () => (
       />
 
     <Route path='/users/:userId' component={ UserShowContainer }/>
+    <Route path='/albums/:albumId' component={ AlbumShowContainer } />
 
     <ModalContainer />
 
