@@ -5,7 +5,9 @@ import { RECEIVE_USER } from '../actions/user_actions';
 
 const defaultState = {
   profileImgUrl: null,
-  bannerImgUrl: null
+  profileImg: '',
+  bannerImgUrl: null,
+  bannerImg: ''
 };
 
 const profileReducer = (state = defaultState, action) => {
@@ -18,7 +20,8 @@ const profileReducer = (state = defaultState, action) => {
       });
     case RECEIVE_NEW_PROFILE_PICTURE:
       return merge({}, state, {
-        [`${action.picType}ImgUrl`]: action.picUrl
+        [`${action.picType}ImgUrl`]: action.picUrl,
+        [`${action.picType}Img`]: action.pic
       });
     default:
       return state;

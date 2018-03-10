@@ -5,7 +5,7 @@ import ImageUploadModal from './image_upload_modal';
 import { receiveNewProfilePicture } from '../../actions/ui_actions';
 
 const mapStateToProps = (state) => ({
-  imgType: 'profile'
+  imgType: 'banner'
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -9,13 +9,12 @@
 
 * ### user show
   * add migration w regular name and genre, allow edit of name in edit form
-  * crop user profile img so dont load and then apply css style
   * disable button
   * keep image width on user edit form
+  * stlye banner button
 
 * ### albums
   * add null false to albums artist_id
-  * https://stackoverflow.com/questions/32802202/how-to-center-a-flex-container-but-left-align-flex-items
 
 ## DONE
 * ### auth

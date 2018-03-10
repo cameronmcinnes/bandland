@@ -8,27 +8,29 @@ class UserEditForm extends React.Component {
     this.state = {
       location: this.props.user.location || '',
       own_site_url: this.props.user.ownSiteUrl || '',
-      description: this.props.user.description || '',
-      profile_img_file: '',
-      profile_img_url: this.props.user.profileImgUrl || '',
-      banner_img_file: '',
-      banner_img_url: this.props.user.bannerImgUrl || ''
+      description: this.props.user.description || ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.cancelForm = this.cancelForm.bind(this);
   }
+
+  // componentWillReceiveProps(nextProps) {
+  //   if (this.props.match.params.userId !== nextProps.match.params.userId) {
+  //     this.props.fetchUser(nextProps.match.params.userId);
+  //   }
+  // }
 
   handleSubmit(e) {
     e.preventDefault();
-
-    const propicFile = this.state.profile_img_file;
-    const bannerFile = this.state.banner_img_file;
-
+    const propicFile = this.props.profileImg;
+    const bannerFile = this.props.bannerImg;
     const formData = new FormData();
 
     Object.keys(this.state).forEach(key => {
       formData.append(`user[${key}]`, this.state[key]);
     });
+
     if (propicFile) formData.append('user[profile_img]', propicFile);
     if (bannerFile) formData.append('user[banner_img]', bannerFile);
 
@@ -43,28 +45,35 @@ class UserEditForm extends React.Component {
     };
   }
 
-  updateFileField(field) {
-    return (e) => {
-      const file = e.currentTarget.files[0];
-      const fileReader = new FileReader();
-      fileReader.onloadend = () => (
-        this.setState({
-          [`${field}_file`]: file,
-          [`${field}_url`]: fileReader.result
-        })
-      );
+  // updateFileField(field) {
+  //   return (e) => {
+  //     const file = e.currentTarget.files[0];
+  //     const fileReader = new FileReader();
+  //     fileReader.onloadend = () => (
+  //       this.setState({
+  //         [`${field}_file`]: file,
+  //         [`${field}_url`]: fileReader.result
+  //       })
+  //     );
+  //
+  //     if (file) {
+  //       fileReader.readAsDataURL(file);
+  //     } else {
+  //       this.setState({ profile_img_url: "", profile_img_file: null });
+  //     }
+  //   };
+  // }
 
-      if (file) {
-        fileReader.readAsDataURL(file);
-      } else {
-        this.setState({ profile_img_url: "", profile_img_file: null });
-      }
-    };
-  }
+  // modalClick(e) {
+  //   this.props.toggleModal('profileImage')
+  // }
 
-  modalClick(e) {
-    debugger;
-    this.props.toggleModal('profileImage')
+  cancelForm() {
+    this.props.cancelImageChange(
+      this.props.user.profileImgUrl,
+      this.props.user.bannerImgUrl
+    );
+    this.props.toggleEditForm();
   }
 
   render() {
@@ -102,17 +111,12 @@ class UserEditForm extends React.Component {
           </div>
         </div>
 
-          <div className='user-edit-field-container'>
-            <label>banner image</label>
-            <input type="file" onChange={ this.updateFileField('banner_img') }/>
-          </div>
-
         <div className='user-edit-submit-box'>
           <button className='user-edit-submit'
             type="submit"
             >SAVE CHANGES</button>
 
-          <a onClick={ this.props.toggleEditForm }>cancel</a>
+          <a onClick={ this.cancelForm }>cancel</a>
         </div>
       </form>
     );
@@ -121,7 +125,6 @@ class UserEditForm extends React.Component {
 
 export default UserEditForm;
 
-// TODO replace file input with modal popup to set form state
 // <div className='user-profile-img-container'>
 //   <img className='user-profile-img' src={ this.state.profile_img_url } />
 //   <div className='img-edit-overlay'><FontAwesome name='camera' /></div>
@@ -139,4 +142,9 @@ export default UserEditForm;
 
 // <div className='banner-img-edit-trigger'>
 //   <FontAwesome name='camera' /><span> chage banner image</span>
+// </div>
+
+// <div className='user-edit-field-container'>
+//   <label>banner image</label>
+//   <input type="file" onChange={ this.updateFileField('banner_img') }/>
 // </div>

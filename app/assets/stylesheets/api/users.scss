@@ -13,6 +13,11 @@
 .user-banner-container {
   width: 100%;
   height: 100px;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
 }
 
 .user-banner-img {
@@ -31,6 +36,7 @@
   height: 210px;
   margin: -30px 38px 0px 0px;
   background-size: cover;
+  min-width: 160px;
 }
 
 @media (max-width: 980px) {
@@ -215,32 +221,27 @@
   background-color: rgba(0,0,0,0.6);
 }
 
-//
-// .img-edit-overlay-trigger {
-//   width: 210px;
-//   height: 210px;
-//   position: absolute;
-//   right: 1096px;
-//   bottom: 145px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   color: #fff;
-//   font-size: 25px;
-//   background-color: rgba(0,0,0,0.3);
-// }
-
-.banner-img-edit-trigger {
+.banner-img-edit {
   width: 173px;
   height: 30px;
-  position: absolute;
-  right: 106px;
-  bottom: 333px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   color: #fff;
   font-size: 15px;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0,0,0,0.6);
   border-radius: 5px;
+  margin-right: 25px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.banner-img-edit span {
+  font-size: 20px;
+}
+
+.banner-img-edit:hover {
+  background-color: rgba(0,0,0,0.9);
 }

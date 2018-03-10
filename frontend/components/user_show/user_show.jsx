@@ -26,7 +26,7 @@ class UserShow extends React.Component {
     if (loading) return <h1>LOADING</h1>;
     const baseUrl = `/users/${this.props.match.params.userId}`;
 
-    let editOverlay = '';
+    let editOverlay, bannerEdit = '';
     let boxShown = <UserBio
       user={ this.props.user }
       toggleEditForm={ this.props.toggleEditForm }
@@ -40,6 +40,11 @@ class UserShow extends React.Component {
         >
           <FontAwesome name='camera' />
         </div>;
+      bannerEdit = (
+        <div className='banner-img-edit'
+          onClick={ () => this.props.toggleModal('bannerImage') }
+          ><FontAwesome name='camera' /> change banner image</div>
+        );
       boxShown = <UserEditFormContainer
         user={ this.props.user}
         toggleEditForm={ this.props.toggleEditForm }
@@ -48,9 +53,10 @@ class UserShow extends React.Component {
 
     return (
       <div className='user-show-container'>
-        <div className='user-banner-container'>
-          <img className='user-banner-img'
-            src={this.props.bannerImgUrl}></img>
+        <div className='user-banner-container'
+          style={ {backgroundImage: `url(${this.props.bannerImgUrl})`} }>
+
+          { bannerEdit }
         </div>
 
         <div className='user-show-box'>
@@ -86,3 +92,5 @@ class UserShow extends React.Component {
 }
 
 export default UserShow;
+// <img className='user-banner-img'
+//   src={this.props.bannerImgUrl}></img>

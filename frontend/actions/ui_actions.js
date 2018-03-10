@@ -14,10 +14,11 @@ export const toggleMenu = (menu) => {
   };
 };
 
-export const receiveNewProfilePicture = (picType, picUrl) => {
+export const receiveNewProfilePicture = (picType, pic, picUrl) => {
   return {
     type: RECEIVE_NEW_PROFILE_PICTURE,
     picType,
+    pic,
     picUrl
   };
 };
