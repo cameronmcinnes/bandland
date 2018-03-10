@@ -81,6 +81,19 @@
   margin: auto 0;
 }
 
+.hollow-btn:hover {
+  text-decoration: underline;
+}
+
+// .hollow-btn span:last-child {
+//   margin-bottom: 5px;
+// }
+
+.hollow-btn span:first-child {
+  text-decoration: none;
+  margin-right: 5px;
+}
+
 .bio-info-list {
   font-size: 13px;
   color: #828282;
