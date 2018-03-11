@@ -44,7 +44,8 @@ export const selectAlbumCollectors = (state, match) => {
 
 export const selectAlbumTracks = (state, match) => {
   const albumId = match.params.albumId;
-  if (!state.entities.albums[albumId]) return [];
+  const album = state.entities.albums[albumId];
+  if (!(album && album.trackIds)) return [];
   return Object.values(state.entities.tracks).filter( track => (
     state.entities.albums[albumId].trackIds.includes(track.id)
   ));

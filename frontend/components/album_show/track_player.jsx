@@ -8,42 +8,63 @@ class TrackPlayer extends React.Component {
     this.handleMouseMove = this.handleMouseMove.bind(this);
     this.handleMouseUp = this.handleMouseUp.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);
-    this.advanceHandle = this.advanceHandle.bind(this);
+    this.advanceSlider = this.advanceSlider.bind(this);
   }
 
-  advanceHandle(e) {
+  advanceSlider(e) {
     let ratio = e.target.currentTime / this.audio.duration;
     let pos = (this.progbar.offsetWidth * ratio) + this.progbar.offsetLeft;
-    this.moveHandleTo(pos);
+    this.moveSliderTo(pos);
   }
 
   componentDidUpdate() {
     if (this.props.track.isPlaying) {
-      this.audio.play();
+      // this.audio.addEventListener('loadedmetadata', () => {
+      this.audio.play()
     } else {
       this.audio.pause();
     }
   }
 
-  moveHandleTo(handlePos) {
-    const progbarWidth = this.progbar.offsetWidth - this.handle.offsetWidth;
-    const handleLeft = handlePos - this.progbar.offsetLeft;
+  moveSliderTo(sliderPos) {
+    // account for case before duration is loaded, slider will be NaN
+    if (!sliderPos) return;
+    const sliderWidth = this.slider.offsetWidth
+    const progbarWidth = this.progbar.offsetWidth;
+    const sliderMiddle = sliderPos - this.progbar.offsetLeft;
 
-    const sliderHalf = (this.handle.offsetWidth / 2)
-    // subtract 12, sliderHalf to move the middle of the slider
-    // handle left >=
-    if (handleLeft >= -12 && handleLeft < progbarWidth + 12) {
-      this.handle.style.marginLeft = `${handleLeft-12}px`;
-    } else if (handleLeft < -12) {
-      this.handle.style.marginLeft = '0px';
+    if (sliderMiddle >= 0 && sliderMiddle < progbarWidth ) {
+      this.slider.style.marginLeft = `${sliderMiddle}px`;
+    } else if (sliderMiddle < 0) {
+      this.slider.style.marginLeft = '0px';
     } else {
-      this.handle.style.marginLeft = `${progbarWidth}px`;
+      this.slider.style.marginLeft = `${progbarWidth}px`;
     }
   }
 
+  // moveSliderTo(sliderPos) {
+  //   // account for case before duration is loaded, slider will be NaN
+  //   if (!sliderPos) return;
+  //   const progbarWidth = this.progbar.offsetWidth - this.slider.offsetWidth;
+  //   const sliderLeft = sliderPos - this.progbar.offsetLeft;
+  //
+  //   const sliderHalf = (this.slider.offsetWidth / 2)
+  //   // subtract 12, sliderHalf to move the middle of the slider
+  //   // slider left >=
+  //   if (sliderLeft >= -12 && sliderLeft < progbarWidth + 12) {
+  //     this.slider.style.marginLeft = `${sliderLeft-12}px`;
+  //   } else if (sliderLeft < -12) {
+  //     this.slider.style.marginLeft = '0px';
+  //   } else {
+  //     this.slider.style.marginLeft = `${progbarWidth}px`;
+  //   }
+  // }
+
   handleMouseMove(e) {
-    this.moveHandleTo(e.pageX);
-    this.audio.currentTime = ((e.pageX - this.progbar.offsetLeft) / this.progbar.offsetWidth) * this.audio.duration;
+    this.moveSliderTo(e.pageX);
+    this.audio.currentTime = (
+      (e.pageX - this.progbar.offsetLeft) / this.progbar.offsetWidth) *
+      this.audio.duration;
   }
 
   handleMouseDown(e) {
@@ -63,9 +84,11 @@ class TrackPlayer extends React.Component {
 
     return (
       <div className='play-box'>
+
         <audio ref={(audio) => this.audio = audio }
           src={ track.audioFileUrl }
-          onTimeUpdate={ this.advanceHandle }/>
+          onTimeUpdate={ this.advanceSlider }/>
+
         <button className='play-button'
           onClick={ playPauseCurrentTrack }>
           <FontAwesome name={ iconName } />
@@ -73,13 +96,18 @@ class TrackPlayer extends React.Component {
 
         <div className='title-progbar-box'>
           <span>{track.title} </span>
-          <div className='prog-bar'
-            ref={ (progbar) => this.progbar = progbar}
-            onMouseDown={ this.handleMouseDown}
-            onClick={ this.handleMouseMove }>
-            <div className='prog-bar-handle'
-              ref={ (handle) => this.handle = handle}
-              />
+
+          <div className='prog-bar-container'>
+            <div className='prog-bar'
+              ref={ (progbar) => this.progbar = progbar}
+              onMouseDown={ this.handleMouseDown}
+              onClick={ this.handleMouseMove }>
+
+              <div className='prog-bar-slider'
+                ref={ (slider) => this.slider = slider}
+                />
+
+            </div>
           </div>
         </div>
       </div>
