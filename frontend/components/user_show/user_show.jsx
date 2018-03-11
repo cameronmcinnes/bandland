@@ -22,7 +22,7 @@ class UserShow extends React.Component {
     const { user, loading, showEditForm } = this.props;
     // collector will be defined when coming from album show page
     // need to check if fully fetched
-    if (!user || !user.email) return null;
+    if (!(user && user.email && user.ownAlbumIds)) return null;
 
     if (loading) return <h1>LOADING</h1>;
     const baseUrl = `/users/${this.props.match.params.userId}`;

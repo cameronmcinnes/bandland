@@ -2,6 +2,8 @@ json.key_format! camelize: :lower
 
 json.album do
   json.partial! 'api/albums/album', album: @album
+  json.collector_ids @album.collectors.pluck(:id)
+  json.track_ids @album.tracks.pluck(:id)
 end
 
 json.users do
