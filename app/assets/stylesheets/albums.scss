@@ -76,6 +76,7 @@ $green: #63a989;
   height: 52px;
   margin: 24px 0px;
   display: flex;
+  align-items: center;
 }
 
 .play-button {
@@ -94,6 +95,7 @@ $green: #63a989;
   flex-direction: column;
   justify-content: space-around;
   margin-bottom: 10px;
+  height: 100%;
 }
 
 .prog-bar-container {
@@ -117,4 +119,19 @@ $green: #63a989;
   background-color: $green;
   margin-bottom: 6px;
   position: relative;
+}
+
+.ff-buttons {
+  margin-top: 19px;
+  font-size: 11px;
+}
+
+.ff-buttons span {
+  margin-left: 18px;
+  transform: scale(1.5,1);
+}
+
+.ff-buttons button:disabled {
+  color: #eee;
+  cursor: default;
 }

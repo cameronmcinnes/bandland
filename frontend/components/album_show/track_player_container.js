@@ -2,16 +2,19 @@ import { connect } from 'react-redux';
 // WTF TODO
 import TrackPlayer from './track_player.jsx';
 import {
-  playPauseCurrentTrack
+  playPauseCurrentTrack,
+  changeCurrentTrack
 } from '../../actions/ui_actions';
 
 const mapStateToProps = state => ({
   track: state.ui.currentTrack,
+  tracks: state.entities.tracks
   // isPlaying: state.ui.currentTrack.isPlaying
 });
 
 const mapDispatchToProps = dispatch => ({
-  playPauseCurrentTrack: () => dispatch(playPauseCurrentTrack())
+  playPauseCurrentTrack: () => dispatch(playPauseCurrentTrack()),
+  changeCurrentTrack: (track) => dispatch(changeCurrentTrack(track))
 });
 
 export default connect(

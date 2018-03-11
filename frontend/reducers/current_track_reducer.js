@@ -16,6 +16,7 @@ const currentTrackReducer = (state = defaultState, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_ALBUM:
+    // to account for albums w no tracks
       if (!action.tracks) return defaultState;
       const firstTrack = Object.values(action.tracks)[0]
       return merge({}, defaultState, firstTrack)

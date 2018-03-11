@@ -19,7 +19,6 @@ class TrackPlayer extends React.Component {
 
   componentDidUpdate() {
     if (this.props.track.isPlaying) {
-      // this.audio.addEventListener('loadedmetadata', () => {
       this.audio.play()
     } else {
       this.audio.pause();
@@ -42,24 +41,6 @@ class TrackPlayer extends React.Component {
     }
   }
 
-  // moveSliderTo(sliderPos) {
-  //   // account for case before duration is loaded, slider will be NaN
-  //   if (!sliderPos) return;
-  //   const progbarWidth = this.progbar.offsetWidth - this.slider.offsetWidth;
-  //   const sliderLeft = sliderPos - this.progbar.offsetLeft;
-  //
-  //   const sliderHalf = (this.slider.offsetWidth / 2)
-  //   // subtract 12, sliderHalf to move the middle of the slider
-  //   // slider left >=
-  //   if (sliderLeft >= -12 && sliderLeft < progbarWidth + 12) {
-  //     this.slider.style.marginLeft = `${sliderLeft-12}px`;
-  //   } else if (sliderLeft < -12) {
-  //     this.slider.style.marginLeft = '0px';
-  //   } else {
-  //     this.slider.style.marginLeft = `${progbarWidth}px`;
-  //   }
-  // }
-
   handleMouseMove(e) {
     this.moveSliderTo(e.pageX);
     this.audio.currentTime = (
@@ -77,10 +58,17 @@ class TrackPlayer extends React.Component {
     window.removeEventListener('mouseup', this.handleMouseUp);
   }
 
+  changeTrack(diff) {
+    const nextOrd = this.props.track.ord + diff;
+    this.props.changeCurrentTrack(this.props.tracks[nextOrd]);
+  }
+
 
   render() {
-    const { track, playPauseCurrentTrack } = this.props;
+    const { track, playPauseCurrentTrack, tracks} = this.props;
     const iconName = (track.isPlaying) ? 'pause' : 'play';
+    const backDisabled = (track.ord === 1) ? true : false;
+    const frwdDisabled = (track.ord >= Object.values(tracks).length) ? true : false;
 
     return (
       <div className='play-box'>
@@ -109,6 +97,17 @@ class TrackPlayer extends React.Component {
 
             </div>
           </div>
+        </div>
+        <div className='ff-buttons'>
+          <button onClick={ () => this.changeTrack(-1) }
+            disabled={ backDisabled }>
+            <FontAwesome name={ 'fast-backward'}/>
+          </button>
+
+          <button onClick={ () => this.changeTrack(1) }
+            disabled={ frwdDisabled }>
+            <FontAwesome name={ 'fast-forward'}/>
+          </button>
         </div>
       </div>
     );
