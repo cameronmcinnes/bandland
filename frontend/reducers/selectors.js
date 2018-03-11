@@ -19,6 +19,7 @@ export const selectTitle = (modalName) => {
 
 export const selectCollectedAlbums = (state, ownProps) => {
   const userId = ownProps.match.params.userId;
+  if (!state.entities.users[userId]) return [];
   return Object.values(state.entities.albums).filter( album => (
     state.entities.users[userId].collectedAlbumIds.includes(album.id)
   ));
@@ -26,14 +27,16 @@ export const selectCollectedAlbums = (state, ownProps) => {
 
 export const selectOwnAlbums = (state, ownProps) => {
   const userId = ownProps.match.params.userId;
+  if (!state.entities.users[userId]) return [];
   return Object.values(state.entities.albums).filter( album => (
     state.entities.users[userId].ownAlbumIds.includes(album.id)
   ));
 };
 
 export const selectAlbumCollectors = (state, match) => {
-    const albumId = match.params.albumId;
-    return Object.values(state.entities.users).filter( user => (
+  const albumId = match.params.albumId;
+  if (!state.entities.albums[albumId]) return [];
+  return Object.values(state.entities.users).filter( user => (
     state.entities.albums[albumId].collectorIds.includes(user.id)
   ));
 };

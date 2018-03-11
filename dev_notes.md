@@ -14,6 +14,7 @@
 
 * ### albums
   * add null false to albums artist_id
+  * enable pause from buttons in list 
 
 ## DONE
 * ### auth

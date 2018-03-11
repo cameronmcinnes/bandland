@@ -16,3 +16,12 @@ json.users do
     end
   end
 end
+
+json.tracks do
+  @album.tracks.sort_by { |track| track.ord }.each do |track|
+    json.set! track.id do
+      json.extract! track, :id, :title, :ord
+      json.audio_file_url asset_path(track.audio_file.url)
+    end
+  end
+end

@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import CollectorThumbnail from './collector_thumbnail';
+// TODO wtf
+import TrackPlayer from './track_player.jsx';
+import TrackListItem from './track_list_item';
 
 class AlbumShow extends React.Component {
   constructor(props) {
@@ -19,9 +22,24 @@ class AlbumShow extends React.Component {
   }
 
   render() {
-    const { album, artist, collectors } = this.props;
+    const { album, artist, collectors, tracks, currentTrackId } = this.props;
 
-    if (!album || !artist) return null;
+    if (!album || !artist ) return null;
+
+    // for hover w/ download button use these event handles giving callbacks
+    // that pass new props down to child
+    // onMouseEnter={ () => 'add download button' }
+    // onMouseLeave={ () => 'add take it aways button' }
+
+    const trackList = tracks.map((track, idx) => {
+      const isCurrentTrack = (track.id === currentTrackId) ? true : false;
+      return <TrackListItem
+        key={ idx }
+        track={ track }
+        isCurrentTrack={ isCurrentTrack }
+        changeCurrentTrack={ this.props.changeCurrentTrack}
+        />;
+    });
 
     return (
       <div className="album-show-container">
@@ -36,9 +54,7 @@ class AlbumShow extends React.Component {
               <span>by </span>
               <Link to={ `/users/${artist.id}` }>{artist.username}</Link>
 
-              <div className='play-box'>
-
-              </div>
+              <TrackPlayer track={tracks[0]} />
 
               <div className='album-purchase-container'>
                 <a>Buy Digital Album</a> <span>${album.price} or more</span>
@@ -47,6 +63,10 @@ class AlbumShow extends React.Component {
                 {album.description}
                 <span>released {album.releaseDate}</span>
               </p>
+
+              <ul className='track-list'>
+                { trackList }
+              </ul>
             </div>
             <div className='album-show-cover-container'>
               <img className='album-show-cover' src={album.coverImgUrl}></img>

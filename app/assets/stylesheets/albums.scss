@@ -57,12 +57,6 @@ $green: #63a989;
   height: auto;
 }
 
-.play-box {
-  height: 52px;
-  margin: 24px 0px;
-  background-color: #ccc;
-}
-
 .collector-index {
   display: flex;
 }
@@ -75,4 +69,42 @@ $green: #63a989;
 .collector-index img {
   width: 28px;
   height: 28px;
+}
+
+.play-box {
+  height: 52px;
+  margin: 24px 0px;
+  display: flex;
+}
+
+.play-button {
+  background-color: #fff;
+  width: 52px;
+  height: 52px;
+  text-align: center;
+  font-size: 20px;
+  border-radius: 5px;
+  border: solid 1px #eee;
+  margin-right: 10px;
+}
+
+.title-progbar-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.prog-bar {
+  width: 250px;
+  height: 12px;
+  background-color: #eee;
+  border: solid #fff 2px 0px;
+}
+
+.prog-bar-handle {
+  width: 24px;
+  height: 12px;
+  background-color: $green;
+  margin-bottom: 6px;
 }

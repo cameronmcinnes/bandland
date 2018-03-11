@@ -266,7 +266,7 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus {
 // TODO more general dropdown class?
 #gear-dropdown {
   position: absolute;
-  top: 45px;
+  top: 50px;
   right: 0px;
   width: 100px;
   background-color: #ececec;
@@ -275,6 +275,10 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus {
 
 #gear-dropdown-li {
   position: relative;
+}
+
+#gear-dropdown-li:hover #gear-dropdown {
+  top: 45px;
 }
 
 // image upload modal
