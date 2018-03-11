@@ -6,7 +6,7 @@ const tracksReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_ALBUM:
-      return action.tracks;
+      return action.tracks || state;
     default:
       return state;
   }

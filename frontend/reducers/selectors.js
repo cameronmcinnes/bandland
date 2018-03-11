@@ -40,3 +40,11 @@ export const selectAlbumCollectors = (state, match) => {
     state.entities.albums[albumId].collectorIds.includes(user.id)
   ));
 };
+
+export const selectAlbumTracks = (state, match) => {
+  const albumId = match.params.albumId;
+  if (!state.entities.albums[albumId]) return [];
+  return Object.values(state.entities.tracks).filter( track => (
+    state.entities.albums[albumId].trackIds.includes(track.id)
+  ));
+};

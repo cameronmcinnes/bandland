@@ -12,7 +12,7 @@ class AlbumShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAlbum(this.props.match.params.albumId);
+    this.props.fetchAlbum(this.props.match.params.albumId)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -54,7 +54,7 @@ class AlbumShow extends React.Component {
               <span>by </span>
               <Link to={ `/users/${artist.id}` }>{artist.username}</Link>
 
-              <TrackPlayerContainer />
+              <TrackPlayerContainer firstTrack={ tracks[0] } />
 
               <div className='album-purchase-container'>
                 <a>Buy Digital Album</a> <span>${album.price} or more</span>

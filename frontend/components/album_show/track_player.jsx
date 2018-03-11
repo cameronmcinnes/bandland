@@ -4,12 +4,12 @@ import FontAwesome from 'react-fontawesome';
 class TrackPlayer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      play: false,
-      iconName: 'play'
-    };
+    // this.state = {
+    //   play: false,
+    //   iconName: 'play'
+    // };
 
-    this.togglePlay = this.togglePlay.bind(this);
+    // this.togglePlay = this.togglePlay.bind(this);
     this.handleMouseMove = this.handleMouseMove.bind(this);
     this.handleMouseUp = this.handleMouseUp.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);
@@ -23,14 +23,28 @@ class TrackPlayer extends React.Component {
     this.moveHandleTo(pos);
   }
 
-  togglePlay(e) {
-    e.preventDefault();
-    if (this.state.play) {
-      this.audio.pause();
-      this.setState({ play: false, iconName: 'play' });
-    } else {
+  // componentDidMount() {
+  //   // this.props.receiveCurrentTrack(this.props.firstTrack)
+  // }
+
+  // togglePlay(e) {
+  //   e.preventDefault();
+  //   if (this.state.play) {
+  //     this.audio.pause();
+  //
+  //     // this.setState({ play: false, iconName: 'play' });
+  //   } else {
+  //     this.audio.play();
+  //     // this.setState({ play: true, iconName: 'pause' });
+  //   }
+  // }
+
+  // or component did update
+  componentDidUpdate() {
+    if (this.props.isPlaying) {
       this.audio.play();
-      this.setState({ play: true, iconName: 'pause' });
+    } else {
+      this.audio.pause();
     }
   }
 
@@ -38,10 +52,12 @@ class TrackPlayer extends React.Component {
     const progbarWidth = this.progbar.offsetWidth - this.handle.offsetWidth;
     const handleLeft = handlePos - this.progbar.offsetLeft;
 
-    // subtract 12 to move the middle of the slider
-    if (handleLeft >= 12 && handleLeft < progbarWidth + 12) {
+    const sliderHalf = (this.handle.offsetWidth / 2)
+    // subtract 12, sliderHalf to move the middle of the slider
+    // handle left >=
+    if (handleLeft >= -12 && handleLeft < progbarWidth + 12) {
       this.handle.style.marginLeft = `${handleLeft-12}px`;
-    } else if (handleLeft < 12) {
+    } else if (handleLeft < -12) {
       this.handle.style.marginLeft = '0px';
     } else {
       this.handle.style.marginLeft = `${progbarWidth}px`;
@@ -69,7 +85,8 @@ class TrackPlayer extends React.Component {
   // }
 
   render() {
-    const { track } = this.props;
+    const { track, isPlaying, playPauseCurrentTrack } = this.props;
+    const iconName = (isPlaying) ? 'pause' : 'play';
 
     return (
       <div className='play-box'>
@@ -77,8 +94,8 @@ class TrackPlayer extends React.Component {
           src={ track.audioFileUrl }
           onTimeUpdate={ this.advanceHandle }/>
         <button className='play-button'
-          onClick={ this.togglePlay }>
-          <FontAwesome name={ `${this.state.iconName}` } />
+          onClick={ playPauseCurrentTrack }>
+          <FontAwesome name={ iconName } />
         </button>
 
         <div className='title-progbar-box'>
