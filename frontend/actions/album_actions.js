@@ -3,9 +3,9 @@ import * as AlbumAPIUtil from '../util/album_api_util';
 export const RECEIVE_ALBUM = 'RECEIVE_ALBUM';
 export const START_LOADING_ALBUM = 'START_LOADING_ALBUM';
 
-export const receiveAlbum = ({album, users, tracks}) => ({
+export const receiveAlbum = ({albums, users, tracks}) => ({
   type: RECEIVE_ALBUM,
-  album,
+  albums,
   users,
   tracks
 });

@@ -3,6 +3,6 @@ class Api::AlbumsController < ApplicationController
   end
 
   def show
-    @album = Album.includes(:artist, :collectors, :tracks).find_by(id: params[:id])
+    @album = Album.includes(:collectors, :tracks, artist: {albums: :artist}).find_by(id: params[:id])
   end
 end

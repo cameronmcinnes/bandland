@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { fetchAlbum } from '../../actions/album_actions';
 import { fetchUser } from '../../actions/user_actions';
-import { selectAlbumCollectors, selectAlbumTracks } from '../../reducers/selectors';
+import { selectAlbumCollectors, selectAlbumTracks, selectArtistDiscog } from '../../reducers/selectors';
 import { changeCurrentTrack, playPauseCurrentTrack } from '../../actions/ui_actions';
 
 import AlbumShow from './album_show';
@@ -18,6 +18,7 @@ const mapStateToProps = (state, { match }) => {
   return {
     album,
     artist,
+    discog: selectArtistDiscog(state, match),
     currentUser: state.session.currentUser,
     collectors: selectAlbumCollectors(state, match),
     tracks: selectAlbumTracks(state, match),

@@ -50,3 +50,19 @@ export const selectAlbumTracks = (state, match) => {
     state.entities.albums[albumId].trackIds.includes(track.id)
   ));
 };
+
+export const selectArtistDiscog = (state, match) => {
+  const albumId = match.params.albumId;
+
+  const album = state.entities.albums[albumId];
+  if (!album) {
+    return [];
+  }
+  const artist = state.entities.users[album.artistId]
+
+  if (!(artist && artist.ownAlbumIds)) return [];
+  
+  return Object.values(state.entities.albums).filter( album => (
+    artist.ownAlbumIds.includes(album.id)
+  ));
+}

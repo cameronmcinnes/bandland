@@ -11,13 +11,15 @@
   * add migration w regular name and genre, allow edit of name in edit form
   * disable button
   * style image upload button and modal
+  * allow color change 
 
 * ### albums
   * add null false to albums artist_id
   * enable pause from buttons in list
   * player
     * for smoother scroll use setInterval instead of onTimeUpdate
-    * make it start at the beginning
+    * ref
+  * add banner image as album banner
 
 ## DONE
 * ### auth
@@ -43,6 +45,9 @@
   * collection components
   * stlye banner button
   * keep image width on user edit form
+
+* ### album show
+  * make player start at the beginning
 
 ## QUESTIONS
 * when to use selectors

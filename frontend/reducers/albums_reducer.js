@@ -9,7 +9,7 @@ const albumsReducer = (state = {}, action) => {
     case RECEIVE_USER:
       return action.albums || {};
     case RECEIVE_ALBUM:
-      return merge({}, state, { [action.album.id]: action.album});
+      return action.albums;
     default:
       return state;
   }

@@ -10,11 +10,13 @@ json.albums do
   @user.collected_albums.each do |album|
     json.set! album.id do
       json.partial! 'api/albums/album', album: album
+      json.artist_name album.artist.username
     end
   end
   @user.albums.each do |album|
     json.set! album.id do
       json.partial! 'api/albums/album', album: album
+      json.artist_name album.artist.username
     end
   end
 end

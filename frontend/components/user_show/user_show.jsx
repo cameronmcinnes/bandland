@@ -22,7 +22,7 @@ class UserShow extends React.Component {
     const { user, loading, showEditForm } = this.props;
     // collector will be defined when coming from album show page
     // need to check if fully fetched
-    if (!(user && user.email && user.ownAlbumIds)) return null;
+    if (!(user && user.email && user.collectedAlbumIds )) return null;
 
     if (loading) return <h1>LOADING</h1>;
     const baseUrl = `/users/${this.props.match.params.userId}`;
@@ -73,7 +73,7 @@ class UserShow extends React.Component {
 
           <ul className='user-tabs'>
             <li><NavLink to={ baseUrl } exact >collection <span className='count'>{user.collectedAlbumIds.length}</span></NavLink></li>
-            <li><NavLink to={ baseUrl + '/albums' } >albums <span className='count'>{user.ownAlbumIds.length}</span></NavLink></li>
+            <li><NavLink to={ baseUrl + '/discography' } >discography <span className='count'>{user.ownAlbumIds.length}</span></NavLink></li>
             <li><NavLink to={ baseUrl + '/followers' } >followers</NavLink></li>
             <li><NavLink to={ baseUrl + '/following' } >following</NavLink></li>
           </ul>
@@ -81,7 +81,7 @@ class UserShow extends React.Component {
           <div className='user-show-grid-container'>
             <div className='user-show-grid'>
               <Route path='/users/:userId' exact component={ UserCollectionContainer } />
-              <Route path='/users/:userId/albums' component={ UserOwnAlbumContainer } />
+              <Route path='/users/:userId/discography' component={ UserOwnAlbumContainer } />
               <Route path='/users/:userId/followers' />
               <Route path='/users/:userId/following' />
             </div>

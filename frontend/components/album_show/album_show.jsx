@@ -21,7 +21,7 @@ class AlbumShow extends React.Component {
   }
 
   render() {
-    const { album, artist, collectors, tracks, currentTrack } = this.props;
+    const { album, artist, collectors, tracks, currentTrack, discog} = this.props;
 
     if (!album || !artist ) return null;
 
@@ -40,10 +40,22 @@ class AlbumShow extends React.Component {
         />;
     });
 
+    const discogList = discog.map((album, idx) => {
+      return (
+        <li key={ idx }>
+          <Link to={`/albums/${album.id}`}>
+            <img src={ album.coverImgUrl }/>
+            { album.title }
+          </Link>
+          <span>{ album.releaseDate }</span>
+        </li>
+      )
+    })
+
     return (
       <div className="album-show-container">
         <div className='artist-banner-container'>
-          <img src='https://upload.wikimedia.org/wikipedia/commons/e/e9/Aquitaine_banner_Landes_Forest.jpg'></img>
+          <img src={ artist.bannerImgUrl }></img>
         </div>
 
         <div className='album-show-body-container'>
@@ -90,6 +102,10 @@ class AlbumShow extends React.Component {
             <button>Follow</button>
             <p>{artist.description}</p>
             <a>{artist.ownSiteUrl}</a>
+            <ul className='album-artist-discog'>
+              <span>discography</span>
+              { discogList }
+            </ul>
           </div>
         </div>
 

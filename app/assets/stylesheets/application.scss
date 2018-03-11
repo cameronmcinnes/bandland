@@ -271,6 +271,8 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus {
   width: 100px;
   background-color: #ececec;
   z-index: 3;
+  border: 1px solid #ccc;
+  border-top: none;
 }
 
 #gear-dropdown-li {
