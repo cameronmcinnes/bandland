@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import CollectorThumbnail from './collector_thumbnail';
 // TODO wtf
-import TrackPlayer from './track_player.jsx';
+import TrackPlayerContainer from './track_player_container';
 import TrackListItem from './track_list_item';
 
 class AlbumShow extends React.Component {
@@ -54,7 +54,7 @@ class AlbumShow extends React.Component {
               <span>by </span>
               <Link to={ `/users/${artist.id}` }>{artist.username}</Link>
 
-              <TrackPlayer track={tracks[0]} />
+              <TrackPlayerContainer />
 
               <div className='album-purchase-container'>
                 <a>Buy Digital Album</a> <span>${album.price} or more</span>

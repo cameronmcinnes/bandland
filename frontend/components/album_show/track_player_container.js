@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-
-import TrackPlayer from './track_player';
+// WTF TODO
+import TrackPlayer from './track_player.jsx';
 
 const mapStateToProps = state => ({
-  currentTrack: state.ui.currentTrack
+  track: state.ui.currentTrack
 });
 
 export default connect(
