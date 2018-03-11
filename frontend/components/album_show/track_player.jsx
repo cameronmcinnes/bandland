@@ -4,17 +4,11 @@ import FontAwesome from 'react-fontawesome';
 class TrackPlayer extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   play: false,
-    //   iconName: 'play'
-    // };
 
-    // this.togglePlay = this.togglePlay.bind(this);
     this.handleMouseMove = this.handleMouseMove.bind(this);
     this.handleMouseUp = this.handleMouseUp.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);
     this.advanceHandle = this.advanceHandle.bind(this);
-    // this.handleDrag = this.handleDrag.bind(this);
   }
 
   advanceHandle(e) {
@@ -23,25 +17,8 @@ class TrackPlayer extends React.Component {
     this.moveHandleTo(pos);
   }
 
-  // componentDidMount() {
-  //   // this.props.receiveCurrentTrack(this.props.firstTrack)
-  // }
-
-  // togglePlay(e) {
-  //   e.preventDefault();
-  //   if (this.state.play) {
-  //     this.audio.pause();
-  //
-  //     // this.setState({ play: false, iconName: 'play' });
-  //   } else {
-  //     this.audio.play();
-  //     // this.setState({ play: true, iconName: 'pause' });
-  //   }
-  // }
-
-  // or component did update
   componentDidUpdate() {
-    if (this.props.isPlaying) {
+    if (this.props.track.isPlaying) {
       this.audio.play();
     } else {
       this.audio.pause();
@@ -79,14 +56,10 @@ class TrackPlayer extends React.Component {
     window.removeEventListener('mouseup', this.handleMouseUp);
   }
 
-  // handleDrag(e) {
-  //   e.preventDefault()
-  //   debugger;
-  // }
 
   render() {
-    const { track, isPlaying, playPauseCurrentTrack } = this.props;
-    const iconName = (isPlaying) ? 'pause' : 'play';
+    const { track, playPauseCurrentTrack } = this.props;
+    const iconName = (track.isPlaying) ? 'pause' : 'play';
 
     return (
       <div className='play-box'>
@@ -115,5 +88,3 @@ class TrackPlayer extends React.Component {
 }
 
 export default TrackPlayer;
-
-// onDrag={ this.handleDrag }

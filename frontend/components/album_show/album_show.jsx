@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import CollectorThumbnail from './collector_thumbnail';
-// TODO wtf
 import TrackPlayerContainer from './track_player_container';
 import TrackListItem from './track_list_item';
 
@@ -22,7 +21,7 @@ class AlbumShow extends React.Component {
   }
 
   render() {
-    const { album, artist, collectors, tracks, currentTrackId } = this.props;
+    const { album, artist, collectors, tracks, currentTrack } = this.props;
 
     if (!album || !artist ) return null;
 
@@ -32,12 +31,12 @@ class AlbumShow extends React.Component {
     // onMouseLeave={ () => 'add take it aways button' }
 
     const trackList = tracks.map((track, idx) => {
-      const isCurrentTrack = (track.id === currentTrackId) ? true : false;
       return <TrackListItem
         key={ idx }
         track={ track }
-        isCurrentTrack={ isCurrentTrack }
-        changeCurrentTrack={ this.props.changeCurrentTrack}
+        currentTrack={ currentTrack }
+        changeCurrentTrack={ this.props.changeCurrentTrack }
+        playPauseCurrentTrack={ this.props.playPauseCurrentTrack }
         />;
     });
 
@@ -54,7 +53,7 @@ class AlbumShow extends React.Component {
               <span>by </span>
               <Link to={ `/users/${artist.id}` }>{artist.username}</Link>
 
-              <TrackPlayerContainer firstTrack={ tracks[0] } />
+              <TrackPlayerContainer />
 
               <div className='album-purchase-container'>
                 <a>Buy Digital Album</a> <span>${album.price} or more</span>

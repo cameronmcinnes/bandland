@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchAlbum } from '../../actions/album_actions';
 import { fetchUser } from '../../actions/user_actions';
 import { selectAlbumCollectors, selectAlbumTracks } from '../../reducers/selectors';
-import { receiveCurrentTrack, changeCurrentTrack } from '../../actions/ui_actions';
+import { changeCurrentTrack, playPauseCurrentTrack } from '../../actions/ui_actions';
 
 import AlbumShow from './album_show';
 
@@ -21,16 +21,14 @@ const mapStateToProps = (state, { match }) => {
     currentUser: state.session.currentUser,
     collectors: selectAlbumCollectors(state, match),
     tracks: selectAlbumTracks(state, match),
-    // to handle case where there's no current track default state in current track reducer
-    // sloppy?
-    currentTrackId: state.ui.currentTrack.id
+    currentTrack: state.ui.currentTrack
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   fetchAlbum: id => dispatch(fetchAlbum(id)),
-  receiveCurrentTrack: track => dispatch(receiveCurrentTrack(track)),
-  changeCurrentTrack: track => dispatch(changeCurrentTrack(track))
+  changeCurrentTrack: track => dispatch(changeCurrentTrack(track)),
+  playPauseCurrentTrack: () => dispatch(playPauseCurrentTrack())
 });
 
 export default connect(
