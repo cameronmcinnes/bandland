@@ -1,6 +1,9 @@
-## TODO
+s## TODO
 * ### auth :fire:
   * guest login => redirect to login page, do auto type cool ting
+
+* ### code style
+  * remove uneecassary constructors and super(props)
 
 * ### style
   * style gear dropdown menu

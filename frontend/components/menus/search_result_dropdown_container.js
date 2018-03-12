@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import SearchResultDropdown from './search_result_dropdown';
 import { selectUserResults } from '../../reducers/selectors';
-// import { searchUsers } from '../../actions/user_actions';
+import { clearSearch } from '../../actions/ui_actions';
 
 
 const mapStateToProps = state => ({
@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // searchUsers: (query) => dispatch(searchUsers(query))
+  clearSearch: () => dispatch(clearSearch())
 });
 
 

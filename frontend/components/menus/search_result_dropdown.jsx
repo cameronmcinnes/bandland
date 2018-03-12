@@ -1,24 +1,29 @@
 import React from 'react';
 
-export const SearchResultDropdown = props => {
-  const userResults = props.userResults.map((user, idx) => (
-    <li key={ idx }>
-      <img src={ user.thumbnailProfileImgUrl } />
-      <span>{ user.username }</span>
-    </li>
-  ));
+class SearchResultDropdown extends React.Component {
+  // install single use click handler on window only when the dropdown appears
+  componentWillReceiveProps(nextProps) {
+    if (this.props.userResults.length === 0 && nextProps.userResults.length > 0) {
+      window.addEventListener('click', this.props.clearSearch, {once: true} );
+    }
+  }
 
-  const hidden = (props.userResults.length === 0) ? 'hidden' : '';
+  render() {
+    const userResults = this.props.userResults.map((user, idx) => (
+      <li key={ idx }>
+        <img src={ user.thumbnailProfileImgUrl } />
+        <span>{ user.username }</span>
+      </li>
+    ));
 
-  return (
-    <ul className={ `search-dropdown ${hidden}` }>
-      { userResults }
-    </ul>
-  );
-};
+    const hidden = (this.props.userResults.length === 0) ? 'hidden' : '';
+
+    return (
+      <ul className={ `search-dropdown ${hidden}` }>
+        { userResults }
+      </ul>
+    );
+  }
+}
 
 export default SearchResultDropdown;
-
-// componentDidMount() {
-//   window.addEventListener('click', this.props.toggleSelf, {once: true} );
-// }
