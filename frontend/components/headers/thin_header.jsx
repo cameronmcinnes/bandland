@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
 
-import GearDropdown from '../menus/gear_dropdown';
+import GearDropdownContainer from '../menus/gear_dropdown_container';
 import SearchContainer from '../search/search_container'
 
 // TODO make this class component so it can have state to add classname on gear
+
 const ThinHeader = ({ currentUser, logout, toggleModal, loginGuest, toggleMenu, gearDropdownState }) => {
 	return (
     <div>
@@ -26,8 +27,9 @@ const ThinHeader = ({ currentUser, logout, toggleModal, loginGuest, toggleMenu, 
           { Boolean(currentUser) &&
             <ul className='thin-header-nav-ul'>
               <li><Link to={`/users/${currentUser.id}`}>collection</Link></li>
-              <li id='gear-dropdown-li' onClick={ () => toggleMenu('gearDropdown') } >
+              <li id='gear-dropdown-li' onClick={ (e) => { e.stopPropagation(); toggleMenu('gearDropdown')} } >
                 <i><FontAwesome name='cog' /><FontAwesome name='caret-down' /></i>
+                { Boolean(gearDropdownState) && <GearDropdownContainer /> }
               </li>
             </ul>
           }
@@ -47,8 +49,3 @@ const ThinHeader = ({ currentUser, logout, toggleModal, loginGuest, toggleMenu, 
 }
 
 export default ThinHeader;
-
-
-// { currentUser &&
-//   <GearDropdown toggleMenu={ toggleMenu } logout={ logout } open={gearDropdownState}/>
-// }

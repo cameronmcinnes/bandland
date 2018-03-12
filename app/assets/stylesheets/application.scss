@@ -231,6 +231,7 @@ a:hover {
 .menu {
   display: none;
 }
+
 .menu.is-open {
   display: block;
 }
@@ -288,19 +289,32 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus {
   position: absolute;
   top: 50px;
   right: 0px;
-  width: 100px;
+  width: 74px;
+  box-sizing: border-box;
   background-color: #ececec;
   z-index: 3;
   border: 1px solid #ccc;
   border-top: none;
 }
 
+#gear-dropdown a {
+  display: block;
+  padding: 10px;
+  color: $green;
+}
+
+#gear-dropdown > div:hover {
+  color: #848484;
+  background-color: #DDDDDD;
+  text-decoration: none;
+}
+
 #gear-dropdown-li {
-  top: 45px;
+  position: relative;
 }
 
 #gear-dropdown-li:hover #gear-dropdown {
-position: relative;
+  top: 45px;
 }
 
 // image upload modal
@@ -315,24 +329,10 @@ position: relative;
   padding: 10px 20px;
   left: 178px;
   top: 70px;
-  // font-size: 1.25em;
-  // font-weight: 700;
-  // color: white;
-  // background-color: $green;
-  // display: inline-block;
   cursor: pointer;
 }
 
 .file-input-container [type=file] {
-  // cursor: pointer;
-  // display: block;
-  // min-height: 100%;
-  // min-width: 100%;
-  // opacity: 0;
-  // position: absolute;
-  // right: 0;
-  // text-align: right;
-  // top: 0;
 	width: 0.1px;
 	height: 0.1px;
 	opacity: 0;
@@ -381,6 +381,7 @@ position: relative;
 .search-field:focus {
   background-color: #fff;
   text-align: left;
+  padding-left: 10px;
 }
 
 .search-field:focus + span {

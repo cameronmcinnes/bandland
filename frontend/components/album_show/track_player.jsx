@@ -12,6 +12,7 @@ class TrackPlayer extends React.Component {
   }
 
   advanceSlider(e) {
+    // let ratio = this.audio.currentTime / this.audio.duration;
     let ratio = e.target.currentTime / this.audio.duration;
     let pos = (this.progbar.offsetWidth * ratio) + this.progbar.offsetLeft;
     this.moveSliderTo(pos);
@@ -19,16 +20,18 @@ class TrackPlayer extends React.Component {
 
   componentDidUpdate() {
     if (this.props.track.isPlaying) {
-      this.audio.play()
+      this.audio.play();
+      // this.timeOut = setInterval(this.advanceSlider, 300);
     } else {
       this.audio.pause();
+      // clearInterval(this.timeOut);
     }
   }
 
   moveSliderTo(sliderPos) {
     // account for case before duration is loaded, slider will be NaN
     if (!sliderPos) return;
-    const sliderWidth = this.slider.offsetWidth
+    const sliderWidth = this.slider.offsetWidth;
     const progbarWidth = this.progbar.offsetWidth;
     const sliderMiddle = sliderPos - this.progbar.offsetLeft;
 
@@ -75,7 +78,8 @@ class TrackPlayer extends React.Component {
 
         <audio ref={(audio) => this.audio = audio }
           src={ track.audioFileUrl }
-          onTimeUpdate={ this.advanceSlider }/>
+          onTimeUpdate={ this.advanceSlider }
+          />
 
         <button className='play-button'
           onClick={ playPauseCurrentTrack }>
@@ -115,3 +119,5 @@ class TrackPlayer extends React.Component {
 }
 
 export default TrackPlayer;
+
+// onTimeUpdate={ this.advanceSlider }

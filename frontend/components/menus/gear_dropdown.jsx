@@ -1,9 +1,24 @@
 import React from 'react';
 
-const GearDropdown = ({ logout }) => (
-  <div id="gear-dropdown" >
-    <a onClick={() => logout()}>log out</a>
-  </div>
-);
+class GearDropdown extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    window.addEventListener('click', this.props.toggleSelf, {once: true} );
+  }
+
+  render() {
+    return (
+      <div id="gear-dropdown" >
+        <div>
+          <a onClick={ this.props.logout }>log out</a>
+        </div>
+      </div>
+    );
+  }
+}
+
 
 export default GearDropdown;
