@@ -63,6 +63,8 @@
 * using locales in rails to get readable error msgs: [SO post] (https://stackoverflow.com/questions/808547/fully-custom-validation-error-message-with-rails)
 * parallax scroll https://www.w3schools.com/cssref/pr_background-attachment.asp
 * optimizing sql queries https://ksylvest.com/posts/2014-12-20/advanced-eager-loading-in-rails
+* add profile picture from facebook
+  * https://developers.facebook.com/docs/graph-api/reference/user/picture/
 
 ## Tables
 * Users

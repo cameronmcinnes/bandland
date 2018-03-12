@@ -25,9 +25,14 @@ class Menu extends React.Component {
       <div className={`menu ${openClass}`}
         ref={ dropdown => this.dropdown = dropdown }>
         { menuShown }
+
       </div>
+
     );
   }
 }
 
 export default Menu;
+
+// <div className='menu-screen'
+//   onClick={ this.resetMenu }></div>

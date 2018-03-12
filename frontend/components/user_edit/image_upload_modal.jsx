@@ -13,7 +13,7 @@ const handleChange = (receiveNewProfilePicture, imgType) => (e) => {
 
 const ImageUploadModal = props => {
   return (
-    <div id='user-edit-profile-img'>
+    <div class='user-edit-img'>
       <form>
         <label className='file-input-container'>
           Choose an image
