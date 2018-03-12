@@ -1,5 +1,7 @@
 import React from 'react';
 
+import FontAwesome from 'react-fontawesome';
+
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -19,7 +21,7 @@ class Search extends React.Component {
       this.timeOut = setTimeout(() => this.props.searchUsers(this.state.query), 300);
     });
   }
-  
+
   // debounce(func, wait) {
   //   // this.func(...args);
   //   return (...args) => setInterval( this.func(...args), wait);
@@ -27,14 +29,16 @@ class Search extends React.Component {
 
   render() {
     return(
-      <form>
+      <div className='search-div'>
         <input
+          className='search-field'
           type='text'
-          placeholder='searchBandcamp'
+          placeholder='search bandland'
           onChange={ this.handleChange }
           >
         </input>
-      </form>
+        <FontAwesome name='search' />
+      </div>
     );
   }
 }
