@@ -11,7 +11,7 @@ class AlbumShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAlbum(this.props.match.params.albumId)
+    this.props.fetchAlbum(this.props.match.params.albumId);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -47,10 +47,10 @@ class AlbumShow extends React.Component {
             <img src={ album.coverImgUrl }/>
             { album.title }
           </Link>
-          <span>{ album.releaseDate }</span>
+          <span className='small-text'>{ album.releaseDate }</span>
         </li>
-      )
-    })
+      );
+    });
 
     return (
       <div className="album-show-container">
@@ -68,16 +68,17 @@ class AlbumShow extends React.Component {
               <TrackPlayerContainer />
 
               <div className='album-purchase-container'>
-                <a>Buy Digital Album</a> <span>${album.price} or more</span>
+                <a>Buy Album</a> <span><strong>${album.price}</strong> or more</span>
               </div>
-              <p>
-                {album.description}
-                <span>released {album.releaseDate}</span>
-              </p>
 
               <ul className='track-list'>
                 { trackList }
               </ul>
+
+              <p>
+                {album.description}
+                <span>released {album.releaseDate}</span>
+              </p>
             </div>
             <div className='album-show-cover-container'>
               <img className='album-show-cover' src={album.coverImgUrl}></img>
@@ -96,14 +97,15 @@ class AlbumShow extends React.Component {
           </div>
 
           <div className='artist-detail-container'>
-            <img className='album-artist-profile-img' src={artist.profileImgUrl} />
-            <h1>{artist.username}</h1>
-            <span>{artist.location}</span>
+            <Link to={ `/users/${artist.id}` }>
+              <img className='album-artist-profile-img' src={artist.profileImgUrl} />
+              <h3>{artist.username}</h3>
+            </Link>
+            <span className='small-text'>{artist.location}</span>
             <button>Follow</button>
-            <p>{artist.description}</p>
-            <a>{artist.ownSiteUrl}</a>
+            <span><a href={ artist.ownSiteUrl }>{artist.ownSiteUrl}</a></span>
             <ul className='album-artist-discog'>
-              <span>discography</span>
+              <Link to={ `/users/${artist.id}/discography` }><span>discography</span></Link>
               { discogList }
             </ul>
           </div>

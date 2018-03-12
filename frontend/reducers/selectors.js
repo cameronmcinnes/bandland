@@ -5,6 +5,13 @@ export const selectOpenModal = (state) => {
   }
 };
 
+export const selectOpenMenu = (state) => {
+  const keys = Object.keys(state.ui.menus);
+  for (let i = 0; i < keys.length; i++) {
+    if (state.ui.menus[keys[i]]) return keys[i];
+  }
+};
+
 export const selectTitle = (modalName) => {
   if (modalName === 'login') {
     return 'Log in';
@@ -35,7 +42,7 @@ export const selectOwnAlbums = (state, ownProps) => {
 
 export const selectAlbumCollectors = (state, match) => {
   const albumId = match.params.albumId;
-  const album = state.entities.albums[albumId]
+  const album = state.entities.albums[albumId];
   if (!(album && album.collectorIds)) return [];
   return Object.values(state.entities.users).filter( user => (
     album.collectorIds.includes(user.id)
@@ -54,15 +61,15 @@ export const selectAlbumTracks = (state, match) => {
 export const selectArtistDiscog = (state, match) => {
   const albumId = match.params.albumId;
 
-  const album = state.entities.albums[albumId];
-  if (!album) {
+  const mainAlbum = state.entities.albums[albumId];
+  if (!mainAlbum) {
     return [];
   }
-  const artist = state.entities.users[album.artistId]
+  const artist = state.entities.users[mainAlbum.artistId];
 
   if (!(artist && artist.ownAlbumIds)) return [];
-  
+
   return Object.values(state.entities.albums).filter( album => (
-    artist.ownAlbumIds.includes(album.id)
+    album.id !== mainAlbum.id && artist.ownAlbumIds.includes(album.id)
   ));
-}
+};

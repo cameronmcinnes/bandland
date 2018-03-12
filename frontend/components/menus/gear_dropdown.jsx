@@ -1,14 +1,9 @@
 import React from 'react';
 
-const GearDropdown = (props) => {
-  if (props.open) {
-    return (
-      <div id="gear-dropdown" >
-        <a onClick={() => props.logout()}>log out</a>
-      </div>
-    );
-  }
-  return <div></div>;
-};
+const GearDropdown = ({ logout }) => (
+  <div id="gear-dropdown" >
+    <a onClick={() => logout()}>log out</a>
+  </div>
+);
 
 export default GearDropdown;

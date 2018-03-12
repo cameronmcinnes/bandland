@@ -4,6 +4,7 @@ import { merge } from 'lodash';
 const defaultState = {
   gearDropdown: false,
   userEdit: false,
+  searchDropdown: false,
 };
 
 const menusReducer = (state = defaultState, action) => {

@@ -15,3 +15,10 @@ export const updateUser = (userId, data) => {
     dataType: 'json',
   });
 };
+
+export const searchUsers = (query) => (
+  $.ajax({
+    url: 'api/users',
+    data: { query }
+  })
+);

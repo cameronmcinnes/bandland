@@ -13,8 +13,8 @@ User.create!(
   email: 'guest@example.com',
   password: 'demo_user',
   description: 'i am a good guest',
-  profile_img: File.open('app/assets/images/sphinx.jpg'),
-  banner_img: File.open('app/assets/images/sand_banner.jpeg')
+  profile_img: File.open('app/assets/images/seed_covers/a3690324311_16.jpg'),
+  banner_img: File.open('app/assets/images/seed_covers/a4099353330_16.jpg')
 )
 
 User.create!(

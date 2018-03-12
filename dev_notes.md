@@ -4,6 +4,7 @@
 
 * ### style
   * style gear dropdown menu
+    * !!! https://medium.com/@pitipatdop/little-neat-trick-to-capture-click-outside-react-component-5604830beb7f
   * clean up header code NOT DRY (dumb header component? yeesh)
   * enable click away closure of gear dropdown (dropdown screen)
 
@@ -11,7 +12,8 @@
   * add migration w regular name and genre, allow edit of name in edit form
   * disable button
   * style image upload button and modal
-  * allow color change 
+  * allow color change
+  * move user edit form out of the dropdown reducer
 
 * ### albums
   * add null false to albums artist_id
@@ -19,7 +21,9 @@
   * player
     * for smoother scroll use setInterval instead of onTimeUpdate
     * ref
-  * add banner image as album banner
+
+* ### search
+  * in search need user ids and album ids
 
 ## DONE
 * ### auth
@@ -48,6 +52,7 @@
 
 * ### album show
   * make player start at the beginning
+  * add banner image as album banner
 
 ## QUESTIONS
 * when to use selectors

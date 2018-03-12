@@ -115,6 +115,10 @@ a:hover {
   height: 49px;
 }
 
+.thin-header-left-box {
+  display: flex;
+}
+
 .border {
   border-top: solid 5px #848484;
   position: absolute;
@@ -206,12 +210,28 @@ a:hover {
   z-index: 2;
 }
 
+.menu-screen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
 .modal {
   display: none;
   color: #2e3332;
 }
 
 .modal.is-open {
+  display: block;
+}
+
+.menu {
+  display: none;
+}
+.menu.is-open {
   display: block;
 }
 
@@ -276,11 +296,11 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus {
 }
 
 #gear-dropdown-li {
-  position: relative;
+  top: 45px;
 }
 
 #gear-dropdown-li:hover #gear-dropdown {
-  top: 45px;
+position: relative;
 }
 
 // image upload modal

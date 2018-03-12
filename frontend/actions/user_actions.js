@@ -1,6 +1,7 @@
 import * as UserAPIUtil from '../util/user_api_util';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
+export const RECEIVE_SEARCHED_USERS = 'RECEIVE_SEARCHED_USERS';
 export const START_LOADING_USER = 'START_LOADING_USER';
 export const START_UPDATING_USER = 'START_UPDATING_USER';
 
@@ -17,10 +18,21 @@ export const updateUser = (id, data) => dispatch => {
   );
 };
 
+export const searchUsers = (query) => dispatch => (
+  UserAPIUtil.searchUsers(query).then(
+    (users) => dispatch(receiveSearchedUsers(users))
+  )
+);
+
 export const receiveUser = ({user, albums}) => ({
   type: RECEIVE_USER,
   user,
   albums
+});
+
+export const receiveSearchedUsers = (users) => ({
+  type: RECEIVE_SEARCHED_USERS,
+  users
 });
 
 export const startLoadingUser = () => ({

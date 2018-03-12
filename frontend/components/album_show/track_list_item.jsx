@@ -3,7 +3,9 @@ import FontAwesome from 'react-fontawesome';
 
 class  TrackListItem extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.state = { hover: false };
+
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -13,7 +15,7 @@ class  TrackListItem extends React.Component {
       currentTrack,
       changeCurrentTrack,
       playPauseCurrentTrack
-    } = this.props
+    } = this.props;
 
     if (currentTrack.id === track.id) {
       playPauseCurrentTrack();
@@ -23,16 +25,21 @@ class  TrackListItem extends React.Component {
   }
 
   render() {
-    const { track, currentTrack } = this.props
-    const icon = (currentTrack.id === track.id
-      && currentTrack.isPlaying ) ? 'pause' : 'play'
+    const { track, currentTrack } = this.props;
+    const icon = (currentTrack.id === track.id &&
+      currentTrack.isPlaying ) ? 'pause' : 'play';
+    const downloadLink =  (this.state.hover) ? <a href={ track.audioFileUrl } download>download track</a> : '';
       return (
-        <li className='track-list-item'>
-          <button onClick={ this.handleClick }>
+        <li className='track-list-item'
+          onMouseEnter={ () => this.setState({ hover: true }) }
+          onMouseLeave={ () => this.setState({ hover: false }) }
+          >
+          <button className='play-button' onClick={ this.handleClick }>
             <FontAwesome name={ icon } />
           </button>
 
           <span>{track.ord}. {track.title} {track.duration}</span>
+          { downloadLink }
         </li>
       );
   }

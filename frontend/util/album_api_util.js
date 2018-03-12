@@ -3,3 +3,10 @@ export const fetchAlbum = id => (
     url: `api/albums/${id}`
   })
 );
+
+export const searchAlbums = (query) => (
+  $.ajax({
+    url: 'albums/index',
+    data: { query }
+  })
+);

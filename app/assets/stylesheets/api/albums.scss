@@ -17,7 +17,13 @@ $green: #63a989;
 }
 
 .album-info-container {
-  border: solid 1px #b2b2b2;
+  // border: solid 1px #b2b2b2;
+  border: solid 1px #fff;
+  margin: 15px 11px;
+}
+
+.album-info-container:hover {
+  border: dotted 1px #b2b2b2;
   margin: 15px 11px;
 }
 

@@ -8,6 +8,7 @@ import SessionHeader from './headers/session_header';
 import ThinHeaderContainer from './headers/thin_header_container';
 import { AuthRoute } from '../util/route_util';
 import ModalContainer from './modals/modal_container';
+import MenuContainer from './menus/menu_container';
 import UserShowContainer from './user_show/user_show_container';
 import AlbumShowContainer from './album_show/album_show_container';
 
@@ -33,6 +34,7 @@ const App = () => (
     <Route path='/albums/:albumId' component={ AlbumShowContainer } />
 
     <ModalContainer />
+    <MenuContainer />
 
     <footer className='main-footer'>
       <ul>

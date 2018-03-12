@@ -14,6 +14,14 @@ class Api::UsersController < ApplicationController
     @user = User.includes(albums: {artist: :albums}, collected_albums: {artist: :collected_albums}).find_by(id: params[:id])
   end
 
+  def index
+    if params[:query].present?
+      @users = User.where('username ~ ?', params[:query])
+    else
+      @users = User.none
+    end
+  end
+
   def update
     unless params[:id].to_i == current_user.id
       render json: ['access denied'], status: 401
