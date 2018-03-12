@@ -9,7 +9,6 @@ const personalGreeting = (currentUser, logout) => (
       <li><span>Hello { currentUser.username.replace(/_/g, ' ') }</span></li>
 			<li><a href='#'>feed</a></li>
 			<li><Link to={`/users/${currentUser.id}`}>collection</Link></li>
-			<li><a href='#'>wishlist</a></li>
     </ul>
 
 		<ul className='loggedin-header-nav-ul'>
