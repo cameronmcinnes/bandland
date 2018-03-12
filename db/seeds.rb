@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# base_url = 'https://s3.amazonaws.com/bandland-development/seeds/album_covers/'
 
 User.destroy_all
 User.create!(
@@ -29,18 +28,28 @@ User.create!(
   banner_img: 'https://s3.amazonaws.com/bandland-development/seeds/album_covers/20837750_111669122834416_2675294390913597440_n.jpg'
 )
 
+User.create!(
+  username: 'camron',
+  email: 'cam.mcinnes@gmail.com',
+  password: 'verymodern',
+  location: 'cool place',
+  description: 'a very cool description',
+  own_site_url: 'google.com',
+)
+
 user_ids = User.all.pluck(:id)
 
 Album.destroy_all
 
-Dir.foreach('app/assets/images/seed_covers') do |file_name|
-  next if file_name == '.' or file_name == '..'
+base_url = 'https://s3.amazonaws.com/bandland-development/seeds/album_covers/'
+
+File.readlines('db/seed_filenames/covers.txt').map(&:strip).each_with_index do |cover_name, i|
   Album.create!(
     artist_id: user_ids.sample,
-    title: Faker::StarWars.vehicle,
+    title: "#{Faker::StarWars.vehicle}_#{i}",
     price: rand(10),
     description: 'howdy. what a nuanced album',
-    cover_img: File.open("app/assets/images/seed_covers/#{file_name}")
+    cover_img: base_url + cover_name
   )
 end
 
