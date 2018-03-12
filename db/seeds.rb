@@ -6,8 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.destroy_all
+# base_url = 'https://s3.amazonaws.com/bandland-development/seeds/album_covers/'
 
+User.destroy_all
 User.create!(
   username: 'beloved_guest',
   email: 'guest@example.com',
@@ -24,7 +25,8 @@ User.create!(
   location: 'cool place',
   description: 'a very cool description',
   own_site_url: 'google.com',
-  profile_img: File.open('app/assets/images/missing_cover_img.png')
+  profile_img: File.open('app/assets/images/missing_cover_img.png'),
+  banner_img: 'https://s3.amazonaws.com/bandland-development/seeds/album_covers/20837750_111669122834416_2675294390913597440_n.jpg'
 )
 
 user_ids = User.all.pluck(:id)
