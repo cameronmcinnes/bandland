@@ -130,7 +130,7 @@ a:hover {
   width: 100%;
 }
 
-.thin-header a, i {
+.thin-header-nav-ul > li > a, i {
   color: $green;
   font-weight: 500;
   padding: 10px;
@@ -152,12 +152,21 @@ a:hover {
   height: 100%;
 }
 
-.thin-header li {
+.thin-header-nav-ul > li {
   margin-top: -1px;
   padding: 5px 0px 3px 0px;
 }
 
-.thin-header li:not(#logo-li):hover {
+// .thin-header li:not(#logo-li):hover {
+//   color: #666;
+//   background-color: rgba(0,0,0,0.06);
+//   border-top: solid 5px #666;
+//   padding-top: 0px;
+//   box-sizing: border-box;
+//   z-index: 100;
+// }
+
+.thin-header-nav-ul > li:not(#logo-li):hover {
   color: #666;
   background-color: rgba(0,0,0,0.06);
   border-top: solid 5px #666;
@@ -281,7 +290,7 @@ input[type=text], input[type=password], textarea {
 
 input[type=text]:focus, input[type=password]:focus, textarea:focus {
   border: 1px solid $green;
-  box-shadow: 0 0 5px #b4d7f9;
+  // box-shadow: 0 0 5px #b4d7f9;
 }
 
 .error-input {
@@ -351,56 +360,4 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus {
 
 .user-edit-img form {
   height: 150px;
-}
-
-//search
-
-.search-field-container {
-  width: 250px;
-  vertical-align: middle;
-  position: relative;
-}
-
-.search-field-container span {
-  color: #7d7d7d;
-  position: absolute;
-  left: 180px;
-  top: 19px;
-}
-
-.search-field {
-  padding: 0px 25px;
-  border: solid 1px transparent;
-  border-radius: 3px;
-  text-align: center;
-  margin-left: 10px;
-  margin-top: 14px;
-  width: 90%;
-  line-height: 21px;
-  background-color: #e0e0e0;
-  color: #333;
-  font-size: 13px;
-}
-
-.search-field:focus {
-  background-color: #fff;
-  text-align: left;
-  padding-left: 10px;
-}
-
-.search-field:focus + span {
-  left: 200px;
-}
-
-.search-dropdown {
-  position: absolute;
-  width: 250px;
-  box-sizing: border-box;
-  background-color: #fff;
-  border: solid 1px #DDDDDD;
-  margin-left: 9px;
-}
-
-.search-dropdown li {
-
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SearchResultDropdown extends React.Component {
   // install single use click handler on window only when the dropdown appears
@@ -10,10 +11,15 @@ class SearchResultDropdown extends React.Component {
 
   render() {
     const userResults = this.props.userResults.map((user, idx) => (
+      <Link to={ `/users/${user.id}` }>
       <li key={ idx }>
-        <img src={ user.thumbnailProfileImgUrl } />
-        <span>{ user.username }</span>
+          <img src={ user.thumbnailProfileImgUrl } />
+          <p>
+            <span>{ user.username }</span>
+            <span>User</span>
+          </p>
       </li>
+      </Link>
     ));
 
     const hidden = (this.props.userResults.length === 0) ? 'hidden' : '';
