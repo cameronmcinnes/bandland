@@ -1,6 +1,7 @@
 import React from 'react';
-
 import FontAwesome from 'react-fontawesome';
+
+import SearchResultDropdownContainer from '../menus/search_result_dropdown_container';
 
 class Search extends React.Component {
   constructor(props) {
@@ -8,7 +9,6 @@ class Search extends React.Component {
     this.state = {
       query: ''
     };
-    // this.handleChange = this.debounce(this.handleChange, 300);
     this.handleChange = this.handleChange.bind(this);
 
   }
@@ -22,22 +22,22 @@ class Search extends React.Component {
     });
   }
 
-  // debounce(func, wait) {
-  //   // this.func(...args);
-  //   return (...args) => setInterval( this.func(...args), wait);
-  // }
-
   render() {
     return(
-      <div className='search-div'>
-        <input
-          className='search-field'
-          type='text'
-          placeholder='search bandland'
-          onChange={ this.handleChange }
-          >
-        </input>
-        <FontAwesome name='search' />
+      <div className='search-container'>
+        <div className='search-field-container'>
+          <input
+            className='search-field'
+            type='text'
+            placeholder='search bandland    '
+            onChange={ this.handleChange }
+            onBlur={ () => this.setState({ query: ''})}
+            value={ this.state.query }
+            >
+          </input>
+          <FontAwesome name='search' />
+        </div>
+        <SearchResultDropdownContainer />
       </div>
     );
   }

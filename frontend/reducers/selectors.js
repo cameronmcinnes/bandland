@@ -73,3 +73,9 @@ export const selectArtistDiscog = (state, match) => {
     album.id !== mainAlbum.id && artist.ownAlbumIds.includes(album.id)
   ));
 };
+
+export const selectUserResults = (state) => {
+  return Object.values(state.entities.users).filter((user) => (
+    state.ui.searchResults.includes(user.id.toString())
+  ));
+};

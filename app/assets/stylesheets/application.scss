@@ -54,6 +54,10 @@ a:hover {
   text-decoration: underline;
 }
 
+.hidden {
+  display: none;
+}
+
 .main-header {
   background-color: rgba(255,255,255,0.80);
   position: sticky;
@@ -351,13 +355,13 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus {
 
 //search
 
-.search-div {
+.search-field-container {
   width: 250px;
   vertical-align: middle;
   position: relative;
 }
 
-.search-div span {
+.search-field-container span {
   color: #7d7d7d;
   position: absolute;
   left: 180px;
@@ -386,4 +390,17 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus {
 
 .search-field:focus + span {
   left: 200px;
+}
+
+.search-dropdown {
+  position: absolute;
+  width: 250px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: solid 1px #DDDDDD;
+  margin-left: 9px;
+}
+
+.search-dropdown li {
+
 }
