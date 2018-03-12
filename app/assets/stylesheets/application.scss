@@ -18,6 +18,11 @@
 $green: #63a989;
 $darkgreen: #47875b;
 
+@media screen and (max-width: 980px) { .thin-header-nav { width: 756px; } }
+@media screen and (min-width: 980px) { .thin-header-nav { width: 1008px; } }
+@media screen and (min-width: 1300px) { .thin-header-nav { width: 1260px; } }
+
+
 html {
   height: 100%;
 }
@@ -183,10 +188,11 @@ a:hover {
 
 .thin-header-nav {
   margin: auto;
-  width: 95%;
+  // width: 95%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0px 11px;
 }
 
 .thin-header-nav-ul {

@@ -44,9 +44,7 @@ $green: #63a989;
   background-color: #fff;
   height: 300px;
   overflow: auto;
-  /* border: solid 1px #DDDDDD; */
   margin-left: 9px;
-  // border: 1px solid #bebebe;
   border: 1px solid $green;
   box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.05);
 }
@@ -71,10 +69,6 @@ $green: #63a989;
   font-size: 11px;
   font-weight: 500;
 }
-
-/* .search-dropdown span:first-child {
-  font-size:
-} */
 
 .search-dropdown li:hover {
   background-color: #e0e0e0;
