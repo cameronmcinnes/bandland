@@ -16,9 +16,9 @@
 #
 
 class Track < ApplicationRecord
-  validates :title, :album_id, :ord, presence: true
-  validates :title, uniqueness: { scope: :album_id }
-  validates :ord, uniqueness: { scope: :album_id }
+  validates :title, :album, :ord, presence: true
+  validates :title, uniqueness: { scope: :album }
+  validates :ord, uniqueness: { scope: :album }
 
   has_attached_file :audio_file
   validates_attachment_content_type :audio_file,
@@ -26,5 +26,5 @@ class Track < ApplicationRecord
       'audio/x-mp3', 'audio/mpeg3', 'audio/x-mpeg3', 'audio/mpg',
       'audio/x-mpg', 'audio/x-mpegaudio' ]
 
-  belongs_to :album
+  belongs_to :album, inverse_of: :tracks
 end

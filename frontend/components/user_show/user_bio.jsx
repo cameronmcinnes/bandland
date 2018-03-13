@@ -13,7 +13,7 @@ const UserBio = ({user, currentUser, toggleEditForm}) => {
       </button>
     );
     uploadButton = (
-      <Link to={`/users/${user.id}/albums/new`}>
+      <Link to={`/albums/new`}>
         <button className='hollow-btn'>
           <FontAwesome name='upload'/> ADD ALBUM
         </button>

@@ -22,10 +22,10 @@ const AlbumInput = (props) => {
     </div>
   );
 
-  const background = (album.coverImgUrl) ?
-   {backgroundImage: `url(${album.coverImgUrl})`} : {};
+  const background = (album.cover_img_url) ?
+   {backgroundImage: `url(${album.cover_img_url})`} : {};
 
-  const icon = (album.coverImgUrl) ? '' : <FontAwesome name='camera' />;
+  const icon = (album.cover_img_url) ? '' : <FontAwesome name='camera' />;
   if (album.albumSelected) {
     return (
       <div className='user-edit-field-container'>

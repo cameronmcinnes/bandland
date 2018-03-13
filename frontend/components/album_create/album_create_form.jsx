@@ -32,14 +32,19 @@ class AlbumCreateForm extends React.Component {
     const formData = new FormData();
 
     Object.keys(this.state).forEach(key => {
+      if (key === 'albumSelected' || key === 'track_attributes') return;
       formData.append(`album[${key}]`, this.state[key]);
+    });
+
+    this.state.track_attributes.forEach((track, idx) => {
+      formData.append('album[tracks_attributes][][title]', track.title);
+      formData.append('album[tracks_attributes][][ord]', idx);
+      formData.append('album[tracks_attributes][][audio_file]', track.audio_file);
     });
 
     if (coverImg) formData.append('album[cover_img]', coverImg);
 
-    this.props.updateUser(this.props.userId, formData).then(
-      this.props.toggleEditForm
-    );
+    this.props.createAlbum(formData, this.props.userId);// then use promise to redirect;
   }
 
   updateAlbumInputField(field) {
@@ -54,26 +59,26 @@ class AlbumCreateForm extends React.Component {
 
   updateTrackInputField(field, ord) {
     return (e) => {
-      const newTrackArr = Object.assign(this.state.tracks);
+      const newTrackArr = Object.assign(this.state.track_attributes);
       newTrackArr[ord][field] = e.target.value;
-      this.setState({ tracks: newTrackArr });
+      this.setState({ track_attributes: newTrackArr });
     };
   }
 
   selectTrack(ord) {
     return (e) => {
       // to account for when track is deleted
-      if (!this.state.tracks[ord]) return null;
+      if (!this.state.track_attributes[ord]) return null;
       const newTrackArr = this._returnDeselectedTracks();
       newTrackArr[ord].selected = true;
-      this.setState({ tracks: newTrackArr, albumSelected: false });
+      this.setState({ track_attributes: newTrackArr, albumSelected: false });
     };
   }
 
   selectAlbum() {
     return (e) => {
       this.setState({ albumSelected: true,
-        tracks: this._returnDeselectedTracks()
+        track_attributes: this._returnDeselectedTracks()
       });
     };
   }
@@ -81,14 +86,14 @@ class AlbumCreateForm extends React.Component {
   deleteTrackInput(ord) {
     return (e) => {
       e.stopPropagation();
-      const newTrackArr = this.state.tracks;
+      const newTrackArr = this.state.track_attributes;
       newTrackArr.splice(ord, 1);
       this.setState({ track: newTrackArr });
     };
   }
 
   _returnDeselectedTracks() {
-    const newTrackArr = Object.assign(this.state.tracks);
+    const newTrackArr = Object.assign(this.state.track_attributes);
     return newTrackArr.map((track) => {
       track.selected = false;
       return track;
@@ -99,19 +104,24 @@ class AlbumCreateForm extends React.Component {
     const reader = new FileReader();
     const file = e.currentTarget.files[0];
     reader.onloadend = () =>
-    this.setState({ coverImgUrl: reader.result, coverImg: file});
+    this.setState({ cover_img_url: reader.result, cover_img: file});
 
     if (file) {
       reader.readAsDataURL(file);
     } else {
-      this.setState({ coverImgUrl: "", coverImg: null });
+      this.setState({ cover_img_url: "", cover_img: null });
     }
   }
 
-  appendTrackInput() {
+  appendTrackInput(e) {
     const newTrackArr = this._returnDeselectedTracks();
-    const newTrack = { title: '', selected: true };
-    this.setState({ tracks: newTrackArr.concat([newTrack]),
+    const newTrack = {
+      title: '',
+      selected: true,
+      audio_file: e.currentTarget.files[0]
+    };
+
+    this.setState({ track_attributes: newTrackArr.concat([newTrack]),
       albumSelected: false
     });
   }
@@ -130,7 +140,7 @@ class AlbumCreateForm extends React.Component {
               handleImageChange={ this.handleImageChange }
               />
             {
-              this.state.tracks.map((track, idx) => (
+              this.state.track_attributes.map((track, idx) => (
                 <TrackInput
                   key={ idx }
                   ord={ idx }
@@ -142,11 +152,15 @@ class AlbumCreateForm extends React.Component {
               ))
             }
           </ul>
-          <button onClick={ this.appendTrackInput }>
-            ADD TRACK
-          </button>
 
-          <button type='submit'>
+          <label> ADD TRACK
+            <input className='file-input'
+              type='file'
+              onChange={ this.appendTrackInput }
+              ></input>
+          </label>
+
+          <button type='submit' onClick={ this.handleSubmit }>
             SAVE ALBUM
           </button>
         </form>

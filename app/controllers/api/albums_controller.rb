@@ -1,7 +1,7 @@
 class Api::AlbumsController < ApplicationController
   def create
     @album = Album.new(album_params)
-
+    @album.artist_id = current_user.id
     if @album.save
       render :show
     else
@@ -30,9 +30,9 @@ class Api::AlbumsController < ApplicationController
       :genre,
       :cover_img,
       tracks_attributes: [
-        :id,
         :title,
-        :audio_file
+        :audio_file,
+        :ord
       ]
     )
   end

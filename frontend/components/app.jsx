@@ -31,7 +31,7 @@ const App = () => (
       />
 
     <Switch>
-      <Route path='/users/:userId/albums/new' component={ AlbumCreateFormContainer } />
+      <Route path='/albums/new' component={ AlbumCreateFormContainer } />
       <Route path='/users/:userId' component={ UserShowContainer }/>
       <Route path='/albums/:albumId' component={ AlbumShowContainer } />
     </Switch>

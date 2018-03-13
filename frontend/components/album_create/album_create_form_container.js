@@ -4,9 +4,9 @@ import { createAlbum } from '../../actions/album_actions';
 
 import AlbumCreateForm from './album_create_form';
 
-const mapStateToProps = (state, ownProps) => ({
-  userId: ownProps.match.params.userId,
-  artistName: state.entities.users[ownProps.match.params.userId]
+const mapStateToProps = (state) => ({
+  userId: state.session.currentUser.id,
+  artistName: state.session.currentUser.username
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({

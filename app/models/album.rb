@@ -29,7 +29,7 @@ class Album < ApplicationRecord
   belongs_to :artist, class_name: :User, foreign_key: :artist_id
   has_many :collectings, foreign_key: :collected_id
   has_many :collectors, through: :collectings, source: :collector
-  has_many :tracks
+  has_many :tracks, inverse_of: :album
 
-  accepts_nested_attributes_for :track
+  accepts_nested_attributes_for :tracks
 end

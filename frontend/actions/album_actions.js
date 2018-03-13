@@ -35,6 +35,6 @@ export const receiveSearchedAlbums = (albums) => ({
 
 export const createAlbum = (data, userId) => (
   AlbumAPIUtil.createAlbum(data, userId).then(
-    (payload) =>  dispatch(receiveAlbum(payload))
+    (payload) => dispatch(receiveAlbum(payload))
   )
 )
