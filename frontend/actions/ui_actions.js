@@ -32,9 +32,10 @@ export const receiveNewProfilePicture = (picType, pic, picUrl) => {
 //   track
 // });
 
-export const changeCurrentTrack = (track) => ({
+export const changeCurrentTrack = (track, paused) => ({
   type: CHANGE_CURRENT_TRACK,
-  track
+  track,
+  paused
 });
 
 export const playPauseCurrentTrack = () => ({

@@ -69,7 +69,7 @@ class TrackPlayer extends React.Component {
 
   handleEnd(e) {
     if (this.props.track.ord >= Object.values(this.props.tracks).length) {
-
+      this.props.changeCurrentTrack(this.props.tracks[0], 'paused');
     } else {
       this.changeTrack(1);
     }

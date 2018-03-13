@@ -18,9 +18,11 @@ const currentTrackReducer = (state = defaultState, action) => {
     case RECEIVE_ALBUM:
     // to account for albums w no tracks
       if (!action.tracks) return defaultState;
-      const firstTrack = Object.values(action.tracks)[0]
-      return merge({}, defaultState, firstTrack)
+      const firstTrack = Object.values(action.tracks)[0];
+      return merge({}, defaultState, firstTrack);
     case CHANGE_CURRENT_TRACK:
+      debugger;
+      if (action.paused) return merge({}, defaultState, action.track);
       return merge({}, action.track, { isPlaying: true });
     case PLAY_PAUSE_CURRENT_TRACK:
       return merge({}, state, { isPlaying: !state.isPlaying });

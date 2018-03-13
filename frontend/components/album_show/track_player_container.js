@@ -15,7 +15,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   playPauseCurrentTrack: () => dispatch(playPauseCurrentTrack()),
-  changeCurrentTrack: (track) => dispatch(changeCurrentTrack(track))
+  changeCurrentTrack: (track, paused) => dispatch(changeCurrentTrack(track, paused))
 });
 
 export default connect(
