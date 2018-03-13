@@ -9,6 +9,7 @@ import UserOwnAlbumContainer from './user_own_albums_container';
 
 class UserShow extends React.Component {
   componentDidMount() {
+    this.props.startLoadingUser();
     this.props.fetchUser(this.props.match.params.userId);
   }
 
@@ -23,8 +24,10 @@ class UserShow extends React.Component {
     // collector will be defined when coming from album show page
     // need to check if fully fetched
     if (!(user && user.email && user.collectedAlbumIds )) return null;
-
-    if (loading) return <div className="loader">Loading...</div>;
+    if (loading) {
+      debugger;
+      return <div><h1>ADHFASDF</h1><div className="loader">Loading...</div></div>;
+      }
 
     const baseUrl = `/users/${this.props.match.params.userId}`;
 

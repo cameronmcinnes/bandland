@@ -6,7 +6,7 @@ export const START_LOADING_USER = 'START_LOADING_USER';
 export const START_UPDATING_USER = 'START_UPDATING_USER';
 
 export const fetchUser = (id) => dispatch => {
-  dispatch(startLoadingUser());
+  // dispatch(startLoadingUser());
   return UserAPIUtil.fetchUser(id).then(
     (payload) =>  dispatch(receiveUser(payload))
 )};

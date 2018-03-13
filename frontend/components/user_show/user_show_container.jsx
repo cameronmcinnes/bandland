@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { fetchUser } from '../../actions/user_actions';
+import { fetchUser, startLoadingUser } from '../../actions/user_actions';
 import { toggleMenu, toggleModal } from '../../actions/ui_actions';
 
 import UserShow from './user_show';
@@ -9,7 +9,7 @@ const mapStateToProps = (state, { match }) => {
   const user = state.entities.users[match.params.userId];
   return {
     user,
-    loading: state.ui.loading.showLoading,
+    // loading: state.ui.loading.showLoading,
     showEditForm: state.ui.menus.userEdit,
     currentUser: state.session.currentUser,
     profileImgUrl: state.ui.profile.profileImgUrl,
@@ -19,6 +19,7 @@ const mapStateToProps = (state, { match }) => {
 
 const mapDispatchToProps = dispatch => ({
   fetchUser: id => dispatch(fetchUser(id)),
+  startLoadingUser: () => dispatch(startLoadingUser()),
   toggleEditForm: () => dispatch(toggleMenu('userEdit')),
   toggleModal: (modalName) => dispatch(toggleModal(modalName))
 });

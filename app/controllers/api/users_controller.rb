@@ -10,7 +10,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    # is this right
+    sleep(5)
     @user = User.includes(albums: {artist: :albums}, collected_albums: {artist: :collected_albums}).find_by(id: params[:id])
   end
 
