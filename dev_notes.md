@@ -4,6 +4,7 @@ s## TODO
 
 * ### code style
   * remove uneecassary constructors and super(props)
+  * make func = (props) => {} or func = props => {} consistent
 
 * ### style
   * style gear dropdown menu
@@ -14,7 +15,6 @@ s## TODO
 * ### user show
   * add migration w regular name and genre, allow edit of name in edit form
   * disable button
-  * style image upload button and modal
   * allow color change
   * move user edit form out of the dropdown reducer
 
@@ -24,9 +24,11 @@ s## TODO
   * player
     * for smoother scroll use setInterval instead of onTimeUpdate
     * ref
+  * track metadata extraction
 
 * ### search
-  * in search need user ids and album ids
+  * get thumbnails
+  * relevance algorithm in backend???
 
 ## DONE
 * ### auth
@@ -52,10 +54,14 @@ s## TODO
   * collection components
   * stlye banner button
   * keep image width on user edit form
+  * style image upload button and modal
 
 * ### album show
   * make player start at the beginning
   * add banner image as album banner
+
+* ### search
+  * in search need user ids and album ids
 
 ## QUESTIONS
 * when to use selectors

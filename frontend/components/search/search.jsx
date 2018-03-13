@@ -9,8 +9,14 @@ class Search extends React.Component {
     this.state = {
       query: ''
     };
-    this.handleChange = this.handleChange.bind(this);
 
+    this.handleChange = this.handleChange.bind(this);
+    this.executeQuery = this.executeQuery.bind(this);
+  }
+
+  executeQuery() {
+    this.props.searchUsers(this.state.query);
+    this.props.searchAlbums(this.state.query);
   }
 
   handleChange(e) {
@@ -18,7 +24,7 @@ class Search extends React.Component {
       clearTimeout(this.timeOut);
     }
     this.setState({query: e.currentTarget.value}, () =>  {
-      this.timeOut = setTimeout(() => this.props.searchUsers(this.state.query), 300);
+      this.timeOut = setTimeout(this.executeQuery, 300);
     });
   }
 

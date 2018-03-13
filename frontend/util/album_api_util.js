@@ -6,7 +6,15 @@ export const fetchAlbum = id => (
 
 export const searchAlbums = (query) => (
   $.ajax({
-    url: 'albums/index',
+    url: 'api/albums',
     data: { query }
+  })
+);
+
+export const createAlbum = (data, userId) => (
+  $.ajax({
+    method: 'POST',
+    url: `api/users/${userId}/albums`,
+    data
   })
 );

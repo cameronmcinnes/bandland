@@ -15,9 +15,9 @@ const ImageUploadModal = props => {
   return (
     <div class='user-edit-img'>
       <form>
-        <label className='file-input-container'>
+        <label className='modal-file-input-container'>
           Choose an image
-          <input type="file" onChange={ handleChange(props.receiveNewProfilePicture, props.imgType) } />
+          <input className='file-input' type="file" onChange={ handleChange(props.receiveNewProfilePicture, props.imgType) } />
         </label>
       </form>
     </div>

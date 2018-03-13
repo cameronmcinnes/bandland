@@ -12,7 +12,7 @@ const menusReducer = (state = defaultState, action) => {
   switch(action.type){
     case TOGGLE_MENU:
       const newState = { [action.menu]: !state[action.menu] };
-      return merge({}, defaultState, newState);
+      return merge({}, state, newState);
     default:
       return state;
   }

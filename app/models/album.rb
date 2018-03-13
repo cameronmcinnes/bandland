@@ -21,7 +21,9 @@ class Album < ApplicationRecord
   validates :title, uniqueness: { scope: :artist_id,
     message: "Can't have two albums by the same title" }
 
-  has_attached_file :cover_img, default_url: "missing_cover_img.png"
+  has_attached_file :cover_img, default_url: "missing_cover_img.png", styles: {
+    thumb: '48x48'
+  }
   validates_attachment_content_type :cover_img, content_type: /\Aimage\/.*\Z/
 
   belongs_to :artist, class_name: :User, foreign_key: :artist_id

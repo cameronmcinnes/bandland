@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { sortBy } from 'lodash';
 // WTF TODO
 import TrackPlayer from './track_player.jsx';
 import {
@@ -8,7 +9,7 @@ import {
 
 const mapStateToProps = state => ({
   track: state.ui.currentTrack,
-  tracks: state.entities.tracks
+  tracks: sortBy(Object.values(state.entities.tracks), 'ord')
   // isPlaying: state.ui.currentTrack.isPlaying
 });
 

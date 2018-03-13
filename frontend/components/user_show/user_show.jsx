@@ -1,11 +1,11 @@
 import React from 'react';
 import { NavLink, Route } from 'react-router-dom';
+import FontAwesome from 'react-fontawesome';
 
 import UserBio from './user_bio';
 import UserEditFormContainer from '../user_edit/user_edit_container';
 import UserCollectionContainer from './user_collection_container';
 import UserOwnAlbumContainer from './user_own_albums_container';
-import FontAwesome from 'react-fontawesome';
 
 class UserShow extends React.Component {
   componentDidMount() {

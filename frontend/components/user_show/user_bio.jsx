@@ -1,16 +1,24 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
+import { Link } from 'react-router-dom';
 
 // TODO add conditional saying whether current user is user for edit button
 
 const UserBio = ({user, currentUser, toggleEditForm}) => {
-  let editButton = '';
+  let editButton, uploadButton = '';
   if (currentUser && currentUser.id === user.id) {
     editButton = (
       <button className='hollow-btn' onClick={ toggleEditForm }>
         <FontAwesome name='edit'/> EDIT PROFILE
       </button>
     );
+    uploadButton = (
+      <Link to={`/users/${user.id}/albums/new`}>
+        <button className='hollow-btn'>
+          <FontAwesome name='upload'/> ADD ALBUM
+        </button>
+      </Link>
+    )
   }
 
   return(
@@ -19,6 +27,7 @@ const UserBio = ({user, currentUser, toggleEditForm}) => {
       <div className='bio-header'>
         <span className='user-name'>{ user.username }</span>
         { editButton }
+        { uploadButton }
       </div>
 
       <ul className='bio-info-list'>

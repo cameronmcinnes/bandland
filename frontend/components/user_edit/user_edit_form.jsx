@@ -15,12 +15,6 @@ class UserEditForm extends React.Component {
     this.cancelForm = this.cancelForm.bind(this);
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (this.props.match.params.userId !== nextProps.match.params.userId) {
-  //     this.props.fetchUser(nextProps.match.params.userId);
-  //   }
-  // }
-
   handleSubmit(e) {
     e.preventDefault();
     const propicFile = this.props.profileImg;
@@ -44,29 +38,6 @@ class UserEditForm extends React.Component {
       this.setState({ [field]: e.target.value });
     };
   }
-
-  // updateFileField(field) {
-  //   return (e) => {
-  //     const file = e.currentTarget.files[0];
-  //     const fileReader = new FileReader();
-  //     fileReader.onloadend = () => (
-  //       this.setState({
-  //         [`${field}_file`]: file,
-  //         [`${field}_url`]: fileReader.result
-  //       })
-  //     );
-  //
-  //     if (file) {
-  //       fileReader.readAsDataURL(file);
-  //     } else {
-  //       this.setState({ profile_img_url: "", profile_img_file: null });
-  //     }
-  //   };
-  // }
-
-  // modalClick(e) {
-  //   this.props.toggleModal('profileImage')
-  // }
 
   cancelForm() {
     this.props.cancelImageChange(
@@ -124,27 +95,3 @@ class UserEditForm extends React.Component {
 }
 
 export default UserEditForm;
-
-// <div className='user-profile-img-container'>
-//   <img className='user-profile-img' src={ this.state.profile_img_url } />
-//   <div className='img-edit-overlay'><FontAwesome name='camera' /></div>
-// </div>
-
-// <div id='user-edit-profile-img'>
-//   <input type="file" onChange={ this.updateFileField('profile_img') }/>
-// </div>
-//
-
-// <div className='img-edit-overlay-trigger'
-//   onClick={ this.modalClick.bind(this) }>
-//   <FontAwesome name='camera' />
-// </div>
-
-// <div className='banner-img-edit-trigger'>
-//   <FontAwesome name='camera' /><span> chage banner image</span>
-// </div>
-
-// <div className='user-edit-field-container'>
-//   <label>banner image</label>
-//   <input type="file" onChange={ this.updateFileField('banner_img') }/>
-// </div>

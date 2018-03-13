@@ -235,3 +235,29 @@ $darkgreen: #47875b;
   height: 120px;
   margin-bottom: 5px;
 }
+
+// album create
+
+.album-create-container {
+  width: 975px;
+  margin: auto;
+}
+
+.album-cover-file-input {
+  cursor: pointer;
+  height: 210px;
+  width: 210px;
+  background-color: #eee;
+  color: #929292;
+  border: 2px dotted;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.album-cover-file-input span {
+  display: block;
+}

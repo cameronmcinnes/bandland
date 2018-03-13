@@ -22,7 +22,7 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.setState({ disabled: true });
-    this.props.processForm({user})//.then(()=> {
+    this.props.processForm({user});//.then(()=> {
     //   this.props.history.push(`users/${this.props.currentUser.id}`)
     // });
   }

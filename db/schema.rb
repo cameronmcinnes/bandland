@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180310223937) do
+ActiveRecord::Schema.define(version: 20180312220035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,9 @@ ActiveRecord::Schema.define(version: 20180310223937) do
     t.string "banner_img_content_type"
     t.integer "banner_img_file_size"
     t.datetime "banner_img_updated_at"
+    t.string "display_name"
+    t.string "genre"
+    t.index ["display_name"], name: "index_users_on_display_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["location"], name: "index_users_on_location"
     t.index ["session_token"], name: "index_users_on_session_token", unique: true

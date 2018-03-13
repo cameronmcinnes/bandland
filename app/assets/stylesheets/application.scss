@@ -338,7 +338,7 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus {
 
 // image upload modal
 
-.file-input-container {
+.modal-file-input-container {
   overflow: hidden;
   position: relative;
   background-color: $green;
@@ -351,7 +351,7 @@ input[type=text]:focus, input[type=password]:focus, textarea:focus {
   cursor: pointer;
 }
 
-.file-input-container [type=file] {
+.file-input {
 	width: 0.1px;
 	height: 0.1px;
 	opacity: 0;

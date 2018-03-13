@@ -76,6 +76,12 @@ export const selectArtistDiscog = (state, match) => {
 
 export const selectUserResults = (state) => {
   return Object.values(state.entities.users).filter((user) => (
-    state.ui.searchResults.includes(user.id.toString())
+    state.ui.searchResults.userIds.includes(user.id.toString())
+  ));
+};
+
+export const selectAlbumResults = (state) => {
+  return Object.values(state.entities.albums).filter((album) => (
+    state.ui.searchResults.albumIds.includes(album.id.toString())
   ));
 };

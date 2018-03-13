@@ -9,6 +9,7 @@ class TrackPlayer extends React.Component {
     this.handleMouseUp = this.handleMouseUp.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);
     this.advanceSlider = this.advanceSlider.bind(this);
+    this.handleEnd = this.handleEnd.bind(this);
   }
 
   advanceSlider(e) {
@@ -63,9 +64,16 @@ class TrackPlayer extends React.Component {
 
   changeTrack(diff) {
     const nextOrd = this.props.track.ord + diff;
-    this.props.changeCurrentTrack(this.props.tracks[nextOrd]);
+    this.props.changeCurrentTrack(this.props.tracks[nextOrd - 1]);
   }
 
+  handleEnd(e) {
+    if (this.props.track.ord >= Object.values(this.props.tracks).length) {
+
+    } else {
+      this.changeTrack(1);
+    }
+  }
 
   render() {
     const { track, playPauseCurrentTrack, tracks} = this.props;
@@ -78,6 +86,7 @@ class TrackPlayer extends React.Component {
 
         <audio ref={(audio) => this.audio = audio }
           src={ track.audioFileUrl }
+          onEnded={ this.handleEnd }
           />
 
         <button className='play-button'
