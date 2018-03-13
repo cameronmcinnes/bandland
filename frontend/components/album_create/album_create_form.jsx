@@ -20,6 +20,7 @@ class AlbumCreateForm extends React.Component {
     this.selectTrack = this.selectTrack.bind(this);
     this.updateTrackInputField = this.updateTrackInputField.bind(this);
     this.selectTrack = this.selectTrack.bind(this);
+    this.deleteTrackInput = this.deleteTrackInput.bind(this);
   }
 
   handleSubmit(e) {
@@ -61,6 +62,14 @@ class AlbumCreateForm extends React.Component {
     };
   }
 
+  deleteTrackInput(ord) {
+    return (e) => {
+      const newTrackArr = this.state.tracks;
+      newTrackArr.splice(ord, 1);
+      this.setState({ track: newTrackArr });
+    };
+  }
+
   _returnDeselectedTracks() {
     const newTrackArr = Object.assign(this.state.tracks);
     return newTrackArr.map((track) => {
@@ -96,6 +105,7 @@ class AlbumCreateForm extends React.Component {
     const newTrack = { title: '', selected: true };
     this.setState({ tracks: newTrackArr.concat([newTrack]) });
   }
+
 
   render() {
     const background = (this.state.coverImgUrl) ?
@@ -164,6 +174,7 @@ class AlbumCreateForm extends React.Component {
                     track={ track }
                     updateTrackInputField={ this.updateTrackInputField }
                     selectTrack={ this.selectTrack }
+                    deleteTrackInput={ this.deleteTrackInput }
                     />
                 ))
               }

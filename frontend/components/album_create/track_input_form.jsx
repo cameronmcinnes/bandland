@@ -23,8 +23,9 @@ class TrackInputForm extends React.Component {
         <div className='hey-wiseguy'>
           <div className='track-info'>
             <FontAwesome name='bars'/>
-            <p><strong>{track.ord}</strong>{ track.title }</p>
-            <FontAwesome name='times'/>
+            <p><strong>{this.props.ord + 1}</strong>{ track.title }</p>
+            <FontAwesome name='times'
+              onClick={ this.props.deleteTrackInput(this.props.ord) }/>
           </div>
 
           <div className='right-column'>
@@ -45,8 +46,9 @@ class TrackInputForm extends React.Component {
         <div className='track-info'
           onClick={ this.props.selectTrack(this.props.ord) }>
           <FontAwesome name='bars'/>
-          <p><strong>{track.ord}</strong>{ track.title }</p>
-          <FontAwesome name='times'/>
+          <p><strong>{this.props.ord + 1}</strong>{ track.title }</p>
+          <FontAwesome name='times'
+            onClick={ this.props.deleteTrackInput(this.props.ord) }/>
         </div>
       );
     }
