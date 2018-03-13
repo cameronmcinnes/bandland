@@ -28,7 +28,12 @@ class Api::AlbumsController < ApplicationController
       :description,
       :price,
       :genre,
-      :cover_img
+      :cover_img,
+      tracks_attributes: [
+        :id,
+        :title,
+        :audio_file
+      ]
     )
   end
 end

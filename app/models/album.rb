@@ -30,4 +30,6 @@ class Album < ApplicationRecord
   has_many :collectings, foreign_key: :collected_id
   has_many :collectors, through: :collectings, source: :collector
   has_many :tracks
+
+  accepts_nested_attributes_for :track
 end

@@ -1,7 +1,7 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 
-class TrackInputForm extends React.Component {
+class TrackInput extends React.Component {
   // constructor(props) {
   //   super(props);
   //   this.state = { title: '', ord: this.props.ord };
@@ -55,4 +55,4 @@ class TrackInputForm extends React.Component {
   }
 }
 
-export default TrackInputForm;
+export default TrackInput;

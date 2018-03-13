@@ -1,7 +1,7 @@
 import React from 'react';
-import FontAwesome from 'react-fontawesome';
 
-import TrackInputForm from './track_input_form';
+import AlbumInput from './album_input';
+import TrackInput from './track_input';
 
 class AlbumCreateForm extends React.Component {
   constructor(props) {
@@ -11,16 +11,19 @@ class AlbumCreateForm extends React.Component {
       description: '',
       price: '',
       genre: '',
-      tracks: [],
+      track_attributes: [],
+      albumSelected: true,
     };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleImageChange = this.handleImageChange.bind(this);
-    this.appendTrackInput = this.appendTrackInput.bind(this);
-    this.selectTrack = this.selectTrack.bind(this);
+    // concerned w track input
     this.updateTrackInputField = this.updateTrackInputField.bind(this);
     this.selectTrack = this.selectTrack.bind(this);
     this.deleteTrackInput = this.deleteTrackInput.bind(this);
+    // concerned w album input
+    this.updateAlbumInputField = this.updateAlbumInputField.bind(this);
+    this.selectAlbum = this.selectAlbum.bind(this);
+    // concerned w top level form
+    this.appendTrackInput = this.appendTrackInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e) {
@@ -39,9 +42,13 @@ class AlbumCreateForm extends React.Component {
     );
   }
 
-  updateField(field) {
+  updateAlbumInputField(field) {
     return (e) => {
-      this.setState({ [field]: e.target.value });
+      if (e.target.type === 'file') {
+        this.handleImageChange(e);
+      } else {
+        this.setState({ [field]: e.target.value });
+      }
     };
   }
 
@@ -55,15 +62,25 @@ class AlbumCreateForm extends React.Component {
 
   selectTrack(ord) {
     return (e) => {
-      if (this.state.tracks[ord].selected) return null;
+      // to account for when track is deleted
+      if (!this.state.tracks[ord]) return null;
       const newTrackArr = this._returnDeselectedTracks();
       newTrackArr[ord].selected = true;
-      this.setState({ tracks: newTrackArr });
+      this.setState({ tracks: newTrackArr, albumSelected: false });
+    };
+  }
+
+  selectAlbum() {
+    return (e) => {
+      this.setState({ albumSelected: true,
+        tracks: this._returnDeselectedTracks()
+      });
     };
   }
 
   deleteTrackInput(ord) {
     return (e) => {
+      e.stopPropagation();
       const newTrackArr = this.state.tracks;
       newTrackArr.splice(ord, 1);
       this.setState({ track: newTrackArr });
@@ -78,20 +95,11 @@ class AlbumCreateForm extends React.Component {
     });
   }
 
-  // _onTitleChange(title, ord) {
-  //   const newTrackArr = Object.assign(this.state.tracks);
-  //   newTrackArr[ord].title = title;
-  //   this.setState({ tracks: newTrackArr });
-  // }
-  // _first_onTitleChange(title) {
-  //   this.setState({ title });
-  // }
-
   handleImageChange(e) {
     const reader = new FileReader();
     const file = e.currentTarget.files[0];
     reader.onloadend = () =>
-      this.setState({ coverImgUrl: reader.result, coverImg: file});
+    this.setState({ coverImgUrl: reader.result, coverImg: file});
 
     if (file) {
       reader.readAsDataURL(file);
@@ -103,87 +111,44 @@ class AlbumCreateForm extends React.Component {
   appendTrackInput() {
     const newTrackArr = this._returnDeselectedTracks();
     const newTrack = { title: '', selected: true };
-    this.setState({ tracks: newTrackArr.concat([newTrack]) });
+    this.setState({ tracks: newTrackArr.concat([newTrack]),
+      albumSelected: false
+    });
   }
 
 
   render() {
-    const background = (this.state.coverImgUrl) ?
-     {backgroundImage: `url(${this.state.coverImgUrl})`} : {};
-
-    const icon = (this.state.coverImgUrl) ? '' : <FontAwesome name='camera' />;
-
     return(
       <div className='album-create-container'>
         <form className='user-edit-form'>
-          <div className='user-edit-field-container'>
-            <label>title
-              <input
-                className='user-edit-input-field'
-                type='text'
-                onChange={ this.updateField('title') }
-                value={ this.state.title }>
-              </input>
-            </label>
+          <ul>
+            <AlbumInput
+              album={ this.state }
+              updateAlbumInputField={ this.updateAlbumInputField }
+              selectAlbum={ this.selectAlbum }
+              artistName={ this.props.artistName }
+              handleImageChange={ this.handleImageChange }
+              />
+            {
+              this.state.tracks.map((track, idx) => (
+                <TrackInput
+                  key={ idx }
+                  ord={ idx }
+                  track={ track }
+                  updateTrackInputField={ this.updateTrackInputField }
+                  selectTrack={ this.selectTrack }
+                  deleteTrackInput={ this.deleteTrackInput }
+                  />
+              ))
+            }
+          </ul>
+          <button onClick={ this.appendTrackInput }>
+            ADD TRACK
+          </button>
 
-            <label>genre
-              <input
-                className='user-edit-input-field'
-                type='text'
-                onChange={ this.updateField('genre') }
-                value={ this.state.genre }>
-
-              </input>
-            </label>
-
-            <label>price
-              <input
-                className='user-edit-input-field'
-                type='text'
-                onChange={ this.updateField('price') }
-                value={ this.state.price }>
-
-              </input>
-            </label>
-
-            <label>description
-              <textarea
-                className='user-edit-input-field'
-                onChange={ this.updateField('description') }
-                value={ this.state.description }>
-
-              </textarea>
-            </label>
-
-            <label className='album-cover-file-input'
-              style={ background }
-              >
-              { icon }
-              <input className='file-input'
-                type='file'
-                onChange={ this.handleImageChange }
-                ></input>
-            </label>
-
-            <ul>
-              {
-                this.state.tracks.map((track, idx) => (
-                  <TrackInputForm
-                    key={ idx }
-                    ord={ idx }
-                    track={ track }
-                    updateTrackInputField={ this.updateTrackInputField }
-                    selectTrack={ this.selectTrack }
-                    deleteTrackInput={ this.deleteTrackInput }
-                    />
-                ))
-              }
-            </ul>
-
-            <button onClick={ this.appendTrackInput }>
-              ADD TRACK
-            </button>
-          </div>
+          <button type='submit'>
+            SAVE ALBUM
+          </button>
         </form>
       </div>
     );
