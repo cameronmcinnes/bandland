@@ -11,12 +11,14 @@ class AlbumCreateForm extends React.Component {
       description: '',
       price: '',
       genre: '',
-      tracks:[]
+      tracks: [],
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
     this.appendTrackInput = this.appendTrackInput.bind(this);
+    this.selectTrack = this.selectTrack.bind(this);
+    this.updateTrackInputField = this.updateTrackInputField.bind(this);
     this.selectTrack = this.selectTrack.bind(this);
   }
 
@@ -42,6 +44,40 @@ class AlbumCreateForm extends React.Component {
     };
   }
 
+  updateTrackInputField(field, ord) {
+    return (e) => {
+      const newTrackArr = Object.assign(this.state.tracks);
+      newTrackArr[ord][field] = e.target.value;
+      this.setState({ tracks: newTrackArr });
+    };
+  }
+
+  selectTrack(ord) {
+    return (e) => {
+      if (this.state.tracks[ord].selected) return null;
+      const newTrackArr = this._returnDeselectedTracks();
+      newTrackArr[ord].selected = true;
+      this.setState({ tracks: newTrackArr });
+    };
+  }
+
+  _returnDeselectedTracks() {
+    const newTrackArr = Object.assign(this.state.tracks);
+    return newTrackArr.map((track) => {
+      track.selected = false;
+      return track;
+    });
+  }
+
+  // _onTitleChange(title, ord) {
+  //   const newTrackArr = Object.assign(this.state.tracks);
+  //   newTrackArr[ord].title = title;
+  //   this.setState({ tracks: newTrackArr });
+  // }
+  // _first_onTitleChange(title) {
+  //   this.setState({ title });
+  // }
+
   handleImageChange(e) {
     const reader = new FileReader();
     const file = e.currentTarget.files[0];
@@ -55,13 +91,10 @@ class AlbumCreateForm extends React.Component {
     }
   }
 
-  selectTrack(e) {
-
-  }
-
   appendTrackInput() {
-    const newTrack = { title: '' };
-    this.setState({ tracks: this.state.tracks.concat([newTrack]) });
+    const newTrackArr = this._returnDeselectedTracks();
+    const newTrack = { title: '', selected: true };
+    this.setState({ tracks: newTrackArr.concat([newTrack]) });
   }
 
   render() {
@@ -69,7 +102,6 @@ class AlbumCreateForm extends React.Component {
      {backgroundImage: `url(${this.state.coverImgUrl})`} : {};
 
     const icon = (this.state.coverImgUrl) ? '' : <FontAwesome name='camera' />;
-
 
     return(
       <div className='album-create-container'>
@@ -123,10 +155,16 @@ class AlbumCreateForm extends React.Component {
                 ></input>
             </label>
 
-            <ul onClick={ this.selectTrack }>
+            <ul>
               {
                 this.state.tracks.map((track, idx) => (
-                  <TrackInputForm key={ idx } ord={ idx } track={ track } selected={ true }/>
+                  <TrackInputForm
+                    key={ idx }
+                    ord={ idx }
+                    track={ track }
+                    updateTrackInputField={ this.updateTrackInputField }
+                    selectTrack={ this.selectTrack }
+                    />
                 ))
               }
             </ul>
@@ -140,6 +178,5 @@ class AlbumCreateForm extends React.Component {
     );
   }
 }
-
 
 export default AlbumCreateForm;

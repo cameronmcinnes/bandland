@@ -11,7 +11,7 @@ class GearDropdown extends React.Component {
 
   render() {
     return (
-      <div id="gear-dropdown" >
+      <div id="gear-dropdown">
         <div>
           <a onClick={ this.props.logout }>log out</a>
         </div>

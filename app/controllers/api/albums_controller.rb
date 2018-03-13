@@ -11,7 +11,7 @@ class Api::AlbumsController < ApplicationController
 
   def index
     if params[:query].present?
-      @albums = Album.where('title ~ ?', params[:query])
+      @albums = Album.includes(:artist).where('title ~ ?', params[:query])
     else
       @albums = Album.none
     end

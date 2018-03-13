@@ -28,8 +28,10 @@ class SearchResultDropdown extends React.Component {
     const albumResults = this.props.albumResults.map((album, idx) => (
       <Link to={ `/albums/${album.id}` } key={ idx }>
       <li>
+        <img src={ album.thumbnailCoverUrl } />
           <p>
             <span>{ album.title }</span>
+            <span>{ album.artist }</span>
             <span>Album</span>
           </p>
       </li>

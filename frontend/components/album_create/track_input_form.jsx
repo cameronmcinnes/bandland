@@ -2,20 +2,23 @@ import React from 'react';
 import FontAwesome from 'react-fontawesome';
 
 class TrackInputForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { title: '', ord: this.props.ord };
-    this.updateTitle = this.updateTitle.bind(this);
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = { title: '', ord: this.props.ord };
+    // this.updateField = this.updateField.bind(this);
+  // }
 
-  updateTitle(e) {
-    this.setState({ title: e.target.value });
-  }
+  // updateField(field) {
+    // this.setState({ title: e.target.value });
+    // this.props.onTitleChange(e.target.value, this.props.ord);
+    // this.props.updateTrackInputField(field, e.target.value, this.props.ord);
+  // }
 
   render() {
     const { track } = this.props;
+    const title = this.props.title;
 
-    if (this.props.selected) {
+    if (track.selected) {
       return (
         <div className='hey-wiseguy'>
           <div className='track-info'>
@@ -29,8 +32,8 @@ class TrackInputForm extends React.Component {
               <label>title
                 <input
                   type='text'
-                  value={ this.state.title }
-                  onChange={ this.updateTitle }
+                  value={ this.props.title }
+                  onChange={ this.props.updateTrackInputField('title', this.props.ord) }
                   ></input>
               </label>
             </div>
@@ -39,7 +42,8 @@ class TrackInputForm extends React.Component {
       );
     } else {
       return (
-        <div className='track-info'>
+        <div className='track-info'
+          onClick={ this.props.selectTrack(this.props.ord) }>
           <FontAwesome name='bars'/>
           <p><strong>{track.ord}</strong>{ track.title }</p>
           <FontAwesome name='times'/>
