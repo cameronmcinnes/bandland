@@ -24,7 +24,8 @@ class UserShow extends React.Component {
     // need to check if fully fetched
     if (!(user && user.email && user.collectedAlbumIds )) return null;
 
-    if (loading) return <h1>LOADING</h1>;
+    if (loading) return <div className="loader">Loading...</div>;
+
     const baseUrl = `/users/${this.props.match.params.userId}`;
 
     let editOverlay, bannerEdit = '';
