@@ -15,11 +15,15 @@ export const receiveAlbum = ({albums, users, tracks}) => ({
 });
 
 export const fetchAlbum = id => dispatch => {
-  dispatch(startLoadingAlbum);
+  dispatch(startUploadingAlbum);
   return AlbumAPIUtil.fetchAlbum(id).then(
     (payload) => dispatch(receiveAlbum(payload))
   );
 };
+
+export const startUploadingAlbum = () => ({
+  type: START_UPLOADING_ALBUM
+});
 
 export const startLoadingAlbum = () => ({
   type: START_LOADING_ALBUM

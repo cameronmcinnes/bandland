@@ -1,16 +1,17 @@
 import { connect } from 'react-redux';
 
-import { createAlbum, startLoadingAlbum } from '../../actions/album_actions';
+import { createAlbum, startUploadingAlbum } from '../../actions/album_actions';
 
 import AlbumCreateForm from './album_create_form';
 
 const mapStateToProps = (state) => ({
   userId: state.session.currentUser.id,
-  artistName: state.session.currentUser.username
+  artistName: state.session.currentUser.username,
+  loading: state.ui.loading.albumUploading
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  startLoadingAlbum: () => dispatch(startLoadingAlbum()),
+  startUploadingAlbum: () => dispatch(startUploadingAlbum()),
   createAlbum: (data, userId) => dispatch(createAlbum(data, userId))
 });
 

@@ -45,7 +45,7 @@ class AlbumCreateForm extends React.Component {
 
     if (coverImg) formData.append('album[cover_img]', coverImg);
 
-    this.props.startLoadingAlbum();
+    this.props.startUploadingAlbum();
     this.props.createAlbum(formData, this.props.userId);// then use promise to redirect;
   }
 
@@ -128,50 +128,71 @@ class AlbumCreateForm extends React.Component {
     });
   }
 
+  renderForm() {
+    return (
+      <ul>
+        <AlbumInput
+          album={ this.state }
+          updateAlbumInputField={ this.updateAlbumInputField }
+          selectAlbum={ this.selectAlbum }
+          artistName={ this.props.artistName }
+          handleImageChange={ this.handleImageChange }
+          />
+        <span>TRACKS</span>
+        {
+          this.state.track_attributes.map((track, idx) => (
+            <TrackInput
+              key={ idx }
+              ord={ idx }
+              track={ track }
+              updateTrackInputField={ this.updateTrackInputField }
+              selectTrack={ this.selectTrack }
+              deleteTrackInput={ this.deleteTrackInput }
+              />
+          ))
+        }
+      </ul>
+    );
+  }
+
+  renderButtons() {
+    return (
+      <div className='buttons-container'>
+        <label className='hollow-btn'> ADD TRACK
+          <input className='file-input'
+            type='file'
+            onChange={ this.appendTrackInput }
+            ></input>
+        </label>
+
+        <button className='hollow-btn'
+          type='submit' onClick={ this.handleSubmit }>
+          SAVE ALBUM
+        </button>
+
+        <Link to={ `/users/${this.props.userId}` }>or cancel</Link>
+      </div>
+    );
+  }
+
+  renderLoader() {
+    return (
+      <div className='album-upload-loader-container'>
+        <div className='loader'>Loading</div>
+      </div>
+    );
+  }
 
   render() {
     return(
       <div className='album-create-background'>
         <div className='album-create-container'>
           <form className='album-form'>
-            <ul>
-              <AlbumInput
-                album={ this.state }
-                updateAlbumInputField={ this.updateAlbumInputField }
-                selectAlbum={ this.selectAlbum }
-                artistName={ this.props.artistName }
-                handleImageChange={ this.handleImageChange }
-                />
-              <span>TRACKS</span>
-              {
-                this.state.track_attributes.map((track, idx) => (
-                  <TrackInput
-                    key={ idx }
-                    ord={ idx }
-                    track={ track }
-                    updateTrackInputField={ this.updateTrackInputField }
-                    selectTrack={ this.selectTrack }
-                    deleteTrackInput={ this.deleteTrackInput }
-                    />
-                ))
-              }
-            </ul>
 
-            <div className='buttons-container'>
-              <label className='hollow-btn'> ADD TRACK
-                <input className='file-input'
-                  type='file'
-                  onChange={ this.appendTrackInput }
-                  ></input>
-              </label>
+            { this.props.loading && this.renderLoader() }
+            { !this.props.loading && this.renderForm() }
+            { !this.props.loading && this.renderButtons() }
 
-              <button className='hollow-btn'
-                type='submit' onClick={ this.handleSubmit }>
-                SAVE ALBUM
-              </button>
-
-              <Link to={ `/users/${this.props.userId}` }>or cancel</Link>
-            </div>
           </form>
         </div>
       </div>

@@ -117,6 +117,12 @@ a:hover {
   border-right: none;
 }
 
+.thin-header-container {
+  position: sticky;
+  top: 0;
+  z-index: 20
+}
+
 .thin-header {
   // border-top: solid 5px #848484;
   background-color: #ececec;

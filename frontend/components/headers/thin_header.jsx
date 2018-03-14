@@ -9,7 +9,7 @@ import SearchContainer from '../search/search_container'
 
 const ThinHeader = ({ currentUser, logout, toggleModal, toggleMenu, gearDropdownState }) => {
 	return (
-    <div>
+    <div className='thin-header-container'>
     <div className='border'></div>
 		<header className='thin-header'>
       <nav className="thin-header-nav">
