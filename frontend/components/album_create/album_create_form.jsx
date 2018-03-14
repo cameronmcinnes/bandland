@@ -45,6 +45,7 @@ class AlbumCreateForm extends React.Component {
 
     if (coverImg) formData.append('album[cover_img]', coverImg);
 
+    this.props.startLoadingAlbum();
     this.props.createAlbum(formData, this.props.userId);// then use promise to redirect;
   }
 

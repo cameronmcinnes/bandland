@@ -20,8 +20,11 @@ class Album < ApplicationRecord
   validates :title, presence: true
   validates :title, uniqueness: { scope: :artist_id,
     message: "Can't have two albums by the same title" }
+  validates :price, numericality: true # add migration w default at 0
 
-  has_attached_file :cover_img, default_url: "missing_cover_img.png", styles: {
+  #, default_url: "missing_cover_img.png"
+
+  has_attached_file :cover_img, styles: {
     thumb: '48x48'
   }
   validates_attachment_content_type :cover_img, content_type: /\Aimage\/.*\Z/

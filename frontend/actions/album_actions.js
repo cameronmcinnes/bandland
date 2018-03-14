@@ -1,8 +1,11 @@
 import * as AlbumAPIUtil from '../util/album_api_util';
 
 export const RECEIVE_ALBUM = 'RECEIVE_ALBUM';
+export const RECEIVE_NEW_ALBUM = 'RECEIVE_NEW_ALBUM';
 export const START_LOADING_ALBUM = 'START_LOADING_ALBUM';
+export const START_UPLOADING_ALBUM = 'START_UPLOADING_ALBUM';
 export const RECEIVE_SEARCHED_ALBUMS = 'RECEIVE_SEARCHED_ALBUMS';
+export const RECEIVE_ALBUM_ERRORS = 'RECEIVE_ALBUM_ERRORS';
 
 export const receiveAlbum = ({albums, users, tracks}) => ({
   type: RECEIVE_ALBUM,
@@ -33,8 +36,14 @@ export const receiveSearchedAlbums = (albums) => ({
   albums
 });
 
-export const createAlbum = (data, userId) => (
-  AlbumAPIUtil.createAlbum(data, userId).then(
-    (payload) => dispatch(receiveAlbum(payload))
+export const createAlbum = (data, userId) => (dispatch) => {
+  return AlbumAPIUtil.createAlbum(data, userId).then(
+    (payload) => dispatch(receiveAlbum(payload)),
+    (errors) => dispatch(receiveAlbumErrors(errors))
   )
-)
+};
+
+export const receiveAlbumErrors = errors => ({
+  type: RECEIVE_ALBUM_ERRORS,
+  errors
+})

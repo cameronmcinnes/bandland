@@ -13,6 +13,7 @@ class Api::AlbumsController < ApplicationController
     if params[:query].present?
       @albums = Album.includes(:artist).where('title ~ ?', params[:query])
     else
+      # may use action for discover
       @albums = Album.none
     end
   end

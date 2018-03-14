@@ -7,10 +7,7 @@ s## TODO
   * make func = (props) => {} or func = props => {} consistent
 
 * ### style
-  * style gear dropdown menu
-    * !!! https://medium.com/@pitipatdop/little-neat-trick-to-capture-click-outside-react-component-5604830beb7f
   * clean up header code NOT DRY (dumb header component? yeesh)
-  * enable click away closure of gear dropdown (dropdown screen)
 
 * ### user show
   * add migration w regular name and genre, allow edit of name in edit form
@@ -19,16 +16,17 @@ s## TODO
   * move user edit form out of the dropdown reducer
 
 * ### albums
-  * add null false to albums artist_id
-  * enable pause from buttons in list
   * player
     * for smoother scroll use setInterval instead of onTimeUpdate
     * ref
-  * track metadata extraction
 
 * ### search
-  * get thumbnails
   * relevance algorithm in backend???
+
+* ## album upload form
+  * disable button if album uploading
+  * track metadata extraction
+  * errors
 
 ## DONE
 * ### auth
@@ -47,6 +45,8 @@ s## TODO
 * ### style
   * make header a component, multiple headers to render
   * feed collection artist header, w dropdown
+  * style gear dropdown menu
+  * !!! https://medium.com/@pitipatdop/little-neat-trick-to-capture-click-outside-react-component-5604830beb7f
 
 * ### user show
   * on login redirect to own show page w/ profile edit form
@@ -59,9 +59,12 @@ s## TODO
 * ### album show
   * make player start at the beginning
   * add banner image as album banner
+  * enable pause from buttons in list
 
 * ### search
   * in search need user ids and album ids
+  * get thumbnails
+  * enable click away closure of gear dropdown (dropdown screen)
 
 ## QUESTIONS
 * when to use selectors
