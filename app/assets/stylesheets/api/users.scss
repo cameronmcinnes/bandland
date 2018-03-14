@@ -88,9 +88,9 @@ $green: #63a989;
   text-decoration: underline;
 }
 
-// .hollow-btn span:last-child {
-//   margin-bottom: 5px;
-// }
+.hollow-btn:last-child {
+  margin-bottom: 4px;
+}
 
 .hollow-btn span:first-child {
   text-decoration: none;

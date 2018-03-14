@@ -239,9 +239,27 @@ $darkgreen: #47875b;
 
 // album create
 
+.album-create-background {
+  background-color: #ddd;
+  min-height: 700px;
+}
+
 .album-create-container {
   width: 975px;
+  min-height: 650px;
   margin: auto;
+  padding-top: 20px;
+  background-color: #f7f7f7;
+}
+
+.album-form ul {
+  width: 490px;
+  position: relative;
+}
+
+.album-input-container {
+  display: flex;
+  justify-content: center;
 }
 
 .album-cover-file-input {
@@ -250,15 +268,163 @@ $darkgreen: #47875b;
   width: 210px;
   background-color: #eee;
   color: #929292;
-  border: 2px dotted;
   font-size: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-size: cover;
   background-repeat: no-repeat;
+  margin: 30px auto;
 }
 
 .album-cover-file-input span {
   display: block;
+}
+
+.album-info {
+  width: 470px;
+  height: 94px;
+  background-color: #fff;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  box-shadow: -3px 9px 9px -2px #eee;
+  z-index: 3;
+  border: solid 2px #ddd;
+  border-right: none;
+  box-sizing: border-box;
+  display: flex;
+  padding: 10px;
+}
+
+.album-info div:last-child {
+  margin-left: 10px;
+  font-size: 11px;
+}
+
+.album-info p:first-child {
+  font-size: 20px;
+}
+
+.album-info p {
+  margin-bottom: 5px;
+}
+
+.album-info strong {
+  font-weight: bold;
+}
+
+.album-info p:last-child {
+  color: #555;
+}
+
+.album-create-thumb {
+  width: 70px;
+  height: 70px;
+  background-size: cover;
+}
+
+.album-create-right-column {
+  width: 485px;
+  left: 488px;
+  top: -20px;
+  background-color: #fff;
+  position: absolute;
+  min-height: 670px;
+  box-shadow: -3px 2px 6px -1px #eee;
+  border-left: solid 2px #ddd;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.album-create-right-column input {
+  width: 100%;
+}
+
+.album-create-right-column textarea {
+  margin-top: 10px;
+  height: 155px;
+  width: 100%;
+  resize: none;
+}
+
+.track-info {
+  background-color: #fff;
+  width: 100%;
+  margin: 20px;
+  margin-right: 0px;
+  z-index: 3;
+  height: 50px;
+  border: solid 1px #ddd;
+  border-right: none;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.info-deselected {
+  background-color: #f7f7f7;
+  z-index: 1;
+  border: dotted 1px #ddd;
+  border-right: none;
+  box-sizing: border-box;
+  box-shadow: none;
+}
+
+.track-input-field {
+  padding: 10px;
+  border: solid 1px #666666;
+  width: 100%;
+  margin: 10px 0px;
+  font-size: 14px;
+}
+
+.track-input label {
+  font-size: 16px;
+}
+
+.buttons-container {
+  margin: 20px;
+}
+
+.buttons-container > .hollow-btn {
+  color: $green;
+  border-color: $green;
+  cursor: pointer;
+}
+
+.buttons-container > .hollow-btn:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: $green;
+}
+
+.album-form > ul > span {
+  display: block;
+  border-bottom: #63a989 1px dotted;
+  padding: 20px;
+  margin-left: 20px;
+}
+
+.small-fields-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.track-info > span {
+  display: block;
+  height: 15px;
+  width: 15px;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-right: 15px;
+}
+
+.track-info > span:hover {
+  background-color: #ddd;
+  color:white
 }

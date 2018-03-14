@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import AlbumInput from './album_input';
 import TrackInput from './track_input';
@@ -129,41 +130,49 @@ class AlbumCreateForm extends React.Component {
 
   render() {
     return(
-      <div className='album-create-container'>
-        <form className='user-edit-form'>
-          <ul>
-            <AlbumInput
-              album={ this.state }
-              updateAlbumInputField={ this.updateAlbumInputField }
-              selectAlbum={ this.selectAlbum }
-              artistName={ this.props.artistName }
-              handleImageChange={ this.handleImageChange }
-              />
-            {
-              this.state.track_attributes.map((track, idx) => (
-                <TrackInput
-                  key={ idx }
-                  ord={ idx }
-                  track={ track }
-                  updateTrackInputField={ this.updateTrackInputField }
-                  selectTrack={ this.selectTrack }
-                  deleteTrackInput={ this.deleteTrackInput }
-                  />
-              ))
-            }
-          </ul>
+      <div className='album-create-background'>
+        <div className='album-create-container'>
+          <form className='album-form'>
+            <ul>
+              <AlbumInput
+                album={ this.state }
+                updateAlbumInputField={ this.updateAlbumInputField }
+                selectAlbum={ this.selectAlbum }
+                artistName={ this.props.artistName }
+                handleImageChange={ this.handleImageChange }
+                />
+              <span>TRACKS</span>
+              {
+                this.state.track_attributes.map((track, idx) => (
+                  <TrackInput
+                    key={ idx }
+                    ord={ idx }
+                    track={ track }
+                    updateTrackInputField={ this.updateTrackInputField }
+                    selectTrack={ this.selectTrack }
+                    deleteTrackInput={ this.deleteTrackInput }
+                    />
+                ))
+              }
+            </ul>
 
-          <label> ADD TRACK
-            <input className='file-input'
-              type='file'
-              onChange={ this.appendTrackInput }
-              ></input>
-          </label>
+            <div className='buttons-container'>
+              <label className='hollow-btn'> ADD TRACK
+                <input className='file-input'
+                  type='file'
+                  onChange={ this.appendTrackInput }
+                  ></input>
+              </label>
 
-          <button type='submit' onClick={ this.handleSubmit }>
-            SAVE ALBUM
-          </button>
-        </form>
+              <button className='hollow-btn'
+                type='submit' onClick={ this.handleSubmit }>
+                SAVE ALBUM
+              </button>
+
+              <Link to={ `/users/${this.props.userId}` }>or cancel</Link>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

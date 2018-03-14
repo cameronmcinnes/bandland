@@ -20,18 +20,24 @@ class TrackInput extends React.Component {
 
     if (track.selected) {
       return (
-        <div className='hey-wiseguy'>
+        <div className='album-input-container'>
           <div className='track-info'>
-            <FontAwesome name='bars'/>
-            <p><strong>{this.props.ord + 1}</strong>{ track.title }</p>
+            <div>
+              <FontAwesome name='bars'/>
+              <p><strong>{this.props.ord + 1}</strong>{ track.title }</p>
+            </div>
             <FontAwesome name='times'
               onClick={ this.props.deleteTrackInput(this.props.ord) }/>
           </div>
 
-          <div className='right-column'>
+          <div className='album-create-right-column'>
             <div className='track-input'>
-              <label>title
+              <label>track title
                 <input
+                  className='track-input-field'
+                  onKeyPress={e => {
+                    if (e.key === 'Enter') e.preventDefault();
+                  }}
                   type='text'
                   value={ this.props.title }
                   onChange={ this.props.updateTrackInputField('title', this.props.ord) }
@@ -43,10 +49,12 @@ class TrackInput extends React.Component {
       );
     } else {
       return (
-        <div className='track-info'
+        <div className='track-info info-deselected'
           onClick={ this.props.selectTrack(this.props.ord) }>
-          <FontAwesome name='bars'/>
-          <p><strong>{this.props.ord + 1}</strong>{ track.title }</p>
+          <div>
+            <FontAwesome name='bars'/>
+            <p><strong>{this.props.ord + 1}</strong>{ track.title || 'untitled' }</p>
+          </div>
           <FontAwesome name='times'
             onClick={ this.props.deleteTrackInput(this.props.ord) }/>
         </div>
