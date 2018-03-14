@@ -1,9 +1,9 @@
-import { merge } from 'lodash';
-
+// dont use lodash merge because an empty arr will disolve when merged with an arr
 import {
-  RECEIVE_ALBUM_ERRORS
-  // CLEAR_ALBUM_ERRORS
+  RECEIVE_ALBUM_ERRORS,
+  CLEAR_ALBUM_ERRORS
 } from '../actions/album_actions';
+import { selectAlbumErrors } from './selectors';
 
 const defaultState = {
   title: [],
@@ -15,14 +15,9 @@ const albumErrorsReducer = (state = defaultState, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_ALBUM_ERRORS:
-      return merge({}, state, action.errors.responseJSON);
-    // QUESTION
-    // is it bad practice to modify errors slice of state with the modal action
-    // because thats a ui action ???
-    // case RECEIVE_CURRENT_USER:
-    //   return defaultState;
+      return Object.assign({}, state, selectAlbumErrors(action.errors));
     case CLEAR_ALBUM_ERRORS:
-      return defaultState;
+      return Object.assign({}, state, { [action.field]: [] });
     default:
       return state;
   }

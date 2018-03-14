@@ -14,6 +14,7 @@ class AlbumCreateForm extends React.Component {
       genre: '',
       track_attributes: [],
       albumSelected: true,
+      albumErrors: this.props.albumErrors
     };
     // concerned w track input
     this.updateTrackInputField = this.updateTrackInputField.bind(this);
@@ -25,6 +26,20 @@ class AlbumCreateForm extends React.Component {
     // concerned w top level form
     this.appendTrackInput = this.appendTrackInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ albumErrors: nextProps.albumErrors });
+  }
+
+  albumErrorsPresent(nextProps) {
+    const errorFields = Object.values(nextProps.albumErrors);
+    for (let i = 0; i < errorFields.length; i++) {
+      if (errorFields[i].length > 0) {
+        return true;
+      }
+    }
+    return false;
   }
 
   handleSubmit(e) {
@@ -51,6 +66,10 @@ class AlbumCreateForm extends React.Component {
 
   updateAlbumInputField(field) {
     return (e) => {
+      if (this.albumErrorsPresent(this.props)) {
+        this.props.clearAlbumErrors(field);
+      }
+
       if (e.target.type === 'file') {
         this.handleImageChange(e);
       } else {
@@ -137,6 +156,8 @@ class AlbumCreateForm extends React.Component {
           selectAlbum={ this.selectAlbum }
           artistName={ this.props.artistName }
           handleImageChange={ this.handleImageChange }
+          errors={ this.state.albumErrors }
+          errorsPresent= { this.albumErrorsPresent(this.props) }
           />
         <span>TRACKS</span>
         {

@@ -6,6 +6,7 @@ export const START_LOADING_ALBUM = 'START_LOADING_ALBUM';
 export const START_UPLOADING_ALBUM = 'START_UPLOADING_ALBUM';
 export const RECEIVE_SEARCHED_ALBUMS = 'RECEIVE_SEARCHED_ALBUMS';
 export const RECEIVE_ALBUM_ERRORS = 'RECEIVE_ALBUM_ERRORS';
+export const CLEAR_ALBUM_ERRORS = 'CLEAR_ALBUM_ERRORS';
 
 export const receiveAlbum = ({albums, users, tracks}) => ({
   type: RECEIVE_ALBUM,
@@ -50,4 +51,9 @@ export const createAlbum = (data, userId) => (dispatch) => {
 export const receiveAlbumErrors = errors => ({
   type: RECEIVE_ALBUM_ERRORS,
   errors
+})
+
+export const clearAlbumErrors = (field) => ({
+  type: CLEAR_ALBUM_ERRORS,
+  field
 })

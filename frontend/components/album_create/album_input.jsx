@@ -7,16 +7,42 @@ const AlbumInput = (props) => {
     updateAlbumInputField,
     selectAlbum,
     artistName,
-    handleImageChange
+    handleImageChange,
+    errors,
+    errorsPresent
   } = props;
+
+  const fieldErrors = (field) => {
+    return (
+      <div className='album-errors'>
+        <ul>
+          {
+            errors[field].map((error, idx) => {
+              return <li key={ idx }>{error}</li>;
+            })
+          }
+        </ul>
+      </div>
+    );
+  };
+
+  const fieldErrorClass = (field) => {
+    if (errors[field].length > 0) {
+      return 'error-input';
+    } else {
+      return '';
+    }
+  };
 
   const background = (album.cover_img_url) ?
   {backgroundImage: `url(${album.cover_img_url})`} : {border: 'grey 1px dotted'};
 
   const selectedClass = (album.albumSelected) ? '' : 'info-deselected';
 
+  const errorClass = (errorsPresent) ? 'error-info' : '';
+
   const albumInfo = (
-    <div className={ `album-info ${selectedClass}` }
+    <div className={ `album-info ${selectedClass} ${errorClass} ` }
       onClick={ selectAlbum() }>
       <div className='album-create-thumb' style={ background }></div>
       <div>
@@ -30,21 +56,23 @@ const AlbumInput = (props) => {
   const icon = (album.cover_img_url) ? '' : <FontAwesome name='camera' />;
   if (album.albumSelected) {
     // TODO make classes reusable
-
     return (
       <div className='album-input-container'>
         { albumInfo }
         <div className='album-create-right-column'>
           <label>album title
             <input
-              className='track-input-field'
+              className={ `track-input-field ${fieldErrorClass('title')}`}
               type='text'
               onChange={ updateAlbumInputField('title') }
               value={ album.title }>
             </input>
           </label>
 
-          <label className='album-cover-file-input'
+          { fieldErrors('title') }
+
+          <label
+            className={ `album-cover-file-input ${fieldErrorClass('cover_img')}`}
             style={ background }
             >
             { icon }
@@ -53,6 +81,8 @@ const AlbumInput = (props) => {
               onChange={ updateAlbumInputField() }
               ></input>
           </label>
+
+          { fieldErrors('cover_img') }
 
           <div className='small-fields-container'>
             <label>genre
@@ -65,15 +95,18 @@ const AlbumInput = (props) => {
               </input>
             </label>
 
-            <label>price
-              <input
-                className='track-input-field'
-                type='text'
-                onChange={ updateAlbumInputField('price') }
-                value={ album.price }>
+            <div className='album-price-and-errors'>
+              <label>price
+                <input
+                  className={ `track-input-field ${fieldErrorClass('price')}`}
+                  type='text'
+                  onChange={ updateAlbumInputField('price') }
+                  value={ album.price }>
 
-              </input>
-            </label>
+                </input>
+              </label>
+              { fieldErrors('price') }
+            </div>
           </div>
 
           <label>description
@@ -92,4 +125,9 @@ const AlbumInput = (props) => {
   }
 };
 
+
+
 export default AlbumInput;
+
+
+//session-errors

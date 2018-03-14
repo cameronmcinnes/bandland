@@ -290,11 +290,12 @@ $darkgreen: #47875b;
   margin-bottom: 20px;
   box-shadow: -3px 2px 9px -2px #eee;
   z-index: 3;
-  border: solid 2px #ddd;
+  border: solid 1px #ddd;
   border-right: none;
   box-sizing: border-box;
   display: flex;
   padding: 10px;
+  border-left: $green solid 3px;
 }
 
 .album-info div:last-child {
@@ -326,13 +327,13 @@ $darkgreen: #47875b;
 
 .album-create-right-column {
   width: 486px;
-  left: 488px;
+  left: 489px;
   top: -20px;
   background-color: #fff;
   position: absolute;
   min-height: 870px;
-  box-shadow: -3px 2px 6px -1px #eee;
-  border-left: solid 2px #ddd;
+  box-shadow: -1px 2px 6px -1px #eee;
+  border-left: solid 1px #ddd;
   padding: 20px;
   box-sizing: border-box;
   z-index: 2;
@@ -352,8 +353,7 @@ $darkgreen: #47875b;
 .track-info {
   background-color: #fff;
   width: 100%;
-  margin: 20px;
-  margin-right: 0px;
+  margin: 5px 0px 0px 20px;
   z-index: 3;
   height: 50px;
   border: solid 1px #ddd;
@@ -362,6 +362,8 @@ $darkgreen: #47875b;
   display: flex;
   justify-content: space-between;
   position: relative;
+  border-left: $green solid 3px;
+  padding-left: 5px;
 }
 
 .info-deselected {
@@ -372,6 +374,10 @@ $darkgreen: #47875b;
   box-sizing: border-box;
   box-shadow: none;
   width: 96%;
+}
+
+.track-info.info-deselected {
+  padding-left: 3px;
 }
 
 .track-input-field {
@@ -415,22 +421,58 @@ $darkgreen: #47875b;
   margin-bottom: 20px;
 }
 
-.track-info > span {
-  display: block;
-  height: 15px;
-  width: 15px;
-  text-align: center;
-  border-radius: 3px;
-  font-size: 14px;
-  margin-top: 10px;
-  margin-right: 15px;
+.track-info span {
+  color: #888;
+  font-size: 20px;
 }
 
-.track-info > span:hover {
-  background-color: #ddd;
-  color:white
+.track-info > span {
+  cursor: pointer;
+  border-radius: 3px;
+  margin: 12px 20px;
+}
+
+.track-info span:hover {
+  color: black;
+}
+
+.track-info > div {
+  display: flex;
+  align-items: center;
+}
+
+.track-info > div > span {
+  padding: 14px;
+  height: 100%;
+  border-right: solid 1px #ddd;
+}
+
+.track-info p {
+  margin: 10px;
+  font-size: 14px;
+}
+
+.track-info strong {
+  margin-right: 10px;
+  font-weight: bold;
 }
 
 .album-upload-loader-container {
   margin-top: 300px;
+}
+
+// errors classes
+
+.album-errors {
+  font-size: 12px;
+  height: 12px;
+  color: #c43329;
+}
+
+.album-price-and-errors {
+  width: 50%;
+}
+
+.error-info {
+  border-left: solid 3px #c43329;
 }

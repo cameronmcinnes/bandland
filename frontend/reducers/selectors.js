@@ -85,3 +85,13 @@ export const selectAlbumResults = (state) => {
     state.ui.searchResults.albumIds.includes(album.id.toString())
   ));
 };
+
+export const selectAlbumErrors = (errors) => {
+  const albumErrors = {};
+  for (let prop in errors.responseJSON) {
+    if (!prop.includes('track')) {
+      albumErrors[prop] = errors.responseJSON[prop];
+    }
+  }
+  return albumErrors;
+};
