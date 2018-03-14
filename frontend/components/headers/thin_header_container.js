@@ -19,7 +19,6 @@ const guest = {
 
 const mapDispatchToProps = dispatch => ({
   toggleModal: (modalName) => dispatch(toggleModal(modalName)),
-  loginGuest: (history) => dispatch(login(guest)),
   toggleMenu: (menu) => dispatch(toggleMenu(menu))
 });
 

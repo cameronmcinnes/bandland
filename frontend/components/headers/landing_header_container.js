@@ -17,8 +17,7 @@ const guest = {
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
-  toggleModal: (modalName) => dispatch(toggleModal(modalName)),
-  loginGuest: () => dispatch(login(guest))
+  toggleModal: (modalName) => dispatch(toggleModal(modalName))
 });
 
 export default connect(

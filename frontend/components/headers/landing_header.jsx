@@ -17,21 +17,21 @@ const personalGreeting = (currentUser, logout) => (
 	</nav>
 );
 
-const sessionLinks = (toggleModal, loginGuest) => (
+const sessionLinks = (toggleModal) => (
   <nav className="header-nav">
 		<span className="signed-out-msg">Welcome to the whimsicial land where bands reign supreme.</span>
 
 		<ul>
-			<li><a onClick={ loginGuest }>guest log in</a></li>
+			<li><Link to='/guest'>guest log in</Link></li>
       <li><a onClick={ () => toggleModal('signup') }>sign up</a></li>
       <li><Link to="/login">log in</Link></li>
     </ul>
   </nav>
 );
 
-const LandingHeader = ({ currentUser, logout, toggleModal, loginGuest }) => {
+const LandingHeader = ({ currentUser, logout, toggleModal }) => {
 	const nav = currentUser ?
-		personalGreeting(currentUser, logout) : sessionLinks(toggleModal, loginGuest)
+		personalGreeting(currentUser, logout) : sessionLinks(toggleModal)
 	return (
 		<header className='main-header'>
 			<div className='landing-header-div'>

@@ -21,14 +21,17 @@ const App = () => (
       <Route path='/' component={ ThinHeaderContainer } />
     </Switch>
 
-    <AuthRoute
-      path='/signup'
-      component={ SignupFormContainer }
-      />
-    <AuthRoute
-      path='/login'
-      component={ LoginFormContainer }
-      />
+    <Switch>
+      <AuthRoute
+        path='/signup'
+        component={ SignupFormContainer } />
+      <AuthRoute
+        path='/login'
+        component={ LoginFormContainer } />
+      <AuthRoute
+        path='/guest'
+        component={ LoginFormContainer } />
+    </Switch>
 
     <Switch>
       <Route path='/albums/new' component={ AlbumCreateFormContainer } />

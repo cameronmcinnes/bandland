@@ -7,7 +7,7 @@ import SearchContainer from '../search/search_container'
 
 // TODO make this class component so it can have state to add classname on gear
 
-const ThinHeader = ({ currentUser, logout, toggleModal, loginGuest, toggleMenu, gearDropdownState }) => {
+const ThinHeader = ({ currentUser, logout, toggleModal, toggleMenu, gearDropdownState }) => {
 	return (
     <div>
     <div className='border'></div>
@@ -36,7 +36,7 @@ const ThinHeader = ({ currentUser, logout, toggleModal, loginGuest, toggleMenu, 
 
           { Boolean(!currentUser) &&
             <ul className='thin-header-nav-ul'>
-              <li><a onClick={ loginGuest }>guest log in</a></li>
+              <li><Link to='/guest'>guest log in</Link></li>
               <li><a onClick={ () => toggleModal('signup') }>sign up</a></li>
               <li><Link to="/login">log in</Link></li>
             </ul>

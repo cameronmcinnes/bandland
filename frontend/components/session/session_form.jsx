@@ -16,15 +16,18 @@ class SessionForm extends React.Component {
 
   componentDidMount() {
     this.props.clearSessionErrors();
+    if (this.props.location.pathname === '/guest') {
+      this.setState({
+        username: 'beloved_guest',
+        password: 'demo_user'
+      })
+    }
   }
 
   handleSubmit(e) {
-    e.preventDefault();
     const user = Object.assign({}, this.state);
     this.setState({ disabled: true });
-    this.props.processForm({user});//.then(()=> {
-    //   this.props.history.push(`users/${this.props.currentUser.id}`)
-    // });
+    this.props.processForm({user});
   }
 
   updateField(field) {

@@ -13,9 +13,9 @@ const searchResultsReducer = (state = defaultState, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_SEARCHED_USERS:
-      return merge({}, state, { userIds: Object.keys(action.users) });
+      return Object.assign({}, state, { userIds: Object.keys(action.users) });
     case RECEIVE_SEARCHED_ALBUMS:
-      return merge({}, state, { albumIds: Object.keys(action.albums) });
+      return Object.assign({}, state, { albumIds: Object.keys(action.albums) });
     case CLEAR_SEARCH:
       return defaultState;
     default:
