@@ -19,14 +19,13 @@ s## TODO
   * player
     * for smoother scroll use setInterval instead of onTimeUpdate
     * ref
+  * add collect button
 
 * ### search
   * relevance algorithm in backend???
 
 * ## album upload form
-  * disable button if album uploading
   * track metadata extraction
-  * errors
 
 ## DONE
 * ### auth
@@ -65,6 +64,11 @@ s## TODO
   * in search need user ids and album ids
   * get thumbnails
   * enable click away closure of gear dropdown (dropdown screen)
+
+* ### album upload form
+  * disable button if album uploading
+  * errors
+
 
 ## QUESTIONS
 * when to use selectors

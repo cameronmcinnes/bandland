@@ -8,6 +8,8 @@ import TrackListItem from './track_list_item';
 class AlbumShow extends React.Component {
   constructor(props) {
     super(props);
+
+    this.handleCollectAdd = this.handleCollectAdd.bind(this);
   }
 
   componentDidMount() {
@@ -18,6 +20,15 @@ class AlbumShow extends React.Component {
     if (this.props.match.params.albumId !== nextProps.match.params.albumId) {
       this.props.fetchAlbum(nextProps.match.params.albumId);
     }
+  }
+
+  handleCollectAdd(e) {
+    const collecting = {
+      collector_id: this.props.currentUser.id,
+      collected_id: this.props.match.params.albumId
+    };
+
+    this.props.createCollecting({collecting});
   }
 
   render() {
@@ -63,7 +74,16 @@ class AlbumShow extends React.Component {
               <TrackPlayerContainer />
 
               <div className='album-purchase-container'>
-                <a>Buy Album</a> <span><strong>${album.price}</strong> or more</span>
+                <p>
+                  <a>Buy Album</a> <span>
+                  <strong>${album.price}</strong> or more</span>
+                </p>
+                <a onClick={ this.handleCollectAdd }>
+                  Add to collection
+                </a>
+                <a onClick={ () => this.props.destroyCollecting(album.id) }>
+                  Remove from collection
+                </a>
               </div>
 
               <ul className='track-list'>
