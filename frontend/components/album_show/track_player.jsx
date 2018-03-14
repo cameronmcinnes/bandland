@@ -22,7 +22,7 @@ class TrackPlayer extends React.Component {
   componentDidUpdate() {
     if (this.props.track.isPlaying) {
       this.audio.play();
-      this.timeOut = setInterval(this.advanceSlider, 3);
+      this.timeOut = setInterval(this.advanceSlider, 300);
     } else {
       this.audio.pause();
       clearInterval(this.timeOut);
@@ -70,6 +70,7 @@ class TrackPlayer extends React.Component {
   handleEnd(e) {
     if (this.props.track.ord >= Object.values(this.props.tracks).length) {
       this.props.changeCurrentTrack(this.props.tracks[0], 'paused');
+      clearInterval(this.timeOut);
     } else {
       this.changeTrack(1);
     }
@@ -80,7 +81,6 @@ class TrackPlayer extends React.Component {
     const iconName = (track.isPlaying) ? 'pause' : 'play';
     const backDisabled = (track.ord === 1) ? true : false;
     const frwdDisabled = (track.ord >= Object.values(tracks).length) ? true : false;
-
     return (
       <div className='play-box'>
 

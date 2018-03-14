@@ -11,12 +11,12 @@ export const signup = user => dispatch => (
   )
 );
 
-export const login = user => dispatch => (
-  SessionAPIUtil.login(user).then(
+export const login = user => dispatch => {
+  return SessionAPIUtil.login(user).then(
     loggedInUser => dispatch(receiveCurrentUser(loggedInUser)),
     errors => dispatch(receiveSessionErrors(errors))
-  )
-);
+  );
+};
 
 export const logout = () => dispatch => (
   SessionAPIUtil.logout().then(

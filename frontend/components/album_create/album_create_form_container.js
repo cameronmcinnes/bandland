@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import { createAlbum, startUploadingAlbum, clearAlbumErrors } from '../../actions/album_actions';
 
@@ -17,7 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
   clearAlbumErrors: (field) => dispatch(clearAlbumErrors(field))
 });
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(AlbumCreateForm);
+)(AlbumCreateForm));

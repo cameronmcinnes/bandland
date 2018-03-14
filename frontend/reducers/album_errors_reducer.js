@@ -8,7 +8,9 @@ import { selectAlbumErrors } from './selectors';
 const defaultState = {
   title: [],
   price: [],
-  cover_img: []
+  cover_img: [],
+  genre: [],
+  description: []
 };
 
 const albumErrorsReducer = (state = defaultState, action) => {

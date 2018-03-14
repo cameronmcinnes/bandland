@@ -25,11 +25,6 @@ class AlbumShow extends React.Component {
 
     if (!album || !artist ) return null;
 
-    // for hover w/ download button use these event handles giving callbacks
-    // that pass new props down to child
-    // onMouseEnter={ () => 'add download button' }
-    // onMouseLeave={ () => 'add take it aways button' }
-
     const trackList = tracks.map((track, idx) => {
       return <TrackListItem
         key={ idx }

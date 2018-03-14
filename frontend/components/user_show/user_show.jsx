@@ -25,9 +25,8 @@ class UserShow extends React.Component {
     // need to check if fully fetched
     if (!(user && user.email && user.collectedAlbumIds )) return null;
     if (loading) {
-      debugger;
       return <div><h1>ADHFASDF</h1><div className="loader">Loading...</div></div>;
-      }
+    }
 
     const baseUrl = `/users/${this.props.match.params.userId}`;
 

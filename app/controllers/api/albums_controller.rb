@@ -3,7 +3,7 @@ class Api::AlbumsController < ApplicationController
     @album = Album.new(album_params)
     @album.artist_id = current_user.id
     if @album.save
-      render :show
+      render partial: 'album', locals: { album: @album }
     else
       render json: @album.errors.messages, status: 422
     end

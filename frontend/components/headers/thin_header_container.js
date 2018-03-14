@@ -17,12 +17,19 @@ const guest = {
   }
 };
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, getState) => ({
   toggleModal: (modalName) => dispatch(toggleModal(modalName)),
-  toggleMenu: (menu) => dispatch(toggleMenu(menu))
+  toggleMenu: (menu) => dispatch(toggleMenu(menu)),
+  loginGuest: () => dispatch(login(guest))
 });
 
 export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
 )(ThinHeader));
+
+// 
+// .then((user)=>{
+//   debugger;
+//   return 6;
+// })

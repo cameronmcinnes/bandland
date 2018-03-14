@@ -64,7 +64,9 @@ class AlbumCreateForm extends React.Component {
     if (coverImg) formData.append('album[cover_img]', coverImg);
 
     this.props.startUploadingAlbum();
-    this.props.createAlbum(formData, this.props.userId);// then use promise to redirect;
+    this.props.createAlbum(formData, this.props.userId).then((res) => {
+      this.props.history.push(`/albums/${res.album.id}`);
+    });
   }
 
   updateAlbumInputField(field) {
