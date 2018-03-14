@@ -32,7 +32,10 @@ class AlbumCreateForm extends React.Component {
     this.setState({ albumErrors: nextProps.albumErrors });
   }
 
-  albumErrorsPresent(nextProps) {
+  albumErrorsPresent(nextProps, field) {
+    if (field && nextProps.albumErrors[field].length === 0) {
+      return false;
+    }
     const errorFields = Object.values(nextProps.albumErrors);
     for (let i = 0; i < errorFields.length; i++) {
       if (errorFields[i].length > 0) {
@@ -66,7 +69,7 @@ class AlbumCreateForm extends React.Component {
 
   updateAlbumInputField(field) {
     return (e) => {
-      if (this.albumErrorsPresent(this.props)) {
+      if (this.albumErrorsPresent(this.props, field)) {
         this.props.clearAlbumErrors(field);
       }
 
@@ -183,6 +186,7 @@ class AlbumCreateForm extends React.Component {
           <input className='file-input'
             type='file'
             onChange={ this.appendTrackInput }
+            accept='audio/*'
             ></input>
         </label>
 
