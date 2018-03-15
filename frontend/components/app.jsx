@@ -11,6 +11,7 @@ import ModalContainer from './modals/modal_container';
 import UserShowContainer from './user_show/user_show_container';
 import AlbumShowContainer from './album_show/album_show_container';
 import AlbumCreateFormContainer from './album_create/album_create_form_container';
+import DiscoverContainer from './discover/discover_container';
 
 const App = () => (
   <div>
@@ -37,6 +38,8 @@ const App = () => (
       <Route path='/albums/new' component={ AlbumCreateFormContainer } />
       <Route path='/users/:userId' component={ UserShowContainer }/>
       <Route path='/albums/:albumId' component={ AlbumShowContainer } />
+      <Route path='/discover' component={ DiscoverContainer } />
+      <Route path='/' component={ DiscoverContainer } />
     </Switch>
 
     <ModalContainer />

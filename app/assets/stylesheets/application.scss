@@ -18,9 +18,12 @@
 $green: #63a989;
 $darkgreen: #47875b;
 
-@media screen and (max-width: 980px) { .thin-header-nav { width: 756px; } }
-@media screen and (min-width: 980px) { .thin-header-nav { width: 1008px; } }
-@media screen and (min-width: 1300px) { .thin-header-nav { width: 1260px; } }
+@media screen and (max-width: 980px) {
+  .landing-header-div, .thin-header-nav, .recent-albums-container { width: 756px; } }
+@media screen and (min-width: 980px) {
+  .landing-header-div, .thin-header-nav, .recent-albums-container { width: 1008px; } }
+@media screen and (min-width: 1300px) {
+  .landing-header-div, .thin-header-nav, .recent-albums-container { width: 1260px; } }
 
 
 html {
@@ -72,7 +75,7 @@ a:hover {
 
 .landing-header-div {
   margin: auto;
-  max-width: 994px;
+  // max-width: 994px;
   min-height: 100px;
   font-size: 14px;
   box-sizing: border-box;
