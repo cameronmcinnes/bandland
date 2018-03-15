@@ -25,9 +25,6 @@ const ThinHeader = (props) => {
         <ul className='thin-header-nav-ul'>
           <li id='logo-li'><a href='#'><img className='thin-header-logo' src={ window.mainLogo } /></a></li>
           <li><a href='#'>discover</a></li>
-          { Boolean(currentUser) &&
-            <li><a href='#'>feed</a></li>
-          }
         </ul>
         <SearchContainer />
         </div>
