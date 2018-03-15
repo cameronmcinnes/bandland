@@ -12,19 +12,39 @@ $green: #63a989;
   margin: 0 auto;
 }
 
+.collection-index-btn {
+  margin-left: 10px;
+  color: #fff;
+}
+
+.collection-index-btn:hover {
+  color: black;
+}
+
 .album-index-grid li {
   display: inline-block;
 }
 
 .album-info-container {
   // border: solid 1px #b2b2b2;
-  border: solid 1px #fff;
+  border: solid 1px transparent;
   margin: 15px 11px;
 }
+
+// .album-info-container .flx-container {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: flex-end;
+//
+// }
 
 .album-info-container:hover {
   border: dotted 1px #b2b2b2;
   margin: 15px 11px;
+}
+
+.album-info-container:hover .collection-index-btn {
+  color: #888;
 }
 
 .album-info-main {
@@ -41,8 +61,9 @@ $green: #63a989;
   color: #505958;
   font-size: 14px;
   font-weight: 700;
+  margin-top: 0px;
 }
 
 .album-info-detail {
-
+  margin: 9px;
 }
