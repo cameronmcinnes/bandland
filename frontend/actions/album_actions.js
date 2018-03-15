@@ -8,11 +8,12 @@ export const RECEIVE_SEARCHED_ALBUMS = 'RECEIVE_SEARCHED_ALBUMS';
 export const RECEIVE_ALBUM_ERRORS = 'RECEIVE_ALBUM_ERRORS';
 export const CLEAR_ALBUM_ERRORS = 'CLEAR_ALBUM_ERRORS';
 
-export const receiveAlbum = ({albums, users, tracks}) => ({
+export const receiveAlbum = ({albums, users, tracks, tags}) => ({
   type: RECEIVE_ALBUM,
   albums,
   users,
-  tracks
+  tracks,
+  tags
 });
 
 export const receiveNewAlbum = (album) => ({

@@ -5,9 +5,11 @@ json.albums do
     json.partial! 'api/albums/album', album: @album
     json.collector_ids @album.collectors.pluck(:id)
     json.track_ids @album.tracks.pluck(:id)
+    json.tag_ids @album.tags.pluck(:id)
   end
   # add other albums by artist
-  @album.artist.albums.each do |album|
+  # TODO n + 1 query ?? can i do this on includes
+  @album.artist.albums.order(created_at: :desc).limit(4).each do |album|
     next if album.id == @album.id
     json.set! album.id do
       json.title album.title
