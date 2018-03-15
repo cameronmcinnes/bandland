@@ -32,7 +32,7 @@ class User < ApplicationRecord
   has_attached_file :profile_img, default_url: "missing.png", styles: {
     thumb: '48x48'
   }
-  
+
   validates_attachment_content_type :profile_img, :banner_img, content_type: /\Aimage\/.*\Z/
 
   after_initialize :ensure_session_token
@@ -42,6 +42,7 @@ class User < ApplicationRecord
   has_many :albums, foreign_key: :artist_id
   has_many :collectings, foreign_key: :collector_id
   has_many :collected_albums, through: :collectings, source: :collected
+  has_many :tags, as: :taggable
 
   def password=(password)
     @password = password

@@ -27,6 +27,10 @@ s## TODO
 * ## album upload form
   * track metadata extraction
 
+* ### tag notes
+  * http://joshsymonds.com/blog/2012/07/01/rails-concerns-i-starting-with-redcarpet/
+  * http://joshsymonds.com/blog/2012/07/04/rails-concerns-ii-taggable/
+
 ## DONE
 * ### auth
   * clear errors on component did mount non modal login and signup
