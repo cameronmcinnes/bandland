@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchUser, startLoadingUser } from '../../actions/user_actions';
 import { toggleMenu, toggleModal } from '../../actions/ui_actions';
 
+
 import UserShow from './user_show';
 
 const mapStateToProps = (state, { match }) => {

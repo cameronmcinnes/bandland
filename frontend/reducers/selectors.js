@@ -97,7 +97,15 @@ export const selectAlbumErrors = (errors) => {
 };
 
 export const removeCollectorId = (albums, {collectorId, collectedId}) => {
+  if (!albums[collectedId].collectorIds) return null;
   return albums[collectedId].collectorIds.filter((collId) => (
     collectorId !== collId
+  ));
+};
+
+export const removeCollectedId = (users, {collectorId, collectedId}) => {
+  if (!users[collectorId].collectedAlbumIds) return null;
+  return users[collectorId].collectedAlbumIds.filter((collId) => (
+    collectedId !== collId
   ));
 };

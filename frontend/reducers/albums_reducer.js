@@ -14,6 +14,7 @@ const albumsReducer = (state = {}, action) => {
       newState[collectedId].collectorIds.push(collectorId);
       return newState;
     case DESTROY_COLLECTING:
+      // BUG possobile bug when removeCollectorId returns null?
       const newCollIds = removeCollectorId(state, action.collecting);
       const newAlb = merge({}, state[action.collecting.collectedId]);
       newAlb.collectorIds = newCollIds;

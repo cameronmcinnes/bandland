@@ -37,6 +37,18 @@ User.create!(
   own_site_url: 'google.com',
 )
 
+5.times do
+  User.create!(
+    username: Faker::Superhero.name,
+    email: Faker::Internet.email,
+    location: Faker::Pokemon.location,
+    password: 'verymodern',
+    description: Faker::Company.bs,
+    profile_img: Faker::Avatar.image,
+    banner_img: Faker::Company.logo
+  )
+end
+
 user_ids = User.all.pluck(:id)
 
 Album.destroy_all
@@ -48,7 +60,7 @@ File.readlines('db/seed_filenames/covers.txt').map(&:strip).each_with_index do |
     artist_id: user_ids.sample,
     title: "#{Faker::StarWars.vehicle}_#{i}",
     price: rand(10),
-    description: 'howdy. what a nuanced album',
+    description: Faker::Hipster.paragraphs,
     cover_img: base_url + cover_name
   )
 end

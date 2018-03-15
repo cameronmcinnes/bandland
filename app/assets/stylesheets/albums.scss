@@ -196,7 +196,8 @@ $darkgreen: #47875b;
   font-weight: 500;
 }
 
-.artist-detail-container button {
+// .artist-detail-container button {
+.album-show-button {
   background-color: $green;
   color: #fff;
   width: 100%;
@@ -475,4 +476,10 @@ $darkgreen: #47875b;
 
 .error-info {
   border-left: solid 3px #c43329;
+}
+
+
+// collection btn
+.collection-btn {
+  margin: 20px 0px;
 }

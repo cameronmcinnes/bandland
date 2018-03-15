@@ -32,9 +32,9 @@ class AlbumShow extends React.Component {
   }
 
   render() {
-    const { album, artist, collectors, tracks, currentTrack, discog} = this.props;
+    const { album, artist, collectors, tracks, currentTrack, discog, currentUser} = this.props;
 
-    if (!album || !artist ) return null;
+    if (!album || !artist || !album.collectorIds ) return null;
 
     const trackList = tracks.map((track, idx) => {
       return <TrackListItem
@@ -45,6 +45,21 @@ class AlbumShow extends React.Component {
         playPauseCurrentTrack={ this.props.playPauseCurrentTrack }
         />;
     });
+
+    const collectButton = (album.collectorIds.includes(currentUser.id)) ?
+     (
+       <button
+         className='album-show-button'
+         onClick={ () => this.props.destroyCollecting(album.id) }>
+         Remove album from collection
+       </button>
+    ) : (
+      <button
+        className='album-show-button'
+        onClick={ this.handleCollectAdd }>
+        Add album to collection
+      </button>
+    );
 
     const discogList = discog.map((album, idx) => {
       return (
@@ -78,12 +93,8 @@ class AlbumShow extends React.Component {
                   <a>Buy Album</a> <span>
                   <strong>${album.price}</strong> or more</span>
                 </p>
-                <a onClick={ this.handleCollectAdd }>
-                  Add to collection
-                </a>
-                <a onClick={ () => this.props.destroyCollecting(album.id) }>
-                  Remove from collection
-                </a>
+
+
               </div>
 
               <ul className='track-list'>
@@ -97,6 +108,7 @@ class AlbumShow extends React.Component {
             </div>
             <div className='album-show-cover-container'>
               <img className='album-show-cover' src={album.coverImgUrl}></img>
+              { collectButton }
               <h5>supported by</h5>
               <ul className='collector-index'>
                 {
