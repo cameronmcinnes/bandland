@@ -12,9 +12,10 @@ class Api::AlbumsController < ApplicationController
   def index
     if params[:query].present?
       @albums = Album.includes(:artist).where('title ~ ?', params[:query])
+      render :search
     else
-      # may use action for discover
-      @albums = Album.none
+      lim = params[:limit].to_i
+      @albums = Album.includes(:artist).limit(lim).order(created_at: :desc)
     end
   end
 

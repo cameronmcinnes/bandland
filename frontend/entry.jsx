@@ -7,6 +7,7 @@ import Root from './components/root';
 // TEST imports
 import * as SessionActions from './actions/session_actions';
 import { searchUsers } from './util/user_api_util';
+import { fetchRecentAlbums } from './actions/album_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -23,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.dispatch = store.dispatch;
 
   window.searchUsers = searchUsers;
+
+  window.fetchRecentAlbums = fetchRecentAlbums;
 
   window.login = SessionActions.login;
   window.logout = SessionActions.logout;

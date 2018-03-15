@@ -21,3 +21,12 @@ export const createAlbum = (data, userId) => (
     dataType: 'json',
   })
 );
+
+export const fetchRecentAlbums = ( limit ) => (
+  $.ajax({
+    url: 'api/albums',
+    data: { limit }
+  })
+);
+
+// export const fetchAlbumByTag

@@ -1,10 +1,12 @@
 import * as AlbumAPIUtil from '../util/album_api_util';
 
 export const RECEIVE_ALBUM = 'RECEIVE_ALBUM';
+export const RECEIVE_ALBUMS = 'RECEIVE_ALBUMS';
 export const RECEIVE_NEW_ALBUM = 'RECEIVE_NEW_ALBUM';
+export const RECEIVE_SEARCHED_ALBUMS = 'RECEIVE_SEARCHED_ALBUMS';
+
 export const START_LOADING_ALBUM = 'START_LOADING_ALBUM';
 export const START_UPLOADING_ALBUM = 'START_UPLOADING_ALBUM';
-export const RECEIVE_SEARCHED_ALBUMS = 'RECEIVE_SEARCHED_ALBUMS';
 export const RECEIVE_ALBUM_ERRORS = 'RECEIVE_ALBUM_ERRORS';
 export const CLEAR_ALBUM_ERRORS = 'CLEAR_ALBUM_ERRORS';
 
@@ -14,6 +16,11 @@ export const receiveAlbum = ({albums, users, tracks, tags}) => ({
   users,
   tracks,
   tags
+});
+
+export const receiveAlbums = (albums) => ({
+  type: RECEIVE_ALBUMS,
+  albums
 });
 
 export const receiveNewAlbum = (album) => ({
@@ -57,9 +64,15 @@ export const createAlbum = (data, userId) => (dispatch) => {
 export const receiveAlbumErrors = errors => ({
   type: RECEIVE_ALBUM_ERRORS,
   errors
-})
+});
 
 export const clearAlbumErrors = (field) => ({
   type: CLEAR_ALBUM_ERRORS,
   field
-})
+});
+
+export const fetchRecentAlbums = (limit) => (dispatch) => {
+  return AlbumAPIUtil.fetchRecentAlbums(limit).then(
+    (albums) => dispatch(receiveAlbums(albums))
+  )
+};
