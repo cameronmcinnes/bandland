@@ -34,7 +34,8 @@ class Api::AlbumsController < ApplicationController
         :title,
         :audio_file,
         :ord
-      ]
+      ],
+      tag_names: []
     )
   end
 end
