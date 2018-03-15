@@ -9,7 +9,12 @@ const AlbumInput = (props) => {
     artistName,
     handleImageChange,
     errors,
-    errorsPresent
+    errorsPresent,
+    newTag,
+    tagNames,
+    addTag,
+    removeTag,
+    handleTagFieldKey
   } = props;
 
   const fieldErrors = (field) => {
@@ -117,6 +122,40 @@ const AlbumInput = (props) => {
 
             </textarea>
           </label>
+
+          <div className='user-edit-input-box'>
+            <div className='user-edit-field-container album-create-tag-input'>
+              <div className='flx-container tag-labels'>
+                <label id='alb-tag-label'>tags</label>
+                <label
+                  onClick={ addTag }
+                  className='tag-btn'>
+                  add tag</label>
+              </div>
+                <input
+                  onKeyPress={ handleTagFieldKey }
+                  onChange={ updateAlbumInputField('tag')}
+                  value={ newTag }
+                  type="text"
+                  className='track-input-field'
+                />
+            </div>
+
+            <div>
+
+              <ul className='user-edit-tags album-create-tags'>
+                {
+                  tagNames.map((tag_name, idx) => {
+                    return (
+                      <li key={ idx }
+                        onClick={ removeTag }>
+                      { tag_name }</li>
+                    );
+                  })
+                }
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -125,9 +164,4 @@ const AlbumInput = (props) => {
   }
 };
 
-
-
 export default AlbumInput;
-
-
-//session-errors

@@ -3,6 +3,7 @@ class Api::AlbumsController < ApplicationController
     @album = Album.new(album_params)
     @album.artist_id = current_user.id
     if @album.save
+      @album.tag_names = tag_params[:tag_names]
       render partial: 'album', locals: { album: @album }
     else
       render json: @album.errors.messages, status: 422
@@ -19,7 +20,7 @@ class Api::AlbumsController < ApplicationController
   end
 
   def show
-    @album = Album.includes(:collectors, :tracks, artist: {albums: :artist}).find_by(id: params[:id])
+    @album = Album.includes(:tags, :collectors, :tracks, artist: {albums: :artist}).find_by(id: params[:id])
   end
 
   private
@@ -34,8 +35,11 @@ class Api::AlbumsController < ApplicationController
         :title,
         :audio_file,
         :ord
-      ],
-      tag_names: []
+      ]
     )
+  end
+
+  def tag_params
+    params.require(:tags).permit(tag_names: [])
   end
 end

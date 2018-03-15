@@ -14,6 +14,8 @@ s## TODO
   * disable button
   * allow color change
   * move user edit form out of the dropdown reducer
+  * anyone can remove from collections TODO
+  * fetch only the user details on edit??? 
 
 * ### albums
   * player

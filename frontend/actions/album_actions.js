@@ -15,6 +15,11 @@ export const receiveAlbum = ({albums, users, tracks}) => ({
   tracks
 });
 
+export const receiveNewAlbum = (album) => ({
+  type: RECEIVE_NEW_ALBUM,
+  album
+});
+
 export const fetchAlbum = id => dispatch => {
   dispatch(startUploadingAlbum);
   return AlbumAPIUtil.fetchAlbum(id).then(
@@ -43,7 +48,7 @@ export const receiveSearchedAlbums = (albums) => ({
 
 export const createAlbum = (data, userId) => (dispatch) => {
   return AlbumAPIUtil.createAlbum(data, userId).then(
-    (payload) => dispatch(receiveAlbum(payload)),
+    (album) => dispatch(receiveNewAlbum(album)),
     (errors) => dispatch(receiveAlbumErrors(errors))
   )
 };

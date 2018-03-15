@@ -254,7 +254,7 @@ $darkgreen: #47875b;
   background-color: #f7f7f7;
 }
 
-.album-form ul {
+.album-form > ul {
   width: 490px;
   position: relative;
 }
@@ -349,6 +349,19 @@ $darkgreen: #47875b;
   height: 155px;
   width: 100%;
   resize: none;
+}
+
+.album-create-tag-input {
+  color: black;
+  width: 198px;
+}
+
+.album-create-tags {
+  max-width: 225px;
+}
+
+#alb-tag-label {
+  color: black;
 }
 
 .track-info {

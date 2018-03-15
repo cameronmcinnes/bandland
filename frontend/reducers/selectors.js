@@ -76,13 +76,13 @@ export const selectArtistDiscog = (state, match) => {
 
 export const selectUserResults = (state) => {
   return Object.values(state.entities.users).filter((user) => (
-    state.ui.searchResults.userIds.includes(user.id.toString())
+    user.id && state.ui.searchResults.userIds.includes(user.id.toString())
   ));
 };
 
 export const selectAlbumResults = (state) => {
   return Object.values(state.entities.albums).filter((album) => (
-    state.ui.searchResults.albumIds.includes(album.id.toString())
+    album.id && state.ui.searchResults.albumIds.includes(album.id.toString())
   ));
 };
 
@@ -108,4 +108,12 @@ export const removeCollectedId = (users, {collectorId, collectedId}) => {
   return users[collectorId].collectedAlbumIds.filter((collId) => (
     collectedId !== collId
   ));
+};
+
+export const selectTags = (state, entity) => {
+  if (!entity || !entity.tagIds) return null;
+  const relevantTags = Object.values(state.entities.tags).filter((tag) => (
+    entity.tagIds.includes(tag.id)
+  ));
+  return relevantTags.map((tag) => tag.name);
 };

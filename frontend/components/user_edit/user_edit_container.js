@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import { updateUser } from '../../actions/user_actions';
 import { receiveNewProfilePicture } from '../../actions/ui_actions';
+import { selectTags } from '../../reducers/selectors';
 
 import UserEditForm from './user_edit_form';
 
@@ -12,7 +13,8 @@ const mapStateToProps = (state, ownProps) => ({
   toggleEditForm: ownProps.toggleEditForm,
   userId: ownProps.match.params.userId,
   profileImg: state.ui.profile.profileImg,
-  bannerImg: state.ui.profile.bannerImg
+  bannerImg: state.ui.profile.bannerImg,
+  tagNames: selectTags(state, ownProps.user)
 });
 
 // should prob make a cancel image change action

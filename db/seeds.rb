@@ -60,7 +60,7 @@ File.readlines('db/seed_filenames/covers.txt').map(&:strip).each_with_index do |
     artist_id: user_ids.sample,
     title: "#{Faker::StarWars.vehicle}_#{i}",
     price: rand(10),
-    description: Faker::Hipster.paragraphs,
+    description: Faker::Hipster.paragraphs.join("\n"),
     cover_img: base_url + cover_name
   )
 end

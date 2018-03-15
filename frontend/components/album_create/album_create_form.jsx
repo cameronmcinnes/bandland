@@ -13,6 +13,8 @@ class AlbumCreateForm extends React.Component {
       price: '',
       genre: '',
       track_attributes: [],
+      tag_names: [],
+      tag: '',
       albumSelected: true,
       albumErrors: this.props.albumErrors
     };
@@ -23,6 +25,10 @@ class AlbumCreateForm extends React.Component {
     // concerned w album input
     this.updateAlbumInputField = this.updateAlbumInputField.bind(this);
     this.selectAlbum = this.selectAlbum.bind(this);
+      // concerned w tags
+    this.handleTagFieldKey = this.handleTagFieldKey.bind(this);
+    this.addTag = this.addTag.bind(this);
+    this.removeTag = this.removeTag.bind(this);
     // concerned w top level form
     this.appendTrackInput = this.appendTrackInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,7 +39,9 @@ class AlbumCreateForm extends React.Component {
   }
 
   albumErrorsPresent(nextProps, field) {
-    if (field && nextProps.albumErrors[field].length === 0) {
+    if (field &&
+      nextProps.albumErrors[field] &&
+      nextProps.albumErrors[field].length === 0) {
       return false;
     }
     const errorFields = Object.values(nextProps.albumErrors);
@@ -51,8 +59,16 @@ class AlbumCreateForm extends React.Component {
     const formData = new FormData();
 
     Object.keys(this.state).forEach(key => {
-      if (key === 'albumSelected' || key === 'track_attributes') return;
-      formData.append(`album[${key}]`, this.state[key]);
+      if (key === 'albumSelected' || key === 'track_attributes') {
+        return null;
+      }
+      else if (key === 'tag_names') {
+        this.state[key].forEach((tag_name) => {
+          formData.append('tags[tag_names][]', tag_name);
+        });
+      } else {
+        formData.append(`album[${key}]`, this.state[key]);
+      }
     });
 
     this.state.track_attributes.forEach((track, idx) => {
@@ -152,6 +168,29 @@ class AlbumCreateForm extends React.Component {
     });
   }
 
+  addTag(e) {
+    e.preventDefault();
+    if ( this.state.tag === '') return null;
+    this.setState({
+      tag_names: this.state.tag_names.concat(this.state.tag),
+      tag: ''
+    });
+  }
+
+  removeTag(e) {
+    const newTagNames = this.state.tag_names.filter((tag_name) => {
+      return tag_name !== e.target.innerText;
+    });
+    this.setState({ tag_names: newTagNames });
+  }
+
+  handleTagFieldKey(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      this.addTag(e);
+    }
+  }
+  // spread props for album input TODO
   renderForm() {
     return (
       <ul>
@@ -163,6 +202,11 @@ class AlbumCreateForm extends React.Component {
           handleImageChange={ this.handleImageChange }
           errors={ this.state.albumErrors }
           errorsPresent= { this.albumErrorsPresent(this.props) }
+          newTag={ this.state.tag }
+          tagNames={ this.state.tag_names }
+          removeTag={ this.removeTag }
+          addTag={ this.addTag }
+          handleTagFieldKey={ this.handleTagFieldKey }
           />
         <span>TRACKS</span>
         {

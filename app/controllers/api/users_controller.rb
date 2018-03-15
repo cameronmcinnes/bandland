@@ -10,7 +10,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(albums: {artist: :albums}, collected_albums: {artist: :collected_albums}).find_by(id: params[:id])
+    @user = User.includes(:tags, albums: {artist: :albums}, collected_albums: {artist: :collected_albums}).find_by(id: params[:id])
   end
 
   def index
@@ -45,7 +45,8 @@ class Api::UsersController < ApplicationController
       :description,
       :own_site_url,
       :profile_img,
-      :banner_img
+      :banner_img,
+      tag_names: []
     )
   end
 end

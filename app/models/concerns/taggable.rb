@@ -9,14 +9,15 @@ module Taggable
   # submit tags one by one
   def tag(name)
     name.strip!
-    tag = Tag.find_or_create_by_name(name)
-    self.taggings.find_or_create_by_tag_id(tag.id)
+    tag = Tag.find_or_create_by(name: name)
+    self.taggings.find_or_create_by(tag_id: tag.id)
   end
 
   # submit tags as an array of names
   def tag_names=(tag_names)
     self.tags = tag_names.map do |tag_name|
-      Tag.find_or_create_by(name: tag_name)
+      tag_name.strip!
+      self.tags.find_or_create_by(name: tag_name)
     end
   end
 
@@ -32,6 +33,5 @@ module Taggable
     def by_tag_name(tag_name)
       self.joins(:tags).where('tags.name' => tag_name)
     end
-
   end
 end

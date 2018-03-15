@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $green: #63a989;
+$darkgreen: #47875b;
 
 @media screen and (max-width: 980px) { .user-show-box { width: 756px; } }
 @media screen and (min-width: 980px) { .user-show-box { width: 1008px; } }
@@ -255,6 +256,53 @@ $green: #63a989;
 
 .banner-img-edit span {
   font-size: 20px;
+}
+
+.tag-labels {
+  justify-content: space-between;
+}
+
+.user-edit-tags {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.user-edit-tags li {
+  margin-right: 10px;
+  margin-top: 5px;
+  background-color: #929292;
+  color: #fff;
+  border-radius: 10px;
+  padding: 2px 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.user-edit-tags li:hover {
+  background-color: #fff;
+  color: #929292;
+}
+
+.user-edit-tags li:hover::before {
+  content: 'x  ';
+  color: black;
+}
+
+.tag-label {
+  color: #929292;
+  margin: 6px 0px;
+}
+
+.tag-btn {
+  color: $green;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tag-btn:hover {
+  color: $darkgreen;
 }
 
 .banner-img-edit:hover {

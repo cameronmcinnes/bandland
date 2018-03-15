@@ -8,11 +8,16 @@ class UserEditForm extends React.Component {
     this.state = {
       location: this.props.user.location || '',
       own_site_url: this.props.user.ownSiteUrl || '',
-      description: this.props.user.description || ''
+      description: this.props.user.description || '',
+      tag: '',
+      tag_names: this.props.tagNames || []
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.cancelForm = this.cancelForm.bind(this);
+    this.addTag = this.addTag.bind(this);
+    this.handleTagFieldKey = this.handleTagFieldKey.bind(this);
+    this.removeTag = this.removeTag.bind(this);
   }
 
   handleSubmit(e) {
@@ -22,7 +27,15 @@ class UserEditForm extends React.Component {
     const formData = new FormData();
 
     Object.keys(this.state).forEach(key => {
-      formData.append(`user[${key}]`, this.state[key]);
+      if (key === 'tag') {
+        return null;
+      } else if (key === 'tag_names') {
+        this.state[key].forEach((tag_name) => {
+          formData.append(`user[tag_names][]`, tag_name);
+        });
+      } else {
+        formData.append(`user[${key}]`, this.state[key]);
+      }
     });
 
     if (propicFile) formData.append('user[profile_img]', propicFile);
@@ -37,6 +50,29 @@ class UserEditForm extends React.Component {
     return (e) => {
       this.setState({ [field]: e.target.value });
     };
+  }
+
+  addTag(e) {
+    e.preventDefault();
+    if ( this.state.tag === '') return null;
+    this.setState({
+      tag_names: this.state.tag_names.concat(this.state.tag),
+      tag: ''
+    });
+  }
+
+  removeTag(e) {
+    const newTagNames = this.state.tag_names.filter((tag_name) => {
+      return tag_name !== e.target.innerText;
+    });
+    this.setState({ tag_names: newTagNames });
+  }
+
+  handleTagFieldKey(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      this.addTag(e);
+    }
   }
 
   cancelForm() {
@@ -81,6 +117,41 @@ class UserEditForm extends React.Component {
               />
           </div>
         </div>
+
+        <div className='user-edit-input-box'>
+          <div className='user-edit-field-container'>
+            <div className='flx-container tag-labels'>
+              <label>tags</label>
+              <label
+                onClick={ this.addTag }
+                className='tag-btn'>
+                add tag</label>
+            </div>
+              <input
+                onKeyPress={ this.handleTagFieldKey }
+                onChange={ this.updateField('tag')}
+                value={ this.state.tag }
+                type="text"
+                className='user-edit-input-field'
+              />
+          </div>
+
+          <div>
+
+            <ul className='user-edit-tags'>
+              {
+                this.state.tag_names.map((tag_name, idx) => {
+                  return (
+                    <li key={ idx }
+                      onClick={ this.removeTag }>
+                    { tag_name }</li>
+                  );
+                })
+              }
+            </ul>
+          </div>
+        </div>
+
 
         <div className='user-edit-submit-box'>
           <button className='user-edit-submit'

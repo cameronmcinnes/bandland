@@ -36,7 +36,5 @@ class Album < ApplicationRecord
   has_many :collectors, through: :collectings, source: :collector
   has_many :tracks, inverse_of: :album
 
-
-
   accepts_nested_attributes_for :tracks
 end

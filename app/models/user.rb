@@ -23,6 +23,8 @@
 #
 
 class User < ApplicationRecord
+  include Taggable
+
   validates :username, :email, :password_digest, :session_token, presence: true
   validates :username, :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
@@ -42,7 +44,6 @@ class User < ApplicationRecord
   has_many :albums, foreign_key: :artist_id
   has_many :collectings, foreign_key: :collector_id
   has_many :collected_albums, through: :collectings, source: :collected
-  has_many :tags, as: :taggable
 
   def password=(password)
     @password = password
