@@ -17,6 +17,8 @@
 #
 
 class Album < ApplicationRecord
+  include Taggable
+
   validates :title, presence: true
   validates :title, uniqueness: { scope: :artist_id,
     message: "Can't have two albums by the same title" }
@@ -33,7 +35,8 @@ class Album < ApplicationRecord
   has_many :collectings, foreign_key: :collected_id
   has_many :collectors, through: :collectings, source: :collector
   has_many :tracks, inverse_of: :album
-  has_many :tags, as: :taggable
+
+
 
   accepts_nested_attributes_for :tracks
 end

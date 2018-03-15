@@ -27,9 +27,3 @@ export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
 )(ThinHeader));
-
-// 
-// .then((user)=>{
-//   debugger;
-//   return 6;
-// })
