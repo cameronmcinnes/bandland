@@ -116,6 +116,7 @@ class AlbumShow extends React.Component {
                     return <CollectorThumbnail
                       key={ idx }
                       collector={ collector }
+                      currentUser={ currentUser }
                       />;
                   })
                 }

@@ -1,7 +1,6 @@
 class Api::AlbumsController < ApplicationController
   def create
-    @album = Album.new(album_params)
-    @album.artist_id = current_user.id
+    @album = current_user.albums.new(album_params)
     if @album.save
       @album.tag_names = tag_params[:tag_names]
       render partial: 'album', locals: { album: @album }

@@ -1,12 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CollectorThumbnail = ({collector}) => (
-  <li>
-    <Link to={`/users/${collector.id}`}>
-      <img src={ collector.thumbnailProfileImgUrl } />
-    </Link>
-  </li>
-);
+const CollectorThumbnail = ({collector, currentUser}) => {
+  const src = (collector.id === currentUser.id ) ?
+    currentUser.thumbnailProfileImgUrl : collector.thumbnailProfileImgUrl
+  return (
+    <li>
+      <Link to={`/users/${collector.id}`}>
+        <img src={ src } />
+      </Link>
+    </li>
+  );
+}
 
 export default CollectorThumbnail;

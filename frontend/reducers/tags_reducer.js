@@ -1,6 +1,7 @@
 import { merge } from 'lodash';
 
 import { RECEIVE_USER } from '../actions/user_actions';
+import { RECEIVE_ALBUM } from '../actions/album_actions';
 
 const tagsReducer = (state = {}, action) => {
   Object.freeze(state);

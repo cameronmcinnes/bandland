@@ -13,13 +13,15 @@ const AlbumIndexItem = ({album, destroyCollecting}) => {
         </div>
         <div className='album-info-detail'>
           <h5 className='album-title'>{ album.title }</h5>
-          <span>by <Link to={ `/users/${album.artistId}` }>{ album.artistName }</Link></span>
+          <div className='flx-container spc-btwn'>
+            <span>by <Link to={ `/users/${album.artistId}` }>{ album.artistName }</Link></span>
 
-          { collection &&
-            <button className='collection-index-btn'
-              onClick={ () => destroyCollecting(album.id)}>
-              remove</button>
-          }
+            { collection &&
+              <button className='collection-index-btn'
+                onClick={ () => destroyCollecting(album.id)}>
+                remove</button>
+            }
+          </div>
         </div>
       </div>
     </li>
