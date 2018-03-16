@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 // TODO add conditional saying whether current user is user for edit button
 
-const UserBio = ({user, currentUser, toggleEditForm}) => {
+const UserBio = ({user, currentUser, toggleEditForm, userTags}) => {
   let editButton, uploadButton = '';
   if (currentUser && currentUser.id === user.id) {
     editButton = (
@@ -32,7 +32,7 @@ const UserBio = ({user, currentUser, toggleEditForm}) => {
 
       <ul className='bio-info-list'>
         <li>{ user.location }</li>
-        <li>this is where the genre will bel </li>
+        <li>tags: { userTags.join('  ') }</li>
       </ul>
 
       <p className='bio-description'>{ user.description }</p>
@@ -42,8 +42,3 @@ const UserBio = ({user, currentUser, toggleEditForm}) => {
 }
 
 export default UserBio;
-
-  //
-  // <div className='user-profile-img-container'>
-  //   <img className='user-profile-img' src={ user.profileImgUrl } />
-  // </div>

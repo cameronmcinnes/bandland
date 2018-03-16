@@ -73,7 +73,7 @@ class AlbumCreateForm extends React.Component {
 
     this.state.track_attributes.forEach((track, idx) => {
       formData.append('album[tracks_attributes][][title]', track.title);
-      formData.append('album[tracks_attributes][][ord]', idx);
+      formData.append('album[tracks_attributes][][ord]', idx + 1);
       formData.append('album[tracks_attributes][][audio_file]', track.audio_file);
     });
 

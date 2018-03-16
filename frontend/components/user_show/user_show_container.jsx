@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { fetchUser, startLoadingUser } from '../../actions/user_actions';
 import { toggleMenu, toggleModal } from '../../actions/ui_actions';
-
+import { selectTags } from '../../reducers/selectors';
 
 import UserShow from './user_show';
 
@@ -14,7 +14,8 @@ const mapStateToProps = (state, { match }) => {
     showEditForm: state.ui.menus.userEdit,
     currentUser: state.session.currentUser,
     profileImgUrl: state.ui.profile.profileImgUrl,
-    bannerImgUrl: state.ui.profile.bannerImgUrl
+    bannerImgUrl: state.ui.profile.bannerImgUrl,
+    userTags: selectTags(state, user)
   };
 };
 

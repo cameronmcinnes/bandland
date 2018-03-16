@@ -29,6 +29,10 @@ class TrackPlayer extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timeOut);
+  }
+
   moveSliderTo(sliderPos) {
     // account for case before duration is loaded, slider will be NaN
     if (!sliderPos) return;

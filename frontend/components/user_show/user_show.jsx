@@ -33,6 +33,7 @@ class UserShow extends React.Component {
     let editOverlay, bannerEdit = '';
     let boxShown = <UserBio
       user={ this.props.user }
+      userTags={ this.props.userTags }
       toggleEditForm={ this.props.toggleEditForm }
       currentUser={ this.props.currentUser }
       />;

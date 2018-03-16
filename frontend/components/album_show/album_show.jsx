@@ -46,20 +46,24 @@ class AlbumShow extends React.Component {
         />;
     });
 
-    const collectButton = (album.collectorIds.includes(currentUser.id)) ?
-     (
-       <button
-         className='album-show-button'
-         onClick={ () => this.props.destroyCollecting(album.id) }>
-         Remove album from collection
-       </button>
-    ) : (
-      <button
-        className='album-show-button'
-        onClick={ this.handleCollectAdd }>
-        Add album to collection
-      </button>
-    );
+    let collectButton;
+    if (currentUser && album.collectorIds.includes(currentUser.id) ) {
+      collectButton = (
+        <button
+          className='album-show-button'
+          onClick={ () => this.props.destroyCollecting(album.id) }>
+          Remove album from collection
+        </button>
+      );
+    } else {
+      collectButton = (
+        <button
+          className='album-show-button'
+          onClick={ this.handleCollectAdd }>
+          Add album to collection
+        </button>
+      );
+    }
 
     const discogList = discog.map((album, idx) => {
       return (

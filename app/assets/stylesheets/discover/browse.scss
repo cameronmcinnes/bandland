@@ -15,23 +15,23 @@ $rap2: rgb(225, 61, 61);
 $pop: rgb(0, 204, 163);
 $pop2: rgb(4, 179, 144);
 
-.all {
+.all, .k-pop {
   background-color: $all;
 }
 
-.electronic {
+.electronic, .grunge {
   background-color: $electronic;
 }
 
-.metal {
+.metal, .diy {
   background-color: $metal;
 }
 
-.experimental {
+.experimental, .disco {
   background-color: $experimental;
 }
 
-.ambient {
+.ambient, .ballads {
   background-color: $ambient;
 }
 
@@ -47,23 +47,23 @@ $pop2: rgb(4, 179, 144);
   background-color: $rap;
 }
 
-.all.bar-2 {
+.all.bar-2, .k-pop.bar-2 {
   background-color: $all2;
 }
 
-.electronic.bar-2 {
+.electronic.bar-2, .grunge.bar-2 {
   background-color: $electronic2;
 }
 
-.metal.bar-2 {
+.metal.bar-2, .diy.bar-2 {
   background-color: $metal2;
 }
 
-.experimental.bar-2 {
+.experimental.bar-2, .disco.bar-2 {
   background-color: $experimental2;
 }
 
-.ambient.bar-2 {
+.ambient.bar-2, .ballads.bar-2{
   background-color: $ambient2;
 }
 
@@ -104,6 +104,6 @@ $pop2: rgb(4, 179, 144);
   font-size: 14px;
 }
 
-.tag-pill.selected-tag {
+.tag-pill.selected-tag, .tag-pill:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }

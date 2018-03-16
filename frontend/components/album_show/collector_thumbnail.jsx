@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const CollectorThumbnail = ({collector, currentUser}) => {
-  const src = (collector.id === currentUser.id ) ?
+  const src = (currentUser && collector.id === currentUser.id ) ?
     currentUser.thumbnailProfileImgUrl : collector.thumbnailProfileImgUrl
   return (
     <li>
