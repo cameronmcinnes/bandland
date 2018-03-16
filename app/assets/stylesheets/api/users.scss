@@ -275,7 +275,7 @@ $darkgreen: #47875b;
   background-color: #929292;
   color: #fff;
   border-radius: 10px;
-  padding: 2px 8px;
+  padding: 1px 8px 3px 8px;
   font-weight: 500;
   cursor: pointer;
 }
@@ -283,6 +283,7 @@ $darkgreen: #47875b;
 .user-edit-tags li:hover {
   background-color: #fff;
   color: #929292;
+  padding: 1px 3px 3px 3px;
 }
 
 .user-edit-tags li:hover::before {
