@@ -119,7 +119,7 @@ export const selectTags = (state, entity) => {
 };
 
 export const selectBrowsedAlbums = state => (
-  Object.values(state.entities.albums).filter((album) => (
-    state.ui.discoverResults.albumIds.includes(album.id)
+  state.ui.discoverResults.albumIds.map((id) => (
+    state.entities.albums[id]
   ))
 );

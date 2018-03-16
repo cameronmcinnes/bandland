@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
-const AlbumIndexItem = ({album, destroyCollecting}) => {
-  const collection = Boolean(destroyCollecting)
+const AlbumIndexItem = (props) => {
+  const { destroyCollecting, album, currentUser, match} = props;
+  const collection = Boolean(destroyCollecting &&
+    currentUser.id == match.params.userId);
   return (
     <li>
       <div className='album-info-container'>
@@ -14,7 +16,11 @@ const AlbumIndexItem = ({album, destroyCollecting}) => {
         <div className='album-info-detail'>
           <h5 className='album-title'>{ album.title }</h5>
           <div className='flx-container spc-btwn'>
-            <span>by <Link to={ `/users/${album.artistId}` }>{ album.artistName }</Link></span>
+            <span>by &nbsp;
+              <Link to={ `/users/${album.artistId}` }>
+                { album.artistName }
+              </Link>
+            </span>
 
             { collection &&
               <button className='collection-index-btn'
@@ -28,4 +34,4 @@ const AlbumIndexItem = ({album, destroyCollecting}) => {
   );
 };
 
-export default AlbumIndexItem;
+export default withRouter(AlbumIndexItem);

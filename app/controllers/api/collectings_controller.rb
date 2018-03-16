@@ -10,13 +10,12 @@ class Api::CollectingsController < ApplicationController
   end
 
   def destroy
-    @collecting = Collecting.find_by(
+    @collecting = current_user.collectings.find_by(
       collected_id: params[:id],
       collector_id: current_user.id
     )
     @collecting.destroy
     render :show
-
   end
 
   private

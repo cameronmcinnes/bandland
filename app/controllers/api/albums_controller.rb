@@ -14,7 +14,11 @@ class Api::AlbumsController < ApplicationController
       @albums = Album.includes(:artist).where('title ~ ?', params[:query])
       render :search
     elsif params[:tag].present?
-      @albums = Album.by_tag_name(params[:tag])
+      if params[:tag] == 'all'
+        @albums = Album.includes(:artist).limit(9).order(created_at: :desc)
+      else
+        @albums = Album.includes(:artist).by_tag_name(params[:tag])
+      end
     else
       lim = params[:limit].to_i
       @albums = Album.includes(:artist).limit(lim).order(created_at: :desc)

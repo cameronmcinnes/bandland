@@ -1,4 +1,7 @@
-s## TODO
+top level:
+order recent albums in a selector in the discover container 
+
+## TODO
 * ### auth :fire:
   * guest login => redirect to login page, do auto type cool ting
 
@@ -15,7 +18,7 @@ s## TODO
   * allow color change
   * move user edit form out of the dropdown reducer
   * anyone can remove from collections TODO
-  * fetch only the user details on edit??? 
+  * fetch only the user details on edit???
 
 * ### albums
   * player

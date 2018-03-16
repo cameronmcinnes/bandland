@@ -5,7 +5,8 @@ import { createCollecting, destroyCollecting } from '../../actions/collecting_ac
 import { selectCollectedAlbums } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => ({
-  albums: selectCollectedAlbums(state, ownProps)
+  albums: selectCollectedAlbums(state, ownProps),
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({

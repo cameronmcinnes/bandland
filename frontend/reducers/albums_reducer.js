@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
 
 import { RECEIVE_USER } from '../actions/user_actions';
-import { RECEIVE_ALBUM, RECEIVE_ALBUMS, RECEIVE_NEW_ALBUM, RECEIVE_SEARCHED_ALBUMS } from '../actions/album_actions';
+import { RECEIVE_ALBUM, RECEIVE_ALBUMS, RECEIVE_NEW_ALBUM, RECEIVE_SEARCHED_ALBUMS, RECEIVE_DISCOVERED_ALBUMS } from '../actions/album_actions';
 import { RECEIVE_COLLECTING, DESTROY_COLLECTING } from '../actions/collecting_actions';
 import { removeCollectorId } from './selectors';
 
@@ -28,6 +28,7 @@ const albumsReducer = (state = {}, action) => {
     case RECEIVE_NEW_ALBUM:
       return merge({}, state, action.album);
     case RECEIVE_SEARCHED_ALBUMS:
+    case RECEIVE_DISCOVERED_ALBUMS:
       return merge({}, state, action.albums);
     default:
       return state;
