@@ -3,7 +3,9 @@ import * as AlbumAPIUtil from '../util/album_api_util';
 export const RECEIVE_ALBUM = 'RECEIVE_ALBUM';
 export const RECEIVE_ALBUMS = 'RECEIVE_ALBUMS';
 export const RECEIVE_NEW_ALBUM = 'RECEIVE_NEW_ALBUM';
+
 export const RECEIVE_SEARCHED_ALBUMS = 'RECEIVE_SEARCHED_ALBUMS';
+export const RECEIVE_DISCOVERED_ALBUMS = 'RECEIVE_DISCOVERED_ALBUMS';
 
 export const START_LOADING_ALBUM = 'START_LOADING_ALBUM';
 export const START_UPLOADING_ALBUM = 'START_UPLOADING_ALBUM';
@@ -27,6 +29,11 @@ export const receiveNewAlbum = (album) => ({
   type: RECEIVE_NEW_ALBUM,
   album
 });
+
+export const receiveDiscoverResults = (albums) => ({
+  type: RECEIVE_DISCOVERED_ALBUMS,
+  albums
+})
 
 export const fetchAlbum = id => dispatch => {
   dispatch(startUploadingAlbum);
@@ -76,3 +83,9 @@ export const fetchRecentAlbums = (limit) => (dispatch) => {
     (albums) => dispatch(receiveAlbums(albums))
   )
 };
+
+export const fetchAlbumsByTag = tag => dispatch => {
+  return AlbumAPIUtil.fetchAlbumsByTag(tag).then(
+    (albums) => dispatch(receiveDiscoverResults(albums))
+  )
+}

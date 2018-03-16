@@ -29,4 +29,9 @@ export const fetchRecentAlbums = ( limit ) => (
   })
 );
 
-// export const fetchAlbumByTag
+export const fetchAlbumsByTag = (tag) => (
+  $.ajax({
+    url: 'api/albums',
+    data: { tag }
+  })
+);

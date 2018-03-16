@@ -117,3 +117,9 @@ export const selectTags = (state, entity) => {
   ));
   return relevantTags.map((tag) => tag.name);
 };
+
+export const selectBrowsedAlbums = state => (
+  Object.values(state.entities.albums).filter((album) => (
+    state.ui.discoverResults.albumIds.includes(album.id)
+  ))
+);
