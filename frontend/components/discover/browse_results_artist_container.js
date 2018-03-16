@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
 
 import BrowseResults from './browse_results';
-import { fetchAlbumsByTag } from '../../actions/album_actions';
-import { selectBrowsedAlbums } from '../../reducers/selectors';
+import { fetchUsersByTag } from '../../actions/user_actions';
+import { selectBrowsedUsers } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => ({
-  browsedAlbums: selectBrowsedAlbums(state),
+  browsedAlbums: selectBrowsedUsers(state),
   tagName: ownProps.tagName,
-  browseType: 'albums'
+  browseType: 'artists'
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchAlbumsByTag: (tag) => dispatch(fetchAlbumsByTag(tag))
+  fetchEntitiesByTag: (tag) => dispatch(fetchUsersByTag(tag))
 });
 
 export default connect(

@@ -13,6 +13,8 @@ const discoverResultsReducer = (state = defaultState, action) => {
   switch(action.type) {
     case RECEIVE_DISCOVERED_ALBUMS:
       return Object.assign({}, state, { albumIds: Object.keys(action.albums) });
+    case RECEIVE_DISCOVERED_ALBUMS:
+      return Object.assign({}, state, { artistIds: Object.keys(action.users) });
     default:
       return state;
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import SearchContainer from '../search/search_container';
 // TODO dry up code
 
 const personalGreeting = (currentUser, logout) => (

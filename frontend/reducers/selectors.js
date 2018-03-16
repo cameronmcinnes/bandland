@@ -123,3 +123,9 @@ export const selectBrowsedAlbums = state => (
     state.entities.albums[id]
   ))
 );
+
+export const selectBrowsedUsers = state => (
+  state.ui.discoverResults.artistIds.map((id) => (
+    state.entities.users[id]
+  ))
+);

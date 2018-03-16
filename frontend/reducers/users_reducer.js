@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
 
 import { RECEIVE_USER } from '../actions/user_actions';
-import { RECEIVE_SEARCHED_USERS } from '../actions/user_actions';
+import { RECEIVE_SEARCHED_USERS, RECEIVE_DISCOVERED_USERS } from '../actions/user_actions';
 import { RECEIVE_ALBUM } from '../actions/album_actions';
 import { DESTROY_COLLECTING } from '../actions/collecting_actions';
 import { removeCollectedId } from './selectors';
@@ -12,6 +12,7 @@ const sessionReducer = (state = {}, action) => {
     case RECEIVE_USER:
       return merge({}, state, { [action.user.id]: action.user});
     case RECEIVE_SEARCHED_USERS:
+    case RECEIVE_DISCOVERED_USERS:
     case RECEIVE_ALBUM:
       return merge({}, state, action.users);
     case DESTROY_COLLECTING:

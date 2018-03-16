@@ -5,7 +5,7 @@ $all2: rgb(67, 144, 168);
 $metal: rgb(53, 100, 161);
 $metal2: rgb(53, 91, 141);
 $experimental: rgb(153, 74, 181);
-$experimantal2: rgb(138, 74, 161);
+$experimental2: rgb(138, 74, 161);
 $ambient: rgb(163, 194, 189);
 $ambient2: rgb(155, 182, 177);
 $jazz: rgb(94, 159, 202);
@@ -45,6 +45,38 @@ $pop2: rgb(4, 179, 144);
 
 .rap {
   background-color: $rap;
+}
+
+.all.bar-2 {
+  background-color: $all2;
+}
+
+.electronic.bar-2 {
+  background-color: $electronic2;
+}
+
+.metal.bar-2 {
+  background-color: $metal2;
+}
+
+.experimental.bar-2 {
+  background-color: $experimental2;
+}
+
+.ambient.bar-2 {
+  background-color: $ambient2;
+}
+
+.jazz.bar-2 {
+  background-color: $jazz2;
+}
+
+.pop.bar-2 {
+  background-color: $pop2;
+}
+
+.rap.bar-2 {
+  background-color: $rap2;
 }
 
 .browse-container {

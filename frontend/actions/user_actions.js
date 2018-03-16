@@ -4,6 +4,7 @@ export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_SEARCHED_USERS = 'RECEIVE_SEARCHED_USERS';
 export const START_LOADING_USER = 'START_LOADING_USER';
 export const START_UPDATING_USER = 'START_UPDATING_USER';
+export const RECEIVE_DISCOVERED_USERS = 'RECEIVE_DISCOVERED_USERS';
 
 export const fetchUser = (id) => dispatch => {
   // dispatch(startLoadingUser());
@@ -44,3 +45,14 @@ export const startLoadingUser = () => ({
 export const startUpdatingUser = () => ({
   type: START_UPDATING_USER
 });
+
+export const fetchUsersByTag = tag => dispatch => {
+  return AlbumAPIUtil.fetchUsersByTag(tag).then(
+    (users) => dispatch(receiveDiscoverResults(users))
+  )
+}
+
+export const receiveDiscoverResults = (users) => ({
+  type: RECEIVE_DISCOVERED_USERS,
+  users
+})
