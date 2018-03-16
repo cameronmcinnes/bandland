@@ -88,6 +88,10 @@ User.create!(
   banner_img: 'https://s3.amazonaws.com/bandland-development/seeds/album_covers/20837750_111669122834416_2675294390913597440_n.jpg'
 )
 
+base_url = 'https://s3.amazonaws.com/bandland-development/seeds/album_covers/'
+
+album_cover_names = File.readlines('db/seed_filenames/covers.txt').map(&:strip)
+
 artist_names.each_with_index do |name, idx|
   User.create!(
     username: name,
@@ -96,7 +100,7 @@ artist_names.each_with_index do |name, idx|
     password: 'verymodern',
     description: Faker::Company.bs,
     profile_img: Faker::Avatar.image,
-    banner_img: Faker::Company.logo
+    banner_img: base_url + album_cover_names.sample
   )
 end
 
@@ -104,9 +108,8 @@ user_ids = User.all.pluck(:id)
 
 Album.destroy_all
 
-base_url = 'https://s3.amazonaws.com/bandland-development/seeds/album_covers/'
 
-File.readlines('db/seed_filenames/covers.txt').map(&:strip).each_with_index do |cover_name, i|
+album_cover_names.each_with_index do |cover_name, i|
   Album.create!(
     artist_id: user_ids.sample,
     title: album_titles[i],
@@ -129,22 +132,6 @@ Collecting.destroy_all
   end
 end
 
-Track.destroy_all
-
-Track.create!(
-  ord: 1,
-  album_id: Album.first.id,
-  title: 'tailwhip',
-  audio_file: File.open('app/assets/audio/tailwhip.mp3')
-)
-
-Track.create!(
-  ord: 2,
-  album_id: Album.first.id,
-  title: 'lauren',
-  audio_file: File.open('app/assets/audio/lauren.mp3')
-)
-
 tags.each do |tag_name|
   Tag.create!(name: tag_name)
 end
@@ -158,4 +145,18 @@ tag_ids.each do |tag_id|
       taggable_type: 'Album'
     )
   end
+end
+
+Track.destroy_all
+
+base_track_url = 'https://s3.amazonaws.com/bandland-development/seeds/tracks/'
+
+File.readlines('db/seed_filenames/tracks.txt').map(&:strip).each_with_index do |track_name, i|
+  alb = Album.all.sample
+  Track.create!(
+    title: Faker::Company.buzzword,
+    audio_file: base_track_url + track_name,
+    album_id: alb.id,
+    ord: alb.tracks.length + 1
+  )
 end
