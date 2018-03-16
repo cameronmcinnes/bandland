@@ -14,12 +14,12 @@ class BrowseResults extends React.Component {
   }
 
   render() {
-    const largeAlb = this.props.browsedAlbums[8];
+    const largeAlb = this.props.browsedAlbums[0];
     return (
       <div className='browse-results-container'>
         <ul className='browse-results-grid'>
           {
-            this.props.browsedAlbums.slice(0,8).map((album, idx) => {
+            this.props.browsedAlbums.slice(1,8).map((album, idx) => {
               return (
                 <BrowseResultItem
                   album={ album }
@@ -30,10 +30,10 @@ class BrowseResults extends React.Component {
           }
         </ul>
         {
-          this.props.browsedAlbums[8] &&
+          this.props.browsedAlbums[0] &&
             <BrowseResultItem
             large={ true }
-            album={ this.props.browsedAlbums[8] }
+            album={ this.props.browsedAlbums[0] }
           /> }
       </div>
     );

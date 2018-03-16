@@ -20,6 +20,7 @@ class Discover extends React.Component {
     return (
       <div className='discover-container'>
         <FeaturedAlbums featuredAlbums={ featuredAlbums }/>
+        <h2 className='recent-albums-header' >Discover</h2>
         <Browse featuredAlbums={ discoverAll }/>
         <RecentAlbums recentAlbums={ recentAlbums } />
       </div>

@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 const AlbumIndexItem = (props) => {
   const { destroyCollecting, album, currentUser, match} = props;
-  const collection = Boolean(destroyCollecting &&
+  const collection = Boolean(currentUser && destroyCollecting &&
     currentUser.id == match.params.userId);
   return (
     <li>

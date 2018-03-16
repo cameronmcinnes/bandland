@@ -41,7 +41,10 @@ const LandingHeader = ({ currentUser, logout, toggleModal, loginGuest, history})
 	return (
 		<header className='main-header'>
 			<div className='landing-header-div'>
-				<a href='#'><img className='main-logo' src={ window.mainLogo } /></a>
+				<div className='landing-logo-search'>
+          <a href='#'><img className='main-logo' src={ window.mainLogo } /></a>
+          <SearchContainer />
+        </div>
 				{ nav }
 			</div>
 		</header>

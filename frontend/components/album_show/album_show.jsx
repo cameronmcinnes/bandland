@@ -32,7 +32,7 @@ class AlbumShow extends React.Component {
   }
 
   render() {
-    const { album, artist, collectors, tracks, currentTrack, discog, currentUser} = this.props;
+    const { tagNames, album, artist, collectors, tracks, currentTrack, discog, currentUser} = this.props;
 
     if (!album || !artist || !album.collectorIds ) return null;
 
@@ -65,6 +65,8 @@ class AlbumShow extends React.Component {
       );
     }
 
+    if (!currentUser) collectButton = '';
+
     const discogList = discog.map((album, idx) => {
       return (
         <li key={ idx }>
@@ -90,6 +92,7 @@ class AlbumShow extends React.Component {
               <span>by </span>
               <Link to={ `/users/${artist.id}` }>{artist.username}</Link>
 
+              <p>TAGS: { tagNames.join(', ') }</p>
               <TrackPlayerContainer />
 
               <div className='album-purchase-container'>
@@ -105,10 +108,10 @@ class AlbumShow extends React.Component {
                 { trackList }
               </ul>
 
-              <p>
+              <div>
                 {album.description}
-                <span>released {album.releaseDate}</span>
-              </p>
+                <p className='release-date'>released {album.releaseDate}</p>
+              </div>
             </div>
             <div className='album-show-cover-container'>
               <img className='album-show-cover' src={album.coverImgUrl}></img>

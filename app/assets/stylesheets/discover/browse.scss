@@ -1,3 +1,7 @@
+@media screen and (max-width: 980px) { .recent-albums-header { width: 751px; } }
+@media screen and (min-width: 980px) { .recent-albums-header { width: 993px; } }
+@media screen and (min-width: 1300px) { .recent-albums-header { width: 1245px;  } }
+
 $electronic: rgb(49, 200, 35);
 $electronic2: rgb(49, 177, 37);
 $all: rgb(66, 160, 189);

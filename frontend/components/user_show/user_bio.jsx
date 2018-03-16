@@ -32,7 +32,7 @@ const UserBio = ({user, currentUser, toggleEditForm, userTags}) => {
 
       <ul className='bio-info-list'>
         <li>{ user.location }</li>
-        <li>tags: { userTags.join('  ') }</li>
+        <li>tags: { userTags.join(', ') }</li>
       </ul>
 
       <p className='bio-description'>{ user.description }</p>

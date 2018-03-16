@@ -12,11 +12,19 @@ class Search extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.executeQuery = this.executeQuery.bind(this);
+    this.handleEsc = this.handleEsc.bind(this);
   }
 
   executeQuery() {
     this.props.searchUsers(this.state.query);
     this.props.searchAlbums(this.state.query);
+  }
+
+  handleEsc(e) {
+    if (e.key === 'Escape') {
+      this.props.clearSearch();
+      this.setState({ query: '' });
+    }
   }
 
   handleChange(e) {
@@ -37,6 +45,7 @@ class Search extends React.Component {
             type='text'
             placeholder='search bandland    '
             onChange={ this.handleChange }
+            onKeyDown={ this.handleEsc }
             onBlur={ () => this.setState({ query: ''})}
             value={ this.state.query }
             >

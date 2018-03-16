@@ -1,24 +1,47 @@
-# README
+# Bandland
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![bandland logo](https://svgshare.com/i/5tW.svg' title=)
 
-Things you may want to cover:
+### A bandcamp clone
 
-* Ruby version
+---
 
-* System dependencies
+## Features
 
-* Configuration
+### Track player
 
-* Database creation
+Bandland features a track player built using a hidden HTML audio tag and . By clicking play, pause, fast-forward, or rewind users dispatch actions that update the current track slice of state in the redux store and rerender the track player component with an updated current song or play state. The progress bar was animated using javascript event handlers to both move the slider and update the current song on the track. Custom javascript was chosen over a CSS range input slider to allow more customization and control moving forward.
 
-* Database initialization
+### Tags
 
-* How to run the test suite
+Bandland allow users to tag their albums and their own profiles with custom tags. The bandland discover page has a browse feature that allows users to browse by tags.
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+To accomplish this Bandland uses a polymorphic many-to-many association in the backend that uses only one tags table.
+
+* Tags
+
+| id  | name         |
+| --  | ------------ |
+| 1   | metal        |
+| 2   | ambient      |
+| 3   | experimantal |
+
+* Taggings
+
+| tag_id    | taggable_id  | taggable_type  |  
+| --------- | ------------ | -------------- |
+| 1         | 4            | User           |  
+| 1         | 5            | User           |  
+| 2         | 3            | Album          |   
+
+
+
+### Album upload
+
+To upload albums users submit album details and tracks through a nested form. The top level form renders both the album input and the track inputs. The form is implemented as a controlled input by lifting state from the child inputs. This is accomplished by passing callbacks bound to the parent down to the child components.
+
+### Search
+
+Bandland features a live search that updates via AJAX requests to the backend. To keep the search fast and minimize unnecessary database queries, the component makes use of debouncing to only send AJAX requests after no letters have been typed for 300 milliseconds.

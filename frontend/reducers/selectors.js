@@ -129,3 +129,11 @@ export const selectBrowsedUsers = state => (
     state.entities.users[id]
   ))
 );
+
+// innefficent already done from backend
+export const selectRecentAlbums = albums => {
+  const result = Object.values(albums).sort((a, b) => {
+    return b.id - a.id;
+  });
+  return result;
+};

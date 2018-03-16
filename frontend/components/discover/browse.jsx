@@ -5,27 +5,27 @@ import BrowseResultsContainer from './browse_results_container';
 class Browse extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { selectedTag: 'all', selectedParam: 'albums' };
+    this.state = { selectedTag: 'all', selectedEntity: 'albums' };
 
     this.handleTagClick = this.handleTagClick.bind(this);
-    this.handleParamClick = this.handleParamClick.bind(this);
+    this.handleEntityClick = this.handleEntityClick.bind(this);
   }
 
   handleTagClick(e) {
     this.setState({ selectedTag: e.target.innerHTML });
   }
 
-  handleParamClick(e) {
-    this.setState({ selectedParam: e.target.innerHTML });
+  handleEntityClick(e) {
+    this.setState({ selectedEntity: e.target.innerHTML });
   }
 
   render() {
-    const {selectedTag, selectedParam} = this.state;
+    const {selectedTag, selectedEntity} = this.state;
     const tags = ['all', 'electronic', 'metal', 'ambient', 'jazz', 'rap', 'pop',
       'k-pop', 'grunge', 'diy', 'disco', 'ballads'
     ];
-    const usersSelected = (selectedParam === 'artists') ? 'selected-tag' : '';
-    const albumsSelected = (selectedParam === 'albums') ? 'selected-tag' : '';
+    const usersSelected = (selectedEntity === 'artists') ? 'selected-tag' : '';
+    const albumsSelected = (selectedEntity === 'albums') ? 'selected-tag' : '';
 
     return (
       <div className='browse-container'>
@@ -46,10 +46,10 @@ class Browse extends React.Component {
         <div className={ `browse-top-bar ${selectedTag} bar-2` }>
           <ul className='tag-pill-list'>
             <li className={ `tag-pill ${albumsSelected}` }
-              onClick={ this.handleParamClick }
+              onClick={ this.handleEntityClick }
               >albums</li>
             <li className={ `tag-pill ${usersSelected}` }
-              onClick={ this.handleParamClick }
+              onClick={ this.handleEntityClick }
               >artists</li>
           </ul>
         </div>

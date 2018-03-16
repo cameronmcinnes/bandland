@@ -41,6 +41,10 @@ $darkgreen: #47875b;
   font-size: 14px;
 }
 
+.album-show-info-container > p {
+  margin: 15px 0px;
+}
+
 .album-show-info-container h2 {
   font-size: 28px;
 }
@@ -66,6 +70,10 @@ $darkgreen: #47875b;
   width: 350px;
   height: 350px;
   object-fit: cover;
+}
+
+.release-date {
+  margin-top: 20px;
 }
 
 .collector-index {

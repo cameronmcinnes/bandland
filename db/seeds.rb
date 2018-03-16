@@ -6,6 +6,66 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+album_titles = [
+  'Single Source of Truth',
+  'POJO',
+  'Abramov\'s Revenge',
+  'Redux Delux',
+  'The Interview',
+  'The Offering',
+  'Iced Sencha Saturday',
+  'Machine Loving',
+  'Scorched Ruby',
+  'Concatenate!',
+  'Module \'album\' not found',
+  'The Googly Eye Mystery',
+  'Polymorph',
+  'OOP',
+  'HOC',
+  'Gem Install Abby',
+  'MVC',
+  'Livenbetter',
+  'Scotty Dog',
+  'Manhattan Spa',
+  'Chill Hands',
+  'Full Dishwashers',
+  'Ode to Kenny\'s',
+  'Dollar Pizza Saved My Life',
+  'Down with Cibo',
+  'Q Train',
+  'Divs Only',
+  'Extraneous Fire Drill'
+]
+
+artist_names = [
+  'Validator',
+  'The Fat Arrows',
+  'Matz',
+  'BCrypt Keeper',
+  'The Bundlers',
+  'Yamlr',
+  'DJ Query',
+  'The Fluid Grid',
+  'Snake',
+  'Mazehead',
+  'The Stack'
+]
+
+
+tags = [
+  'all',
+  'electronic',
+  'metal',
+  'ambient',
+  'jazz',
+  'rap',
+  'pop',
+  'k-pop',
+  'grunge',
+  'diy',
+  'disco',
+  'ballads'
+];
 
 User.destroy_all
 User.create!(
@@ -28,18 +88,9 @@ User.create!(
   banner_img: 'https://s3.amazonaws.com/bandland-development/seeds/album_covers/20837750_111669122834416_2675294390913597440_n.jpg'
 )
 
-User.create!(
-  username: 'camron',
-  email: 'cam.mcinnes@gmail.com',
-  password: 'verymodern',
-  location: 'cool place',
-  description: 'a very cool description',
-  own_site_url: 'google.com',
-)
-
-5.times do
+artist_names.each_with_index do |name, idx|
   User.create!(
-    username: Faker::Superhero.name,
+    username: name,
     email: Faker::Internet.email,
     location: Faker::Pokemon.location,
     password: 'verymodern',
@@ -58,22 +109,24 @@ base_url = 'https://s3.amazonaws.com/bandland-development/seeds/album_covers/'
 File.readlines('db/seed_filenames/covers.txt').map(&:strip).each_with_index do |cover_name, i|
   Album.create!(
     artist_id: user_ids.sample,
-    title: "#{Faker::StarWars.vehicle}_#{i}",
+    title: album_titles[i],
     price: rand(10),
     description: Faker::Hipster.paragraphs.join("\n\n\n"),
     cover_img: base_url + cover_name
   )
 end
 
-# album_ids = Album.all.pluck(:id)
+album_ids = Album.all.pluck(:id)
 
 Collecting.destroy_all
 
-Album.all.each do |alb|
-  Collecting.create!(
-    collector_id: user_ids.sample,
-    collected_id: alb.id
-  )
+4.times do
+  album_ids.each do |id|
+    Collecting.find_or_create_by(
+      collector_id: user_ids.sample,
+      collected_id: id
+    )
+  end
 end
 
 Track.destroy_all
@@ -91,3 +144,18 @@ Track.create!(
   title: 'lauren',
   audio_file: File.open('app/assets/audio/lauren.mp3')
 )
+
+tags.each do |tag_name|
+  Tag.create!(name: tag_name)
+end
+
+tag_ids = Tag.all.pluck(:id)
+
+tag_ids.each do |tag_id|
+  8.times do
+    Tagging.find_or_create_by(tag_id: tag_id,
+      taggable_id: album_ids.sample,
+      taggable_type: 'Album'
+    )
+  end
+end
