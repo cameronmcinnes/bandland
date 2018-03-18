@@ -24,8 +24,8 @@ class Api::UsersController < ApplicationController
         @users = User.by_tag_name(params[:tag])
       end
     else
-      # lim = params[:limit].to_i
-      # @users = User.limit(lim).order(created_at: :desc)
+      lim = params[:limit].to_i
+      @users = User.limit(lim).order(created_at: :desc)
     end
   end
 
