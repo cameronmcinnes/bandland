@@ -16,6 +16,7 @@ class Api::UsersController < ApplicationController
   def index
     if params[:query].present?
       @users = User.where('username ~ ?', params[:query])
+      render :search
     elsif params[:tag].present?
       if params[:tag] == 'all'
         @users = User.limit(9).order(created_at: :desc)
@@ -23,7 +24,8 @@ class Api::UsersController < ApplicationController
         @users = User.by_tag_name(params[:tag])
       end
     else
-      @users = User.none
+      # lim = params[:limit].to_i
+      # @users = User.limit(lim).order(created_at: :desc)
     end
   end
 

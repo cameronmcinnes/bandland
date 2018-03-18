@@ -1,5 +1,5 @@
 top level:
-order recent albums in a selector in the discover container 
+order recent albums in a selector in the discover container
 
 ## TODO
 * ### auth :fire:
@@ -11,6 +11,7 @@ order recent albums in a selector in the discover container
 
 * ### style
   * clean up header code NOT DRY (dumb header component? yeesh)
+  * use children prop for conditional header rendering
 
 * ### user show
   * add migration w regular name and genre, allow edit of name in edit form
@@ -28,6 +29,7 @@ order recent albums in a selector in the discover container
 
 * ### search
   * relevance algorithm in backend???
+  * make search case insensitive 
 
 * ## album upload form
   * track metadata extraction
@@ -35,6 +37,10 @@ order recent albums in a selector in the discover container
 * ### tag notes
   * http://joshsymonds.com/blog/2012/07/01/rails-concerns-i-starting-with-redcarpet/
   * http://joshsymonds.com/blog/2012/07/04/rails-concerns-ii-taggable/
+
+* ### discover
+  * make artist searchable by tag
+  * key albums and artist by ids NOT indices for faster order switching
 
 ## DONE
 * ### auth

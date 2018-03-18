@@ -22,7 +22,7 @@ export const searchUsers = (query) => (
   })
 );
 
-export const fetchAlbumsByTag = (tag) => (
+export const fetchUsersByTag = (tag) => (
   $.ajax({
     url: 'api/users',
     data: { tag }

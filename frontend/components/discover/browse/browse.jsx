@@ -1,6 +1,7 @@
 import React from 'react';
 
-import BrowseResultsContainer from './browse_results_container';
+import BrowseResultsAlbumContainer from './browse_results_album_container';
+import BrowseResultsArtistContainer from './browse_results_artist_container';
 
 class Browse extends React.Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class Browse extends React.Component {
     const tags = ['all', 'electronic', 'metal', 'ambient', 'jazz', 'rap', 'pop',
       'k-pop', 'grunge', 'diy', 'disco', 'ballads'
     ];
+
     const usersSelected = (selectedEntity === 'artists') ? 'selected-tag' : '';
     const albumsSelected = (selectedEntity === 'albums') ? 'selected-tag' : '';
 
@@ -53,8 +55,18 @@ class Browse extends React.Component {
               >artists</li>
           </ul>
         </div>
-        <BrowseResultsContainer
-          tagName={ selectedTag } />
+
+        {
+          Boolean(albumsSelected) &&
+          <BrowseResultsAlbumContainer
+            tagName={ selectedTag } />
+        }
+
+        {
+          Boolean(usersSelected) &&
+          <BrowseResultsArtistContainer
+            tagName={ selectedTag } />
+        }
       </div>
     );
   }

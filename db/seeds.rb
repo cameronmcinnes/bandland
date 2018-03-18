@@ -99,7 +99,7 @@ artist_names.each_with_index do |name, idx|
     location: Faker::Pokemon.location,
     password: 'verymodern',
     description: Faker::Company.bs,
-    profile_img: Faker::Avatar.image,
+    # profile_img: Faker::Avatar.image,
     banner_img: base_url + album_cover_names.sample
   )
 end

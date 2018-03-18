@@ -2,7 +2,7 @@ import React from 'react';
 
 import FeaturedAlbums from './featured_albums';
 import RecentAlbums from './recent_albums';
-import Browse from './browse';
+import Browse from './browse/browse';
 
 class Discover extends React.Component {
   componentDidMount() {

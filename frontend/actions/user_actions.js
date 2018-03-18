@@ -47,7 +47,7 @@ export const startUpdatingUser = () => ({
 });
 
 export const fetchUsersByTag = tag => dispatch => {
-  return AlbumAPIUtil.fetchUsersByTag(tag).then(
+  return UserAPIUtil.fetchUsersByTag(tag).then(
     (users) => dispatch(receiveDiscoverResults(users))
   )
 }

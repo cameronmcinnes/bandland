@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const BrowseResultItem = ({album, large}) => {
+const BrowseResultAlbumItem = ({album, large}) => {
   if (!album) return null;
   const size = (large) ? 'large-result' : '';
   const desc = album.description.substring(0, 100);
@@ -13,7 +13,9 @@ const BrowseResultItem = ({album, large}) => {
       <p>
         <span>{ album.title }</span>
         <span>by &nbsp;
-          <Link to={ `/users/${album.artistId}` }>{ album.artistName }</Link>
+          <Link to={ `/users/${album.artistId}` }>
+            { album.artistName }
+          </Link>
         </span>
         <span> { size && desc} </span>
       </p>
@@ -21,4 +23,4 @@ const BrowseResultItem = ({album, large}) => {
   );
 };
 
-export default BrowseResultItem;
+export default BrowseResultAlbumItem;
