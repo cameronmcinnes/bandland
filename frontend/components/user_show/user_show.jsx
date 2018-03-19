@@ -78,16 +78,12 @@ class UserShow extends React.Component {
           <ul className='user-tabs'>
             <li><NavLink to={ baseUrl } exact >collection <span className='count'>{user.collectedAlbumIds.length}</span></NavLink></li>
             <li><NavLink to={ baseUrl + '/discography' } >discography <span className='count'>{user.ownAlbumIds.length}</span></NavLink></li>
-            <li><NavLink to={ baseUrl + '/followers' } >followers</NavLink></li>
-            <li><NavLink to={ baseUrl + '/following' } >following</NavLink></li>
           </ul>
 
           <div className='user-show-grid-container'>
             <div className='user-show-grid'>
               <Route path='/users/:userId' exact component={ UserCollectionContainer } />
               <Route path='/users/:userId/discography' component={ UserOwnAlbumContainer } />
-              <Route path='/users/:userId/followers' />
-              <Route path='/users/:userId/following' />
             </div>
           </div>
         </div>
