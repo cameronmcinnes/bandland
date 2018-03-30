@@ -23,7 +23,10 @@ album_titles = [
   'Graduation Day',
   'Down with Cibo',
   'Dollar Pizza Saved My Life',
-  'Extraneous Fire Drill'
+  'Extraneous Fire Drill',
+  'Blah',
+  'Zoom',
+  'Buffer'
 ]
 
 artist_names = [
