@@ -57,7 +57,7 @@ class TrackPlayer extends React.Component {
 
   moveSliderTo(sliderPos, delta) {
     // account for case before duration is loaded, slider will be NaN
-    // if (!sliderPos) return;
+    if (!sliderPos) return;
     const sliderWidth = this.slider.offsetWidth;
     const progbarWidth = this.progbar.offsetWidth;
     const sliderMiddle = sliderPos - this.progbar.offsetLeft;
