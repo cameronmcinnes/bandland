@@ -18,7 +18,6 @@ album_titles = [
   'The Googly Eye Mystery',
   'Polymorph',
   'OOP',
-  'MVC',
   'Chill Hands',
   'Ode to Kenny\'s',
   'Graduation Day',
