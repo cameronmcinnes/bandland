@@ -5,6 +5,21 @@ json.user do
   json.collected_album_ids @user.collected_albums.pluck(:id)
   json.own_album_ids @user.albums.pluck(:id)
   json.tag_ids @user.tags.pluck(:id)
+  json.follower_ids @user.followers.pluck(:id)
+  json.followed_user_ids @user.followed_users.pluck(:id)
+end
+
+json.users do
+  @user.followers.each do |follower|
+    json.set! follower.id do
+      json.partial! 'api/users/user_basic', user: follower
+    end
+  end
+  @user.followed_users.each do |following|
+    json.set! following.id do
+      json.partial! 'api/users/user_basic', user: following
+    end
+  end
 end
 
 json.albums do

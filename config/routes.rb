@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :albums, only: :create
     end
     resources :collectings, only: [:create, :destroy]
+    resources :followings, only: [:create, :destroy]
     resource :session, only: [:create, :destroy]
     resources :albums, only: [:show, :index]
   end

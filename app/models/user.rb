@@ -20,6 +20,8 @@
 #  banner_img_content_type  :string
 #  banner_img_file_size     :integer
 #  banner_img_updated_at    :datetime
+#  display_name             :string
+#  genre                    :string
 #
 
 class User < ApplicationRecord
@@ -45,6 +47,12 @@ class User < ApplicationRecord
   has_many :collectings, foreign_key: :collector_id
   has_many :collected_albums, through: :collectings, source: :collected
 
+  has_many :followings_in, class_name: :Following, foreign_key: :follower_id
+  has_many :followings_out, class_name: :Following, foreign_key: :followee_id
+
+  has_many :followers, through: :followings_out, source: :follower
+  has_many :followed_users, through: :followings_in, source: :followee
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
@@ -69,7 +77,7 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64(16)
   end
 
-  # account low possibility of repeat session token
+  # account for extremely low possibility of repeat session token
   def generate_unique_session_token
     self.session_token = new_session_token
     while User.find_by(session_token: self.session_token)

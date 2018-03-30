@@ -110,6 +110,13 @@ export const removeCollectedId = (users, {collectorId, collectedId}) => {
   ));
 };
 
+export const removeFollowerId = (users, {followerId, followeeId}) => {
+  // if (!users[followee].collectedAlbumIds) return null;
+  return users[followeeId].followerIds.filter((follId) => (
+    followerId !== follId
+  ));
+};
+
 export const selectTags = (state, entity) => {
   if (!entity || !entity.tagIds) return null;
   const relevantTags = Object.values(state.entities.tags).filter((tag) => (
@@ -130,10 +137,26 @@ export const selectBrowsedUsers = state => (
   ))
 );
 
-// innefficent already done from backend
+// TODO innefficent already done from backend
 export const selectRecentAlbums = albums => {
   const result = Object.values(albums).sort((a, b) => {
     return b.id - a.id;
   });
   return result;
+};
+
+export const selectFollowers = (state, ownProps) => {
+  const userId = ownProps.match.params.userId;
+  if (!state.entities.users[userId]) return [];
+  return Object.values(state.entities.users).filter( user => (
+    state.entities.users[userId].followerIds.includes(user.id)
+  ));
+};
+
+export const selectFollowedUsers = (state, ownProps) => {
+  const userId = ownProps.match.params.userId;
+  if (!state.entities.users[userId]) return [];
+  return Object.values(state.entities.users).filter( user => (
+    state.entities.users[userId].followedUserIds.includes(user.id)
+  ));
 };

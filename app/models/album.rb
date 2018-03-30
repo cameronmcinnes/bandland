@@ -24,8 +24,6 @@ class Album < ApplicationRecord
     message: "Can't have two albums by the same title" }
   validates :price, numericality: true
 
-  #, default_url: "missing_cover_img.png"
-
   has_attached_file :cover_img, styles: { thumb: '48x48' }
   validates_attachment_presence :cover_img
 

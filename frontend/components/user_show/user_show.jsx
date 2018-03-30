@@ -6,6 +6,8 @@ import UserBio from './user_bio';
 import UserEditFormContainer from '../user_edit/user_edit_container';
 import UserCollectionContainer from './user_collection_container';
 import UserOwnAlbumContainer from './user_own_albums_container';
+import FollowersContainer from './followers_container';
+import FollowingContainer from './following_container';
 
 class UserShow extends React.Component {
   componentDidMount() {
@@ -78,12 +80,16 @@ class UserShow extends React.Component {
           <ul className='user-tabs'>
             <li><NavLink to={ baseUrl } exact >collection <span className='count'>{user.collectedAlbumIds.length}</span></NavLink></li>
             <li><NavLink to={ baseUrl + '/discography' } >discography <span className='count'>{user.ownAlbumIds.length}</span></NavLink></li>
+            <li><NavLink to={ baseUrl + '/followers' } >followers <span className='count'>{user.followerIds.length}</span></NavLink></li>
+            <li><NavLink to={ baseUrl + '/following' } >followed users<span className='count'>{user.followedUserIds.length}</span></NavLink></li>
           </ul>
 
           <div className='user-show-grid-container'>
             <div className='user-show-grid'>
               <Route path='/users/:userId' exact component={ UserCollectionContainer } />
               <Route path='/users/:userId/discography' component={ UserOwnAlbumContainer } />
+              <Route path='/users/:userId/followers' component={ FollowersContainer } />
+              <Route path='/users/:userId/following' component={ FollowingContainer } />
             </div>
           </div>
         </div>

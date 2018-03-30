@@ -20,6 +20,8 @@
 #  banner_img_content_type  :string
 #  banner_img_file_size     :integer
 #  banner_img_updated_at    :datetime
+#  display_name             :string
+#  genre                    :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

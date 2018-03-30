@@ -10,7 +10,13 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:tags, albums: {artist: :albums}, collected_albums: {artist: :collected_albums}).find_by(id: params[:id])
+    @user = User.includes(
+      :tags,
+      :followers,
+      :followed_users,
+      albums: {artist: :albums},
+      collected_albums: {artist: :collected_albums}
+    ).find_by(id: params[:id])
   end
 
   def index

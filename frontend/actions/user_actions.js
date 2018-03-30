@@ -25,11 +25,12 @@ export const searchUsers = (query) => dispatch => (
   )
 );
 
-export const receiveUser = ({user, albums, tags}) => ({
+export const receiveUser = ({user, albums, tags, users}) => ({
   type: RECEIVE_USER,
   user,
   albums,
-  tags
+  tags,
+  users
 });
 
 export const receiveSearchedUsers = (users) => ({
