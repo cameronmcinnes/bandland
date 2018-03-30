@@ -9,31 +9,21 @@
 album_titles = [
   'Single Source of Truth',
   'POJO',
-  'Abramov\'s Revenge',
-  'Redux Delux',
   'The Interview',
   'The Offering',
   'Iced Sencha Saturday',
   'Machine Loving',
   'Scorched Ruby',
   'Concatenate!',
-  'Module \'album\' not found',
   'The Googly Eye Mystery',
   'Polymorph',
   'OOP',
-  'HOC',
-  'Gem Install Abby',
   'MVC',
-  'Livenbetter',
-  'Scotty Dog',
-  'Manhattan Spa',
   'Chill Hands',
-  'Full Dishwashers',
   'Ode to Kenny\'s',
-  'Dollar Pizza Saved My Life',
+  'Graduation Day',
   'Down with Cibo',
-  'Q Train',
-  'Divs Only',
+  'Dollar Pizza Saved My Life',
   'Extraneous Fire Drill'
 ]
 
@@ -159,11 +149,11 @@ Album.all.each do |alb|
     ord: 1
   )
   idx += 1
-  # Track.create!(
-  #   title: Faker::Company.buzzword,
-  #   audio_file: "#{base_url}tracks/#{track_names[idx]}" ,
-  #   album_id: alb.id,
-  #   ord: 2
-  # )
-  # idx += 1
+  Track.create!(
+    title: Faker::Company.buzzword,
+    audio_file: "#{base_url}tracks/#{track_names[idx]}" ,
+    album_id: alb.id,
+    ord: 2
+  )
+  idx += 1
 end
