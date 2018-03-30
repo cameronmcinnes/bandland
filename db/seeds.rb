@@ -38,17 +38,16 @@ album_titles = [
 ]
 
 artist_names = [
-  'Validator',
-  'The Fat Arrows',
-  'Matz',
+  'DJ Query',
   'BCrypt Keeper',
   'The Bundlers',
-  'Yamlr',
-  'DJ Query',
-  'The Fluid Grid',
-  'Snake',
+  'Matz',
   'Mazehead',
-  'The Stack'
+  'The Fluid Grid',
+  'The Fat Arrows',
+  'Yamlr',
+  'The Stack',
+  'Validator'
 ]
 
 
@@ -88,9 +87,10 @@ User.create!(
   banner_img: 'https://s3.amazonaws.com/bandland-development/seeds/album_covers/20837750_111669122834416_2675294390913597440_n.jpg'
 )
 
-base_url = 'https://s3.amazonaws.com/bandland-development/seeds/album_covers/'
+base_url = 'https://s3.amazonaws.com/bandland-development/seeds/'
 
 album_cover_names = File.readlines('db/seed_filenames/covers.txt').map(&:strip)
+artist_images = File.readlines('db/seed_filenames/profile_imgs.txt').map(&:strip)
 
 artist_names.each_with_index do |name, idx|
   User.create!(
@@ -99,8 +99,8 @@ artist_names.each_with_index do |name, idx|
     location: Faker::Pokemon.location,
     password: 'verymodern',
     description: Faker::Company.bs,
-    # profile_img: Faker::Avatar.image,
-    banner_img: base_url + album_cover_names.sample
+    profile_img: "#{base_url}profile_photos/#{artist_images[idx]}" ,
+    banner_img: "#{base_url}album_covers/#{album_cover_names.sample}"
   )
 end
 
@@ -108,14 +108,13 @@ user_ids = User.all.pluck(:id)
 
 Album.destroy_all
 
-
 album_cover_names.each_with_index do |cover_name, i|
   Album.create!(
     artist_id: user_ids.sample,
     title: album_titles[i],
     price: rand(10),
     description: Faker::Hipster.paragraphs.join("\n\n\n"),
-    cover_img: base_url + cover_name
+    cover_img: "#{base_url}album_covers/#{cover_name}"
   )
 end
 
@@ -149,14 +148,22 @@ end
 
 Track.destroy_all
 
-base_track_url = 'https://s3.amazonaws.com/bandland-development/seeds/tracks/'
+track_names = File.readlines('db/seed_filenames/tracks.txt').map(&:strip)
 
-File.readlines('db/seed_filenames/tracks.txt').map(&:strip).each_with_index do |track_name, i|
-  alb = Album.all.sample
+idx = 0
+Album.all.each do |alb|
   Track.create!(
     title: Faker::Company.buzzword,
-    audio_file: base_track_url + track_name,
+    audio_file: "#{base_url}tracks/#{track_names[idx]}" ,
     album_id: alb.id,
-    ord: alb.tracks.length + 1
+    ord: 1
   )
+  idx += 1
+  # Track.create!(
+  #   title: Faker::Company.buzzword,
+  #   audio_file: "#{base_url}tracks/#{track_names[idx]}" ,
+  #   album_id: alb.id,
+  #   ord: 2
+  # )
+  # idx += 1
 end

@@ -7,7 +7,8 @@ import FollowButtonContainer from './follow_button_container';
 const UserBio = ({user, currentUser, toggleEditForm, userTags}) => {
   let editButton,
     uploadButton = '';
-  let followButton = <FollowButtonContainer user={user}/>;
+  let followButton;
+  if (currentUser) {followButton = <FollowButtonContainer user={user}/>}
   if (currentUser && currentUser.id === user.id) {
     editButton = (<button className='hollow-btn' onClick={toggleEditForm}>
       <FontAwesome name='edit'/>

@@ -12,7 +12,7 @@ const AlbumIndex = ({albums, users, destroyCollecting, currentUser}) => {
         key={ alb.id } />
     }) :
     users.map(user => {
-      return <li><BrowseResultArtistItem artist={ user } key={ user.id } /></li>
+      return <li key={ user.id }><BrowseResultArtistItem artist={ user } /></li>
     });
 
   return (

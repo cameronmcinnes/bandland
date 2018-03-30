@@ -12,40 +12,63 @@ class TrackPlayer extends React.Component {
     this.handleEnd = this.handleEnd.bind(this);
   }
 
-  advanceSlider(e) {
+  startSlider() {
+    this.lastTime = 0;
+    // start the animation
+    this.requestId = requestAnimationFrame(this.animate.bind(this));
+  }
+
+  animate(time) {
+    const timeDelta = time - this.lastTime;
+
+    this.advanceSlider(timeDelta);
+    this.lastTime = time;
+    if (this.props.track.isPlaying) {
+      requestAnimationFrame(this.animate.bind(this));
+    } else {
+      return null;
+    }
+  }
+
+  advanceSlider(delta) {
+    // for when we leave a page
+    if (!this.audio) return null;
+
     let ratio = this.audio.currentTime / this.audio.duration;
-    // let ratio = e.target.currentTime / this.audio.duration;
+
     let pos = (this.progbar.offsetWidth * ratio) + this.progbar.offsetLeft;
-    this.moveSliderTo(pos);
+    this.moveSliderTo(pos, delta);
   }
 
   componentDidUpdate() {
     if (this.props.track.isPlaying) {
       this.audio.play();
-      this.timeOut = setInterval(this.advanceSlider, 300);
+      this.startSlider()
     } else {
       this.audio.pause();
-      clearInterval(this.timeOut);
     }
   }
 
   componentWillUnmount() {
-    clearInterval(this.timeOut);
+    if (this.props.track.isPlaying) {
+      this.props.playPauseCurrentTrack()
+    }
   }
 
-  moveSliderTo(sliderPos) {
+  moveSliderTo(sliderPos, delta) {
     // account for case before duration is loaded, slider will be NaN
-    if (!sliderPos) return;
+    // if (!sliderPos) return;
     const sliderWidth = this.slider.offsetWidth;
     const progbarWidth = this.progbar.offsetWidth;
     const sliderMiddle = sliderPos - this.progbar.offsetLeft;
 
     if (sliderMiddle >= 0 && sliderMiddle < progbarWidth ) {
-      this.slider.style.marginLeft = `${sliderMiddle}px`;
+      this.slider.style.marginLeft = `${sliderMiddle * delta/16}px`;
+      this.slider.style.width = `24px`;
     } else if (sliderMiddle < 0) {
       this.slider.style.marginLeft = '0px';
     } else {
-      this.slider.style.marginLeft = `${progbarWidth}px`;
+      this.slider.style.marginLeft = `${progbarWidth * delta/16}px`;
     }
   }
 
@@ -74,7 +97,6 @@ class TrackPlayer extends React.Component {
   handleEnd(e) {
     if (this.props.track.ord >= Object.values(this.props.tracks).length) {
       this.props.changeCurrentTrack(this.props.tracks[0], 'paused');
-      clearInterval(this.timeOut);
     } else {
       this.changeTrack(1);
     }
