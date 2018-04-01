@@ -123,9 +123,22 @@ Collecting.destroy_all
   end
 end
 
+Following.destroy_all
+
+user_ids.each do |id|
+  4.times do
+    Following.find_or_create_by(
+      follower_id: id,
+      followee_id: user_ids.sample
+    )
+  end
+end
+
 tags.each do |tag_name|
   Tag.create!(name: tag_name)
 end
+
+Tag.destroy_all
 
 tag_ids = Tag.all.pluck(:id)
 
@@ -134,6 +147,10 @@ tag_ids.each do |tag_id|
     Tagging.find_or_create_by(tag_id: tag_id,
       taggable_id: album_ids.sample,
       taggable_type: 'Album'
+    )
+    Tagging.find_or_create_by(tag_id: tag_id,
+      taggable_id: user_ids.sample,
+      taggable_type: 'User'
     )
   end
 end
@@ -146,14 +163,14 @@ idx = 0
 Album.all.each do |alb|
   Track.create!(
     title: Faker::Company.buzzword,
-    audio_file: "#{base_url}tracks/#{track_names[idx]}" ,
+    audio_file: "#{base_url}seed_tracks/#{track_names[idx]}" ,
     album_id: alb.id,
     ord: 1
   )
   idx += 1
   Track.create!(
     title: Faker::Company.buzzword,
-    audio_file: "#{base_url}tracks/#{track_names[idx]}" ,
+    audio_file: "#{base_url}seed_tracks/#{track_names[idx]}" ,
     album_id: alb.id,
     ord: 2
   )
