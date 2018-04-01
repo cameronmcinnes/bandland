@@ -58,22 +58,23 @@ class TrackPlayer extends React.Component {
   moveSliderTo(sliderPos, delta) {
     // account for case before duration is loaded, slider will be NaN
     if (!sliderPos) return;
-    const sliderWidth = this.slider.offsetWidth;
+    const sliderDelta = delta/NORMAL_FRAME_TIME_DELTA
+    const sliderWidth = this.slider.offsetWidth + sliderDelta;
     const progbarWidth = this.progbar.offsetWidth;
     const sliderMiddle = sliderPos - this.progbar.offsetLeft;
 
     if (sliderMiddle >= 0 && sliderMiddle < progbarWidth ) {
-      this.slider.style.marginLeft = `${sliderMiddle * delta/16}px`;
+      this.slider.style.marginLeft = `${sliderMiddle}px`;
       this.slider.style.width = `24px`;
     } else if (sliderMiddle < 0) {
       this.slider.style.marginLeft = '0px';
     } else {
-      this.slider.style.marginLeft = `${progbarWidth * delta/16}px`;
+      this.slider.style.marginLeft = `${progbarWidth}px`;
     }
   }
 
   handleMouseMove(e) {
-    this.moveSliderTo(e.pageX);
+    this.moveSliderTo(e.pageX, 1);
     this.audio.currentTime = (
       (e.pageX - this.progbar.offsetLeft) / this.progbar.offsetWidth) *
       this.audio.duration;
@@ -154,4 +155,4 @@ class TrackPlayer extends React.Component {
 
 export default TrackPlayer;
 
-// onTimeUpdate={ this.advanceSlider }
+const NORMAL_FRAME_TIME_DELTA = 1000 / 60;

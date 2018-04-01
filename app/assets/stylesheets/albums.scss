@@ -128,6 +128,7 @@ $darkgreen: #47875b;
   height: 8px;
   margin: auto;
   background-color: #eee;
+  cursor: pointer;
 }
 
 .prog-bar-slider {
@@ -138,6 +139,11 @@ $darkgreen: #47875b;
   background-color: $green;
   margin-bottom: 6px;
   position: relative;
+  cursor: pointer;
+}
+
+.prog-bar-slider:hover {
+  background-color: $darkgreen;
 }
 
 .ff-buttons {
