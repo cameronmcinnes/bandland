@@ -39,7 +39,7 @@ const UserBio = ({user, currentUser, toggleEditForm, userTags}) => {
 
     <p className='bio-description'>{user.description}</p>
     <div>
-      <a href={user.ownSiteUrl}>{user.ownSiteUrl}</a>
+      <a href={`http://${user.ownSiteUrl}`}>{user.ownSiteUrl}</a>
     </div>
   </div>);
 }
