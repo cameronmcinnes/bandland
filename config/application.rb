@@ -17,8 +17,8 @@ module Bandland
 
     # Allow ".foo" as an extension for files with the MIME type "text/plain".
     Paperclip.options[:content_type_mappings] = {
-      mp3: %w(audio/mpeg),
-      mpeg: %w(audio/mp3)
+      mp3: %w(application/octet-stream),
+      mpeg: %w(application/octet-stream)
     }
 
     config.paperclip_defaults = {
