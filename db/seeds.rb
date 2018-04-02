@@ -134,11 +134,12 @@ user_ids.each do |id|
   end
 end
 
+Tag.destroy_all
+
 tags.each do |tag_name|
   Tag.create!(name: tag_name)
 end
 
-Tag.destroy_all
 
 tag_ids = Tag.all.pluck(:id)
 
