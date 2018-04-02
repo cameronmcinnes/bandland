@@ -2,7 +2,7 @@ class Api::AlbumsController < ApplicationController
   def create
     @album = current_user.albums.new(album_params)
     if @album.save
-      @album.tag_names = tag_params[:tag_names]
+      @album.tag_names = tag_params[:tag_names] if params[:tags]
       render partial: 'album', locals: { album: @album }
     else
       render json: @album.errors.messages, status: 422

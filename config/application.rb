@@ -15,6 +15,12 @@ module Bandland
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    # Allow ".foo" as an extension for files with the MIME type "text/plain".
+    Paperclip.options[:content_type_mappings] = {
+      mp3: %w(audio/mpeg),
+      mpeg: %w(audio/mp3)
+    }
+
     config.paperclip_defaults = {
       :storage => :s3,
       :s3_credentials => {
