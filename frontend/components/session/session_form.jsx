@@ -12,6 +12,7 @@ class SessionForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.loginGuest = this.loginGuest.bind(this);
   }
 
   componentDidMount() {
@@ -122,6 +123,22 @@ class SessionForm extends React.Component {
     );
   }
 
+  loginGuest() {
+    this.setState({ username: 'beloved_guest', password: 'demo_user'});
+  }
+
+  guestLoginButton(buttonDisabled) {
+    if (this.props.formType === 'Signup') {return null};
+    return (
+      <input className={`${this.props.modal}session-submit`}
+        type="submit"
+        value="Login Guest"
+        onClick={ this.loginGuest }
+        disabled={ buttonDisabled }
+        />
+    );
+  }
+
   render() {
     const modal = this.props.modal;
 
@@ -173,6 +190,8 @@ class SessionForm extends React.Component {
             value={this.props.formType}
             disabled={ buttonDisabled }
             />
+
+          { this.guestLoginButton(buttonDisabled) }
 
         <footer className="session-form-footer">
           { this.footer() }
