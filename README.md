@@ -1,8 +1,8 @@
-# Bandland
+![bandland logo](https://svgshare.com/i/5tW.svg')
 
-![bandland logo](https://svgshare.com/i/5tW.svg' title=)
+### A web app inspired by bandcamp
 
-### A bandcamp clone
+[See the project live](http://www.crm-bandland.com)
 
 ---
 
