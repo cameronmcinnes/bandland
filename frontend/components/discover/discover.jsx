@@ -10,6 +10,7 @@ class Discover extends React.Component {
   }
 
   render() {
+    debugger;
     const { discoverAlbums } = this.props;
     const featuredAlbums = discoverAlbums.slice(0, 4);
     const discoverAll = discoverAlbums.slice(4, 9);

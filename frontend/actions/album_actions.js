@@ -20,9 +20,10 @@ export const receiveAlbum = ({albums, users, tracks, tags}) => ({
   tags
 });
 
-export const receiveAlbums = (albums) => ({
+export const receiveAlbums = ({albums, recentAlbums}) => ({
   type: RECEIVE_ALBUMS,
-  albums
+  albums,
+  recentAlbums
 });
 
 export const receiveNewAlbum = (album) => ({
@@ -30,9 +31,10 @@ export const receiveNewAlbum = (album) => ({
   album
 });
 
-export const receiveDiscoverResults = (albums) => ({
+export const receiveDiscoverResults = ({albums, recentAlbums}) => ({
   type: RECEIVE_DISCOVERED_ALBUMS,
-  albums
+  albums,
+  recentAlbums
 })
 
 export const fetchAlbum = id => dispatch => {
@@ -80,7 +82,7 @@ export const clearAlbumErrors = (field) => ({
 
 export const fetchRecentAlbums = (limit) => (dispatch) => {
   return AlbumAPIUtil.fetchRecentAlbums(limit).then(
-    (albums) => dispatch(receiveAlbums(albums))
+    (payload) => dispatch(receiveAlbums(payload))
   )
 };
 

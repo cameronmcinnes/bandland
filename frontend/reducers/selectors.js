@@ -125,11 +125,13 @@ export const selectTags = (state, entity) => {
   return relevantTags.map((tag) => tag.name);
 };
 
-export const selectBrowsedAlbums = state => (
-  state.ui.discoverResults.albumIds.map((id) => (
-    state.entities.albums[id]
-  ))
-);
+export const selectBrowsedAlbums = state => {
+  return (
+    state.ui.discoverResults.albumIds.map((id) => (
+      state.entities.albums[id]
+    ))
+  );
+}
 
 export const selectBrowsedUsers = state => (
   state.ui.discoverResults.artistIds.map((id) => (
@@ -137,12 +139,11 @@ export const selectBrowsedUsers = state => (
   ))
 );
 
-// TODO innefficent already done from backend
-export const selectRecentAlbums = albums => {
-  const result = Object.values(albums).sort((a, b) => {
-    return b.id - a.id;
-  });
-  return result;
+export const selectRecentAlbums = state => {
+  const albums = state.entities.albums;
+  const recentAlbums = state.ui.discoverResults.recentAlbums;
+
+  return recentAlbums.map(albumId => albums[albumId]);
 };
 
 export const selectFollowers = (state, ownProps) => {
