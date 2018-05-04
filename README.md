@@ -1,4 +1,4 @@
-![bandland logo](https://svgshare.com/i/5tW.svg')
+![bandland logo](./app/assets/images/bandland_main_logo.svg)
 
 ### A web app inspired by bandcamp
 
